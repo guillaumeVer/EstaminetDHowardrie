@@ -10,15 +10,17 @@ public class Reservation {
 	private Horaire horaire;
 	private String date;
 	private String nomReservation;
+	private int nbPersonne;
 	
 
-	public Reservation(Utilisateur utilisateur, Table table, Horaire horaire, String date, String nomReservation){
+	public Reservation(Utilisateur utilisateur, Table table, Horaire horaire, String date, String nomReservation, int nbPersonne){
 		this.idReservation=idReservation;
 		this.utilisateur=utilisateur;
 		this.table=table;
 		this.horaire=horaire;
 		this.date=date;
 		this.nomReservation=nomReservation;
+		this.nbPersonne=nbPersonne;
 	}
 	
 	public Reservation(Table table, Horaire horaire, String date, String nomReservation){
@@ -28,6 +30,7 @@ public class Reservation {
 		this.horaire=horaire;
 		this.date=date;
 		this.nomReservation=nomReservation;
+		this.nbPersonne=nbPersonne;
 	}
 	
 	public Reservation(){
@@ -37,6 +40,7 @@ public class Reservation {
 		this.horaire=horaire;
 		this.date=date;
 		this.nomReservation=nomReservation;
+		this.nbPersonne=nbPersonne;
 	}
 
 	public int getIdReservation() {
@@ -85,6 +89,14 @@ public class Reservation {
 	
 	public void setNomReservation(String nomReservation) {
 		this.nomReservation = nomReservation;
+	}
+
+	public int getNbPersonne() {
+		return nbPersonne;
+	}
+
+	public void setNbPersonne(int nbPersonne) {
+		this.nbPersonne = nbPersonne;
 	}
 
 

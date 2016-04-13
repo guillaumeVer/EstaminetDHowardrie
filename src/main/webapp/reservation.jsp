@@ -47,7 +47,7 @@
   <a  style=" text-align: center; opacity: 0.7; position:absolute; right: 50px; top:105px; width: 150px; " href="Inscription" class="list-group-item"> <strong> S'inscrire </strong></a>
   
 </div>
-  <div  class="brand" > <a href="intro.html" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
+  <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
 
     <!-- Navigation -->
@@ -62,7 +62,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Estaminet d'Howardries</a>
+                <a class="navbar-brand" href="Index">Estaminet d'Howardries</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -121,7 +121,7 @@
                     </h2>
                     <hr>
                    <div class="container">
-                   <p style="font-size: 12px;">  <a href="connexion.html"> <span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Se connecter</a> </p >
+                   <p style="font-size: 12px;">  <a href="Connexion"> <span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Se connecter</a> </p >
 
 
  				<form method="post" action="Reservation" class="form-horizontal" role="form" >
@@ -173,10 +173,8 @@
                    <div class="form-group">
                     <label for="country" class="col-sm-3 control-label">Nombre de personne</label>
                     <div class="col-sm-9">
-                        <select id="country" class="form-control" style="width:300px;">
+                        <select id="nb" name="nb" class="form-control" style="width:300px;">
                            
-
-<option value="">Nombre de personne</option>
 <option>1</option>
 <option>2</option>
 <option>3</option>

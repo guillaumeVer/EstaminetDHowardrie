@@ -18,7 +18,7 @@ public class ReservationDao {
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
-					"INSERT INTO `reservation`(`idClient`, `idTable`, `idHoraire`, `Date`,`NomReservation`) VALUES (?,?,?,?,?)");
+					"INSERT INTO `reservation`(`idClient`, `idTable`, `idHoraire`, `Date`,`NomReservation`,`NbPersonne`) VALUES (?,?,?,?,?,?)");
 			List<Reservation> lstReservation = listerReservation();
 
 			Utilisateur user = reservation.getUtilisateur();
@@ -31,6 +31,7 @@ public class ReservationDao {
 			stmt.setInt(3, reservation.getHoraire().getIdHoraire());
 			stmt.setString(4,reservation.getDate());
 			stmt.setString(5, reservation.getNomReservation());
+			stmt.setInt(6, reservation.getNbPersonne());
 			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
@@ -64,6 +65,7 @@ public class ReservationDao {
 				reservation.setHoraire(horaireDao.getUnHoraire(resultSet.getInt("idHoraire")));
 				reservation.setDate(resultSet.getDate("date").toString());
 				reservation.setNomReservation(resultSet.getString("NomReservation"));
+				reservation.setNbPersonne(resultSet.getInt("NbPersonne"));
 				
 			}
 			connection.close();
@@ -101,6 +103,7 @@ public class ReservationDao {
 				reservation.setHoraire(horaireDao.getUnHoraire(results.getInt("idHoraire")));
 				reservation.setDate(results.getDate("date").toString());
 				reservation.setNomReservation(results.getString("NomReservation"));
+				reservation.setNbPersonne(results.getInt("NbPersonne"));
 				
 				
 				listereservation.add(reservation);
