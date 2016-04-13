@@ -41,23 +41,28 @@ public class ConnexionServlet extends HttpServlet {
 	
 	List<Utilisateur> lstUser=UtilisateurManager.getInstance().listerUtilisateur();
 		
-	String nom = req.getParameter("username");	
+	String mail = req.getParameter("username");	
 	String password = req.getParameter("password");	
 	
 	
 	Utilisateur user = null;
 	int i=0;
 	while(user==null && i<lstUser.size()){
-		if(lstUser.get(i).getNom().equals(nom)){
+		if(lstUser.get(i).getMail().equals(mail)){
 			user=lstUser.get(i);
 		}else{
 			i++;
 		}
 	}
+	String connexion="";
+	req.setAttribute( "connexion", connexion );
 	
 	if(user==null){
 		System.out.println("user inconnu");
 		
+		connexion= "Utilisateur inconnu";
+		req.setAttribute( "connexion", connexion );
+		resp.sendRedirect("Connexion");
 	}else{
 	
 	try {

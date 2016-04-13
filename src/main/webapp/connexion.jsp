@@ -29,6 +29,8 @@
 			<div class="box-header">
 				<h2 style="font-size: 35px;">Connectez Vous</h2>
 			</div>
+            <br/>
+			
 			<label for="username" style="font-size: 25px;">Adresse mail</label>
 			<br/>
 			<input type="text" id="username" name="username">
