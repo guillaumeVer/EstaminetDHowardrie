@@ -38,10 +38,7 @@
 
 <body>
 <div class="list-group">
-  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong> Bonjour <% 
-            String attribut = (String) request.getAttribute("nom");
-            out.println( attribut );
-            %></strong>
+  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong> Bonjour ${user.nom}</strong>
   </a>
   <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
 

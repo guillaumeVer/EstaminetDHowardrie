@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.entite.Utilisateur;
+import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
+
 @WebServlet("/prive/Intro")
 public class IntroConnecteServlet extends HttpServlet {
 	
@@ -17,10 +20,10 @@ public class IntroConnecteServlet extends HttpServlet {
 
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
 			String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");
-			req.setAttribute( "nom", utilisateur );
+			Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyNom(utilisateur);
 			
+			req.setAttribute("user",user);
 			
 			RequestDispatcher view = req.getRequestDispatcher("/introConnecté.jsp");
 			view.forward(req, resp);

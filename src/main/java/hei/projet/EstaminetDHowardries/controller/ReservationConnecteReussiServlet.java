@@ -13,7 +13,7 @@ import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
 @WebServlet("/prive/ReservationReussi")
-public class ReservationReussiServlet extends HttpServlet{
+public class ReservationConnecteReussiServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
