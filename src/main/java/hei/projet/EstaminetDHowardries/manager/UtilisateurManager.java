@@ -41,4 +41,8 @@ private static UtilisateurManager inst;
 		userDao.deleteUser(user);
 	}
 	
+	public Utilisateur getAdministrateur() {
+		return userDao.getAdministrateur();
+	}
+	
 }

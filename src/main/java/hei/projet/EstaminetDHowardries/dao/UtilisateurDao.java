@@ -26,8 +26,7 @@ public class UtilisateurDao {
 			    	user.setNom(results.getString("Nom"));
 			    	user.setPrenom(results.getString("Prenom"));
 			    	user.setMail(results.getString("Mail"));
-			    	
-			            
+			    	user.setPassword(results.getString("Password"));
 			    } 
 			    connection.close();         
 		}
@@ -63,7 +62,7 @@ public class UtilisateurDao {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = (Statement) connection.createStatement(); 
 				
-		    ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur`"); 
+		    ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur` WHERE NOT Administrateur"); 
 			    while (results.next()) {
 			    	Utilisateur user = new Utilisateur(results.getString("Nom"),results.getString("Prenom"),results.getString("Mail"),results.getString("password"));
 			    	user.setIdUtilisateur(results.getInt("IdUtilisateur")); 
@@ -121,6 +120,32 @@ public class UtilisateurDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public Utilisateur getAdministrateur(){
+		Utilisateur user=new Utilisateur();
+		try{
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			Statement stmt = (Statement) connection.createStatement(); 
+				
+		    ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur` WHERE Administrateur"); 
+		    
+			    while (results.next()) {
+			    	user.setIdUtilisateur(results.getInt("IdUtilisateur"));
+			    	user.setNom(results.getString("Nom"));
+			    	user.setPrenom(results.getString("Prenom"));
+			    	user.setMail(results.getString("Mail"));
+			    	user.setPassword(results.getString("Password"));
+			    	
+			    	
+			            
+			    } 
+			    connection.close();         
+		}
+		catch (SQLException e) { 
+			e.printStackTrace(); 
+		}
+		return user;
+		}
 	
 }
 

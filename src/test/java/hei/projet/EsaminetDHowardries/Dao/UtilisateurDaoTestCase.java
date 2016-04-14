@@ -22,8 +22,8 @@ public class UtilisateurDaoTestCase {
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		Statement stmt = connection.createStatement();
 		stmt.executeUpdate("DELETE FROM utilisateur");
-		stmt.executeUpdate("INSERT INTO `utilisateur`(`IdUtilisateur`, `Nom`, `Prenom`, `Mail`, `password`) VALUES (1,'Gg','vg','guillaume.verjot@hei.fr','gg')");
-		stmt.executeUpdate("INSERT INTO `utilisateur`(`IdUtilisateur`, `Nom`, `Prenom`, `Mail`, `password`) VALUES (2,'guy','vg','verjotg@gmail.com','gg')");
+		stmt.executeUpdate("INSERT INTO `utilisateur`(`IdUtilisateur`, `Nom`, `Prenom`, `Mail`, `password`,`Administrateur`) VALUES (1,'Gg','vg','guillaume.verjot@hei.fr','gg',0)");
+		stmt.executeUpdate("INSERT INTO `utilisateur`(`IdUtilisateur`, `Nom`, `Prenom`, `Mail`, `password`,`Administrateur`) VALUES (2,'admin','admin','verjotg@gmail.com','admin',1)");
 		stmt.close();
 		connection.close();
 	}
@@ -36,12 +36,19 @@ public class UtilisateurDaoTestCase {
 	}
 	
 	@Test
-	public void testerListerHoraire() {
+	public void testerListerUtilisateur() {
 		List<Utilisateur> lstuser = utilisateurDao.listerUtilisateur();
-		Assert.assertEquals(2, lstuser.size());
+		Assert.assertEquals(1, lstuser.size());
 		Assert.assertEquals("gg", lstuser.get(0).getPassword());
 		Assert.assertEquals("guillaume.verjot@hei.fr", lstuser.get(0).getMail());
 	
 		}
+	
+	@Test
+	public void testergetAdministrateur(){
+		Utilisateur user=utilisateurDao.getAdministrateur();
+		Assert.assertEquals("admin", user.getPrenom());
+		Assert.assertEquals("verjotg@gmail.com", user.getMail());
+	}
 
 }

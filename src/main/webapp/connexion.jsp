@@ -33,7 +33,7 @@
 			
 			<label for="username" style="font-size: 25px;">Adresse mail</label>
 			<br/>
-			<input type="text" id="username" name="username">
+			<input type="email" id="username" name="username">
 			<br/>
 			<label for="password" style="font-size: 25px;">Mot de passe</label>
 			<br/>
