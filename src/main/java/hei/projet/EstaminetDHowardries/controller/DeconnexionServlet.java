@@ -2,6 +2,7 @@ package hei.projet.EstaminetDHowardries.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,14 +20,24 @@ public class DeconnexionServlet extends HttpServlet {
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException {
+			
 			String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");
 			Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyNom(utilisateur);
 			
 			req.setAttribute("user",user);
 			
-			req.getSession().removeAttribute("utilisateurConnecte");
-			resp.sendRedirect("Index");
+			
 		}
 
+		@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+			req.getSession().removeAttribute("utilisateurConnecte");
+
+			resp.sendRedirect("Intro");
+			
+		}
+
+		
 	}
 

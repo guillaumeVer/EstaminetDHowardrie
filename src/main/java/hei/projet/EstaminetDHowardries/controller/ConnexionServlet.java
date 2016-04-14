@@ -44,13 +44,11 @@ public class ConnexionServlet extends HttpServlet {
 	//Recuperation du formulaire de connexion
 	String mail = req.getParameter("username");	
 	String password = req.getParameter("password");	
-	System.out.println(mail);
-	System.out.println(password);
+	
 	
 	//recuperation de l'admin de la base de donnée
 	Utilisateur admin= UtilisateurManager.getInstance().getAdministrateur();
-	System.out.println(admin.getMail());
-	System.out.println(admin.getPassword());
+	
 	
 	//Recuperation de l'utilisateur saisie
 	Utilisateur user = null;
