@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -33,20 +32,18 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+<script src="gallery.js" type="text/javascript"></script>
 
 </head>
 
 <body>
 <div class="list-group">
-<a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"><strong>Bonjour <% 
-            String attribut = (String) request.getAttribute("nomUser");
-            out.println( attribut );
-            %></strong>
+  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Connexion</strong>
  
   </a>
-  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
-  
-  
+  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
+ 
 </div>
   <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
@@ -63,7 +60,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="Index">Estaminet d'Howardries</a>
+                <a class="navbar-brand" href="index.html">Estaminet d'Howardries</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -122,86 +119,84 @@
                     </h2>
                     <hr>
                    <div class="container">
-                   <p style="font-size: 12px;">  <a href="Deconnexion"> Se Deconnecter</a> </p >
+                   <p style="font-size: 12px;">  <a href="Connexion"> <span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Se connecter</a> </p >
 
 
 
-           <form method="post" action="Reservation" class="form-horizontal" role="form" >
+            <form class="form-horizontal" role="form">
 
-            <div class="form-group">
-                   
-                           
-                 
-                </div> <!-- /.form-group -->
+            
                 
                 <div class="form-group">
-                    <label for="Nom" class="col-sm-3 control-label">Nom</label>
+                    <label for="Nom" class="col-sm-3 control-label">Nom de Reservation</label>
                     <div class="col-sm-9">
-                        <input type="text" id="Nom" name="Nom" placeholder="Nom" value="<% 
-            String attribut2 = (String) request.getAttribute("nom");
-            out.println( attribut );
-            %>" class="form-control" autofocus  style="width:300px;">
+                        <input type="text" id="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
                         
                     </div>
-                </div>
-                 <div class="form-group">
-                    <label for="Prénom" class="col-sm-3 control-label">Prénom</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="Prénom" name="Prenom" placeholder="Prénom" class="form-control" autofocus style="width:300px;" value="<% 
-            String prenom = (String) request.getAttribute("prenomUser");
-            out.println( prenom );
-            %>">
-                        
-                    </div>
-                </div>
+                   </div>
+                
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" style="width:300px;" value="<% 
-            String mail = (String) request.getAttribute("mailUser");
-            out.println( mail );
-            %>" >
+                        <input type="email" id="email" placeholder="Email" class="form-control" style="width:300px;" >
                     </div>
                 </div>
+
+
                
                 <div class="form-group">
                     <label for="birthDate" class="col-sm-3 control-label">Date de la reservation</label>
                     <div class="col-sm-9">
-                        <input type="date" id="date" name="date" class="form-control" style="width:300px;">
+                        <input type="date" id="bookDate" class="form-control" style="width:300px;">
                     </div>
                 </div>
+
+                   <div class="form-group">
+                    <label for="country" class="col-sm-3 control-label">Nombre de personne</label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control" style="width:300px;">
+                           
+
+<option value="">Nombre de personne</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+
+</select>
+
+</div>
+</div>
 
                 
 
                 <div class="form-group">
                     <label for="country" class="col-sm-3 control-label">Heure de réservation</label>
-                    	<select id="horaire" name="horaire" class="form-control" style="width:300px;">
-                        
-							<c:forEach var="horaire" items="${listedHoraires}">
-									<option value="${horaire.idHoraire}">${horaire.intervalle}</option>
-								</c:forEach>
-								
-						</select>
-						
-	
-</div>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control" style="width:300px;">
+                           
 
+<option value="">Heure de réservation</option>
+<option>11:00</option>
+<option>12:00</option>
+<option>13:00</option>
+<option>19:00</option>
+<option>20:00</option>
+<option>21:00</option>
+<option>22:00</option>
 
-                <div class="form-group">
-                    <label for="country" class="col-sm-3 control-label">Table</label>
-                    	<select id="table" name="table" class="form-control" style="width:300px;">
-                        
-							<c:forEach var="table" items="${listeDeTable}">
-									<option value="${table.idTable}">${table.nomTable}</option>
-								</c:forEach>
-								
-						</select>
-						
-	
-</div>
-
+</select>
 
 </div>
+</div>
+
+              
+</div>
+               
 
 
                <!--  <div class="container"> 
@@ -231,17 +226,7 @@
                     
                
                  <!-- /.form-group -->
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <div class="checkbox">
-                            
-                                
-                                 <label>
-                                <input type="checkbox">J'accepte de recevoir la newsletter
-                            </label>
-                        </div>
-                    </div>
-                </div> <!-- /.form-group -->
+               
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
                        <a href"reservationfait.html"> <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Réserver</button> </a>
@@ -271,7 +256,63 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.js">
+    jQuery(function($){
+
+  var settings = {
+    thumbListId: "thumbs",
+    imgViewerId: "viewer",
+    activeClass: "active",
+    activeTitle: "Photo en cours de visualisation",
+    loaderTitle: "Chargement en cours",
+    loaderImage: "images/loader.gif"
+  };
+
+  var thumbLinks = $("#"+settings.thumbListId).find("a"),
+    firstThumbLink = thumbLinks.eq(0),
+    highlight = function(elt){
+      thumbLinks.removeClass(settings.activeClass).removeAttr("title");
+      elt.addClass(settings.activeClass).attr("title",settings.activeTitle);
+    },
+    loader = $(document.createElement("img/plan")).attr({
+      alt: settings.loaderTitle,
+      title: settings.loaderTitle,
+      src: settings.loaderImage
+    });
+
+  highlight(firstThumbLink);
+
+  $("#"+settings.thumbListId).after(
+    $(document.createElement("p"))
+      .attr("id",settings.imgViewerId)
+      .append(
+        $(document.createElement("img/plan")).attr({
+          alt: "",
+          src: firstThumbLink.attr("href")
+        })
+      )
+  );
+
+  var imgViewer = $("#"+settings.imgViewerId),
+    bigPic = imgViewer.children("img");
+
+  thumbLinks
+    .click(function(e){
+      e.preventDefault();
+      var $this = $(this),
+        target = $this.attr("href");
+      if (bigPic.attr("src") == target) return;
+      highlight($this);
+      imgViewer.html(loader);
+      bigPic
+        .load(function(){
+          imgViewer.html($(this).fadeIn(250));
+        })
+        .attr("src",target);
+    });
+
+});
+</script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

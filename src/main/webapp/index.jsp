@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et Théo">
+    <meta name="author" content="Guillaume et ThÃ©o">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -107,7 +109,7 @@
                     <hr>
                     <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt="">
                     <hr class="visible-xs">
-                    <p > <a href="img/carte.jpg" style="margin-left: 185px;"> Découvrez notre carte <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </a> </p>
+                    <p > <a href="img/carte.jpg" style="margin-left: 185px;"> DÃ©couvrez notre carte <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </a> </p>
                     <p>Le menu de la semaine est: </p>
                     <p></p>
                 </div>
@@ -119,12 +121,12 @@
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Nos
-                        <strong>Bières et Boissons</strong>
+                        <strong>BiÃ¨res et Boissons</strong>
                     </h2>
                     <hr>
                     <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt="">
-                    <p > <a href="img/bieres.jpg" style="margin-left: 185px;"> Découvrez nos bières <span class="glyphicon glyphicon-grain" aria-hidden="true"></span> </a> </p>
-                    <p>Voici les bières du mois:</p>
+                    <p > <a href="img/bieres.jpg" style="margin-left: 185px;"> DÃ©couvrez nos biÃ¨res <span class="glyphicon glyphicon-grain" aria-hidden="true"></span> </a> </p>
+                    <p>Voici les biÃ¨res du mois:</p>
                 </div>
             </div>
         </div>
