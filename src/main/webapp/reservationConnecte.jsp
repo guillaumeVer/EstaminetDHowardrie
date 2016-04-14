@@ -39,8 +39,7 @@
 
 <body>
 <div class="list-group">
-  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Connexion</strong>
- 
+  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
   </a>
   <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
  
@@ -123,14 +122,14 @@
 
 
 
-            <form class="form-horizontal" role="form">
+          <form method="post" action="Reservation" class="form-horizontal" role="form" >
 
             
                 
                 <div class="form-group">
                     <label for="Nom" class="col-sm-3 control-label">Nom de Reservation</label>
                     <div class="col-sm-9">
-                        <input type="text" id="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
+                        <input type="text" id="Nom" name="Nom" value=${user.nom} placeholder="Nom" class="form-control" autofocus  style="width:300px;">
                         
                     </div>
                    </div>
@@ -138,7 +137,7 @@
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" placeholder="Email" class="form-control" style="width:300px;" >
+                        <input type="email" id="email" name="email" value=${user.mail} placeholder="Email" class="form-control" style="width:300px;" >
                     </div>
                 </div>
 
@@ -147,17 +146,15 @@
                 <div class="form-group">
                     <label for="birthDate" class="col-sm-3 control-label">Date de la reservation</label>
                     <div class="col-sm-9">
-                        <input type="date" id="bookDate" class="form-control" style="width:300px;">
+                        <input type="date" name="bookDate" id="bookDate" class="form-control" style="width:300px;">
                     </div>
                 </div>
 
                    <div class="form-group">
                     <label for="country" class="col-sm-3 control-label">Nombre de personne</label>
                     <div class="col-sm-9">
-                        <select id="country" class="form-control" style="width:300px;">
+                        <select id="nbPersonne" name="nbPersonne" class="form-control" style="width:300px;">
                            
-
-<option value="">Nombre de personne</option>
 <option>1</option>
 <option>2</option>
 <option>3</option>
@@ -177,22 +174,28 @@
                 <div class="form-group">
                     <label for="country" class="col-sm-3 control-label">Heure de réservation</label>
                     <div class="col-sm-9">
-                        <select id="country" class="form-control" style="width:300px;">
-                           
-
-<option value="">Heure de réservation</option>
-<option>11:00</option>
-<option>12:00</option>
-<option>13:00</option>
-<option>19:00</option>
-<option>20:00</option>
-<option>21:00</option>
-<option>22:00</option>
-
-</select>
+                    <select id="horaire" name="horaire" class="form-control" style="width:300px;">
+                        
+							<c:forEach var="horaire" items="${listedHoraires}">
+									<option value="${horaire.idHoraire}">${horaire.intervalle}</option>
+								</c:forEach>
+								
+						</select>
 
 </div>
 </div>
+<div class="form-group">
+                    <label for="country" class="col-sm-3 control-label">Table</label>
+                    	<select id="table" name="table" class="form-control" style="width:300px;">
+                        
+							<c:forEach var="table" items="${listeDeTable}">
+									<option value="${table.idTable}">${table.nomTable}</option>
+								</c:forEach>
+								
+						</select>
+						
+	
+</div>    
 
               
 </div>
