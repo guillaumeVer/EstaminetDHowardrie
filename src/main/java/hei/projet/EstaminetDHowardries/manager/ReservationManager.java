@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 
 import hei.projet.EstaminetDHowardries.dao.ReservationDao;
+import hei.projet.EstaminetDHowardries.entite.Horaire;
 import hei.projet.EstaminetDHowardries.entite.Reservation;
 
 public class ReservationManager {
@@ -36,5 +37,10 @@ public class ReservationManager {
 		
 		public List<Reservation> listerReservationParCLient(int idUser) {
 			return resDao.listerReservationParClient(idUser);
+		}
+
+		public List<Reservation> listerReservationParDateHoraire(String date, Horaire horaire) {
+			// TODO Auto-generated method stub
+			return resDao.listerReservationParDateHoraire(date,horaire);
 		}
 }

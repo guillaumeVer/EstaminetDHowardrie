@@ -156,4 +156,46 @@ public class ReservationDao {
 		}
 		return listereservation;
 	}
+	
+	public List<Reservation> listerReservationParDateHoraire(String date, Horaire horaire) {
+		List<Reservation> listereservation=new ArrayList<Reservation>();
+		
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM reservation WHERE (`idHoraire` = ? AND `Date` = ?");
+			stmt.setInt(1,horaire.getIdHoraire());
+			stmt.setString(2, date);
+			ResultSet results = stmt.executeQuery();
+			
+			while (results.next()) {
+				Reservation reservation =new Reservation();
+				TableDao tableDao = new TableDao();
+				HoraireDao horaireDao = new HoraireDao();
+				UtilisateurDao userDao=new UtilisateurDao();
+				
+				reservation.setIdReservation(results.getInt("idReservation"));
+			
+				int iduser = results.getInt("idClient");
+				if(iduser==0){
+					reservation.setUtilisateur(null);
+				}else{
+					reservation.setUtilisateur(userDao.getUnUtilisateur(results.getInt("idClient")));
+				}
+				
+				reservation.setTable(tableDao.getUneTable(results.getInt("idTable")));
+				reservation.setHoraire(horaireDao.getUnHoraire(results.getInt("idHoraire")));
+				reservation.setDate(results.getDate("date").toString());
+				reservation.setNomReservation(results.getString("NomReservation"));
+				reservation.setNbPersonne(results.getInt("NbPersonne"));
+				
+				
+				listereservation.add(reservation);
+				
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listereservation;
+	}
 }
