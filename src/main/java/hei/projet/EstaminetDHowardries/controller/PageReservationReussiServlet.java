@@ -9,15 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.entite.Reservation;
+import hei.projet.EstaminetDHowardries.manager.TableManager;
+
 @WebServlet("/ReservationReussi")
-public class PageReservationFaitServlet extends HttpServlet{
+public class PageReservationReussiServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
+		req.setAttribute("reservation", reservation);
+		req.setAttribute("table",reservation.getTable());
+		req.setAttribute("horaire",reservation.getHoraire());
 		
-		RequestDispatcher view = req.getRequestDispatcher("/reservationfait.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/reservationReussi.jsp");
 		view.forward(req, resp);
+		
+		req.getSession().removeAttribute("reservation");
+		
 	}
 
 	@Override

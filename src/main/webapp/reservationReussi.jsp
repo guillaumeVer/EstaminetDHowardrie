@@ -40,8 +40,8 @@
 <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Connexion</strong>
  
   </a>
-  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="connexion.html" class="list-group-item"> <strong> Se connecter </strong></a>
-  <a  style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7;" href="inscription.html" class="list-group-item"> <strong> S'inscrire </strong></a>
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Connexion" class="list-group-item"> <strong> Se connecter </strong></a>
+  <a  style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7;" href="Inscription" class="list-group-item"> <strong> S'inscrire </strong></a>
   
 </div>
   <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
@@ -87,28 +87,6 @@
 
     <div class="container">
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Plan du
-                        <strong>Restaurant</strong>
-                    </h2>
-                    <hr>
-                    
-                   <a href="img/plan.png">  <center><img href="img/plan.png" src="img/tn_plan.png" > </center> </a>
-                </div>
-                <div>
-                </div>
-                <div class="col-md-4">
-                   
-                   
-                  
-                 
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="box">
@@ -119,6 +97,12 @@
                     <hr>
                    <div class="container">
                    <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> Votre réservation a bien été pris en compte </strong></div>
+                   <div><strong>Nom de Reservation : </strong><strong>${reservation.nomReservation}</strong></div>
+                   <div><strong>Date : </strong><strong>${reservation.date}</strong></div>
+                   <div><strong>Nombre de Personne : </strong><strong>${reservation.nbPersonne}</strong></div>
+                   <div><strong>Table : </strong><strong>${table.nomTable}</strong></div>
+              		<div><strong>Horaire : </strong><strong>${horaire.intervalle}</strong></div>
+                 
     </div>
     </div>
     </div>
