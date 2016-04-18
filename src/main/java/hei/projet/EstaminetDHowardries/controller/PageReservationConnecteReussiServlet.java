@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
@@ -23,6 +24,12 @@ public class PageReservationConnecteReussiServlet extends HttpServlet{
 		Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyNom(utilisateur);
 		
 		req.setAttribute("user",user);
+		
+		
+		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
+		req.setAttribute("reservation", reservation);
+		req.setAttribute("table",reservation.getTable());
+		req.setAttribute("horaire",reservation.getHoraire());
 		
 		RequestDispatcher view = req.getRequestDispatcher("/reservationReussiConnecte.jsp");
 		view.forward(req, resp);

@@ -1,3 +1,6 @@
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,7 +13,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et Théo">
+    <meta name="author" content="Guillaume et Theo">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -38,11 +41,10 @@
   <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Connexion</strong>
  
   </a>
-  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Connexion" class="list-group-item"> <strong> Se connecter </strong></a>
-  <a  style=" text-align: center; opacity: 0.7; position:absolute; right: 50px; top:105px; width: 150px; " href="Inscription" class="list-group-item"> <strong> S'inscrire </strong></a>
-  
+  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="connexion.html" class="list-group-item"> <strong> Se connecter </strong></a>
+ 
 </div>
-  <div  class="brand" > <a href="intro.html" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
+  <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
 
     <!-- Navigation -->
@@ -63,47 +65,65 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="Index">Le Menu</a>
+                        <a href="index.html">Les Plats</a>
+                    </li>
+                     <li>
+                        <a href="connexion.html">Les Boissons</a>
                     </li>
                     <li>
-                        <a href="Reservation">Reservation</a>
+                        <a href="AcceuilAdministrateur">Reservation</a>
                     </li>
-                    <li>
-                        <a href="Avis">Avis</a>
-                    </li>
-                    <li>
-                        <a href="Contact">Contact</a>
-                    </li>
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-
-      
-
-   
-        </div>
+    <div class="container">
 
         <div class="row">
             <div class="box">
+                
                 <div class="col-lg-12">
-                  <h2 class="intro-text text-center">Votre
-                        <strong>Reservation</strong>
-                    </h2>
-                    <hr>
-                   <div class="container">
-    	               <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Votre réservation a bien été pris en compte </strong></div>
-    				<div><strong>Nom de Reservation : </strong><strong>${reservation.nomReservation}</strong></div>
-                   <div><strong>Date : </strong><strong>${reservation.date}</strong></div>
-                   <div><strong>Nombre de Personne : </strong><strong>${reservation.nbPersonne}</strong></div>
-                   <div><strong>Table : </strong><strong>${table.nomTable}</strong></div>
-              		<div><strong>Horaire : </strong><strong>${horaire.intervalle}</strong></div>
-    </div>
-    </div>
-    </div>
-    </div>
+                     <h2>Reservation à venir</h2>
+             
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Date</th>
+        <th>Table</th>
+        <th>Horaire</th>
+        <th>Nombre De Personne</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+   		 <c:forEach var="reservation" items="${listedeReservation}">
+      <tr class="success">
+        <td>${reservation.nomReservation}</td>
+        <td>${reservation.date}</td>
+        <td>${reservation.table.nomTable}</td>
+        <td>${reservation.horaire.intervalle}</td>
+        <td>${reservation.nbPersonne}</td>
+      </tr>
+      	</c:forEach>
+    
+    </tbody>
+  </table>
+                </div>
+                <div class="col-lg-12">
+                   
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        
+            </div>
+        </div>
+
     </div>
     <!-- /.container -->
 
@@ -111,7 +131,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Notre site</p>
                 </div>
             </div>
         </div>

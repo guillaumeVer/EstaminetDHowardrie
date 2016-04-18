@@ -66,6 +66,8 @@ public class PageDeReservationConnecteServlet extends HttpServlet {
 		Reservation reservation =new Reservation(user,table, horaire,date,user.getNom(),nbPersonne);
 		ReservationManager.getInstance().ajouterReservation(reservation);
 		
+		req.getSession().setAttribute("reservation", reservation);
+		
 		resp.sendRedirect("ReservationReussi");
 	}
 

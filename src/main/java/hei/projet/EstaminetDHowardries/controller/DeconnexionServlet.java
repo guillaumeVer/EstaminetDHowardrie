@@ -13,8 +13,7 @@ import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
 @WebServlet("/prive/Deconnexion")
-public class DeconnexionServlet extends HttpServlet {
-
+public class DeconnexionServlet extends HttpServlet{
 		private static final long serialVersionUID = -2793586799100543352L;
 
 		@Override

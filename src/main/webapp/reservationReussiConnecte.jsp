@@ -115,6 +115,11 @@
                     <hr>
                    <div class="container">
                    <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Votre réservation a bien été pris en compte </strong></div>
+   					<div><strong>Nom de Reservation : </strong><strong>${reservation.nomReservation}</strong></div>
+                   <div><strong>Date : </strong><strong>${reservation.date}</strong></div>
+                   <div><strong>Nombre de Personne : </strong><strong>${reservation.nbPersonne}</strong></div>
+                   <div><strong>Table : </strong><strong>${table.nomTable}</strong></div>
+              		<div><strong>Horaire : </strong><strong>${horaire.intervalle}</strong></div>
     </div>
     </div>
     </div>
