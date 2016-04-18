@@ -26,16 +26,19 @@ public class DeconnexionServlet extends HttpServlet {
 			
 			req.setAttribute("user",user);
 			
+
+			req.getSession().removeAttribute("utilisateurConnecte");
+
+			
+			//resp.sendRedirect("Intro");
+			
+			
 			
 		}
 
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-			req.getSession().removeAttribute("utilisateurConnecte");
-
-			resp.sendRedirect("Intro");
-			
 		}
 
 		

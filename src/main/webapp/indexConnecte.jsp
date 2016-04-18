@@ -39,7 +39,9 @@
 <div class="list-group">
   <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
   </a>
+  <form method="post" action="Deconnexion">
   <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
+ </form>
  
 </div>
 

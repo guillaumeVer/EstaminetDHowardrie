@@ -15,10 +15,10 @@
     <title>Projet- Site Internet Estaminet Howardries</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/business-casual.css" rel="stylesheet">
+    <link href="../css/business-casual.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -70,7 +70,7 @@
                         <a href="Avis">Avis</a>
                     </li>
                     <li>
-                        <a href="Contct">Contact</a>
+                        <a href="Contact">Contact</a>
                     </li>
                 </ul>
             </div>
