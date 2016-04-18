@@ -42,7 +42,8 @@ public class PageDeReservationConnecteServlet extends HttpServlet {
 		List<Table> lstTable = TableManager.getInstance().listerTable();
 		req.setAttribute("listeDeTable",lstTable);
 		
-		
+		List<Reservation> lstReservation = ReservationManager.getInstance().listerReservationParCLient(user.getIdUtilisateur());
+		req.setAttribute("listeDeReservation",lstReservation);
 		
 		RequestDispatcher view = req.getRequestDispatcher("/reservationConnecte.jsp");
 		view.forward(req, resp);

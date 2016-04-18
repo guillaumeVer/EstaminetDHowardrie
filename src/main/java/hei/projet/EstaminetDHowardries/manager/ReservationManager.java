@@ -33,4 +33,8 @@ public class ReservationManager {
 		public Reservation getReservation(int idUtilisateur){
 			return resDao.getReservation(idUtilisateur);
 		}
+		
+		public List<Reservation> listerReservationParCLient(int idUser) {
+			return resDao.listerReservationParClient(idUser);
+		}
 }
