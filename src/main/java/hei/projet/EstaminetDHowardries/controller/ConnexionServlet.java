@@ -68,6 +68,8 @@ public class ConnexionServlet extends HttpServlet {
 	if(mail!=null && mail.equals(admin.getMail())){
 		try {
 			if(password.equals(admin.getPassword())) {
+				//req.getSession().setAttribute("administrateurConnecte", admin);
+				
 				resp.sendRedirect("AcceuilAdministrateur");
 				System.out.println("Connection en tant que administrateur");
 			} else {

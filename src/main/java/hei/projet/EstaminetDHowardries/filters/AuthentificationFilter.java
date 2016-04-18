@@ -32,7 +32,7 @@ public class AuthentificationFilter implements Filter {
 			System.out.println("Il faut etre connecté pour accéder à  cette page !");
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect("../Connexion");
-			return;
+			
 		}
 		chain.doFilter(request, response);
 
