@@ -64,6 +64,7 @@ public class TableDao {
 		List<Table> lstTable= TableManager.getInstance().listerTable();
 		
 		for(int i=0;i<lstResa.size();i++){
+			
 			if(lstResa.get(i).getTable()!=lstTable.get(i)){
 				lstTableTrier.add(lstTable.get(i));
 			}
