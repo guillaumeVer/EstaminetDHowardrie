@@ -45,4 +45,8 @@ private static UtilisateurManager inst;
 		return userDao.getAdministrateur();
 	}
 	
+	public Utilisateur updateUser(Utilisateur user){
+		return userDao.updateUser(user);
+	}
+	
 }

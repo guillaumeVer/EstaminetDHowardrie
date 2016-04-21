@@ -10,6 +10,7 @@ import java.util.List;
 
 import hei.projet.EstaminetDHowardries.entite.Table;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
+import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
 public class UtilisateurDao {
 
@@ -147,5 +148,36 @@ public class UtilisateurDao {
 		return user;
 		}
 	
-}
+	public Utilisateur updateUser(Utilisateur user){
+		Utilisateur newuser = new Utilisateur();
+		
+		try{
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement(
+					"UPDATE `utilisateur` SET `IdUtilisateur`=?,`Nom`=?,`Prenom`=?,`password`=?,`Mail`=?,`Administrateur`=? WHERE IdUtilisateur=?");
+		
+			stmt.setInt(1, user.getIdUtilisateur());
+			stmt.setString(2,user.getNom());
+			stmt.setString(3, user.getPrenom());
+			stmt.setString(4, user.getPassword());
+			stmt.setString(5, user.getMail());
+			stmt.setBoolean(6, false);
+			stmt.setInt(7, user.getIdUtilisateur());
+			stmt.executeUpdate();
+			
+			newuser = UtilisateurManager.getInstance().getUnUtilisateur(user.getIdUtilisateur());
+
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return newuser;
+	}
+		
+		
+		
+		
+	}
+
 
