@@ -6,15 +6,15 @@ public class Boisson {
 	String nomBoisson;
 	String descriptionBoisson;
 	Boolean alcoolise;
-	Boolean boissonDuMoi;
+	Boolean boissonDuMois;
 	Double prix;
 	
-	public Boisson(int idBoisson, String nomBoisson, String descriptionBoisson, Boolean alcoolise, Boolean boissonDuMoi, Double prix){
+	public Boisson(int idBoisson, String nomBoisson, String descriptionBoisson, Boolean alcoolise, Boolean boissonDuMois, Double prix){
 		this.idBoisson=idBoisson;
 		this.nomBoisson=nomBoisson;
 		this.descriptionBoisson=descriptionBoisson;
 		this.alcoolise=alcoolise;
-		this.boissonDuMoi=boissonDuMoi;
+		this.boissonDuMois=boissonDuMois;
 		this.prix=prix;
 	}
 	
@@ -23,7 +23,7 @@ public class Boisson {
 		this.nomBoisson=nomBoisson;
 		this.descriptionBoisson=descriptionBoisson;
 		this.alcoolise=alcoolise;
-		this.boissonDuMoi=boissonDuMoi;
+		this.boissonDuMois=boissonDuMois;
 		this.prix=prix;
 	}
 
@@ -59,12 +59,12 @@ public class Boisson {
 		this.alcoolise = alcoolise;
 	}
 
-	public Boolean getBoissonDuMoi() {
-		return boissonDuMoi;
+	public Boolean getBoissonDuMois() {
+		return boissonDuMois;
 	}
 
-	public void setBoissonDuMoi(Boolean boissonDuMoi) {
-		this.boissonDuMoi = boissonDuMoi;
+	public void setBoissonDuMois(Boolean boissonDuMois) {
+		this.boissonDuMois= boissonDuMois;
 	}
 
 	public Double getPrix() {

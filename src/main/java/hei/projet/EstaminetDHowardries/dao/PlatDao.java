@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import hei.projet.EstaminetDHowardries.entite.Boisson;
 import hei.projet.EstaminetDHowardries.entite.Plat;
 import hei.projet.EstaminetDHowardries.entite.Reservation;
 
@@ -31,7 +34,7 @@ public class PlatDao {
 	}
 	
 	
-	public Plat getPlat(int idPlat) {
+	public Plat getPlatDuJour() {
 		Plat plat=new Plat();
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
@@ -52,4 +55,48 @@ public class PlatDao {
 		}
 		return null;
 	}
+	
+	public List<Plat> listerPlat() {
+		List<Plat> listePlat=new ArrayList<Plat>();
+		
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			Statement stmt = (Statement) connection.createStatement(); 	
+		    ResultSet results = stmt.executeQuery("SELECT * FROM plat"); 
+			
+			while (results.next()) {
+				Plat plat =new Plat();
+				
+				plat.setIdPlat(results.getInt("idPlat"));
+				plat.setNomPlat(results.getString("nomPlat"));
+				plat.setDescriptionPlat(results.getString("descriptionPlat"));
+				plat.setPlatDuJour(results.getBoolean("platDuJour"));
+				plat.setPrixPlat(results.getDouble("prixPlat"));
+				
+				
+				listePlat.add(plat);
+				
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listePlat;
+	}
+	
+	public void deletePlat(int idPlat){
+	try {
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
+		PreparedStatement stmt = connection.prepareStatement(
+				"DELETE FROM `plat` WHERE `idPlat`=?");
+		stmt.setInt(1, idPlat);
+		
+		stmt.executeUpdate();
+		stmt.close();
+		connection.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+}
+	
 }
