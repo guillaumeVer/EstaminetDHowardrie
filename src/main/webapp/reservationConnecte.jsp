@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Estaminet d'Howardries</a>
+                <a class="navbar-brand" href="Index">Estaminet d'Howardries</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -75,6 +75,9 @@
                     </li>
                     <li>
                         <a href="Contact">Contact</a>
+                    </li>
+                     <li>
+                        <a href="MonProfil">Mon Profil</a>
                     </li>
                 </ul>
             </div>

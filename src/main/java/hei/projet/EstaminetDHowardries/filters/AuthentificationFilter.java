@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.entite.Utilisateur;
+
 @WebFilter("/prive/*")
 public class AuthentificationFilter implements Filter {
 
@@ -27,7 +29,7 @@ public class AuthentificationFilter implements Filter {
 			throws IOException, ServletException {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		String identifiant = (String) httpRequest.getSession().getAttribute("utilisateurConnecte");
+		Utilisateur identifiant = (Utilisateur) httpRequest.getSession().getAttribute("utilisateurConnecte");
 		if (identifiant == null || "".equals(identifiant)) {
 			System.out.println("Il faut etre connecté pour accéder à  cette page !");
 			HttpServletResponse httpResponse = (HttpServletResponse) response;

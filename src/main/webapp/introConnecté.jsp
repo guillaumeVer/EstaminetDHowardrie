@@ -12,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et ThÃ©o">
+    <meta name="author" content="Guillaume et Théo">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -86,8 +86,8 @@
             			<p style="text-align: center; margin-top: 70px;" ><a href="Index"> <button class="btn btn-lg btn-warning "style="width: 550px; height: 80px; font-size:26px; "> Consulter notre menu  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> </button></a> </p>
             			<p style="text-align: center; margin-top: 70px;"> <a href="Reservation"><button class="btn btn-lg btn-danger" style="width: 550px; height: 80px; font-size:26px;">Reserver une table <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></button> </a></p>
                    
-                		<p style="text-align: center; margin-top: 70px;"> <a href="Connexion"><button class="btn btn-lg btn-progress" style="width: 550px; height: 80px; font-size:26px;">Donner et voir les avis <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> </a></p>
-            			
+                		<p style="text-align: center; margin-top: 70px;"> <a href="Avis"><button class="btn btn-lg btn-progress" style="width: 550px; height: 80px; font-size:26px;">Donner et voir les avis <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> </a></p>
+            			<p style="text-align: center; margin-top: 70px;"> <a href="MonProfil"><button class="btn btn-lg btn-progress" style="width: 550px; height: 80px; font-size:26px;">Acceder à mon profil <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> </a></p>
             			
               
               

@@ -17,10 +17,10 @@
     <title>Projet- Site Internet Estaminet Howardries</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/business-casual.css" rel="stylesheet">
+    <link href="../css/business-casual.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -37,12 +37,11 @@
 
 <body>
 <div class="list-group">
- <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"><strong>Connexion</strong>
+  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
  
   </a>
-  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Connexion" class="list-group-item"> <strong> Se connecter </strong></a>
-  <a  style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7;" href="Inscription" class="list-group-item"> <strong> S'inscrire </strong></a>
-  
+  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
+ 
 </div>
 <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
@@ -59,7 +58,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="Index">Estaminet d'Howardries</a>
+                <a class="navbar-brand" href="index.html">Estaminet d'Howardries</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -71,10 +70,13 @@
                         <a href="Reservation">Reservation</a>
                     </li>
                     <li>
-                        <a href="Connexion">Avis</a>
+                        <a href="Avis">Avis</a>
                     </li>
                     <li>
                         <a href="Contact">Contact</a>
+                    </li>
+                      <li>
+                        <a href="MonProfil">Mon Profil</a>
                     </li>
                 </ul>
             </div>
@@ -91,8 +93,8 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                    <h2 class="intro-text text-center">Inscrivez
-                        <strong>Vous</strong>
+                    <h2 class="intro-text text-center">Bienvenu sur votre espace personnel
+                        <strong></strong>
                     </h2>
                     <hr>
                 </div>
@@ -115,53 +117,41 @@
                    <div class="container">
 
 
-            <form class="form-horizontal" role="form" method="post" action="Inscription">
+            <form class="form-horizontal" role="form">
 
-           
+        
+                
                 <div class="form-group">
-                    <label for="Nom" class="col-sm-3 control-label">Nom</label>
+                    <label for="Nom" class="col-sm-3 control-label">Nom:</label><Strong>${user.nom}</Strong>
                     <div class="col-sm-9">
-                        <input type="text" id="Nom" name="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
+                      
                         
                     </div>
                 </div>
                  <div class="form-group">
-                    <label for="Prenom" class="col-sm-3 control-label">Prénom</label>
+                    <label for="Prénom" class="col-sm-3 control-label">Prénom: </label><Strong>${user.prenom}</Strong>
                     <div class="col-sm-9">
-                        <input type="text" id="Prenom" name="Prenom" placeholder="Prénom" class="form-control" autofocus style="width:300px;">
+                       
                         
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email</label>
+                 <div class="form-group">
+                    <label for="Email" class="col-sm-3 control-label">Email :  </label><Strong>${user.mail}</Strong>
                     <div class="col-sm-9">
-                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" style="width:300px;" >
+                     
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Mot de passe</label>
-                    <div class="col-sm-9">
-                        <input type="password" id="mot de passe" name="password" placeholder="Mot de passe" class="form-control" style="width:300px;">
-                    </div>
-                </div>
-
+                
+               
+        
+               
                  <!-- /.form-group -->
+               
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">j'accepte les <a href="#">terms</a>
-                                </label>
-                                <br/>
-                                 <label>
-                                <input type="checkbox">j'accepte de recevoir la newsletter
-                            </label>
-                        </div>
-                    </div>
-                </div> <!-- /.form-group -->
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block" style="width:300px;">S'inscrire</button>
+                    	<a href="ModifierProfil"><p class="btn btn-primary btn-block" style="width:150px;" >Modifier</p></a><br/>
+                    	<a href="SeDesinscrire"><p class="btn btn-primary btn-block" style="width:150px;" >Se désinscrire</p></a>
+                      
                     </div>
                 </div>
             </form> <!-- /form -->

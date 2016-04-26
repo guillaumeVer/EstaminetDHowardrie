@@ -9,33 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
-@WebServlet("/prive/ReservationReussi")
-public class PageReservationConnecteReussiServlet extends HttpServlet{
+@WebServlet("/prive/MonProfil")
+public class MonProfilServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 		req.setAttribute("user",user);
 		
-		
-		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
-		req.setAttribute("reservation", reservation);
-		req.setAttribute("table",reservation.getTable());
-		req.setAttribute("horaire",reservation.getHoraire());
-		
-		RequestDispatcher view = req.getRequestDispatcher("/reservationReussiConnecte.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/monprofil.jsp");
 		view.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		
+		
 	}
-	
 
 }

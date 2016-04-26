@@ -93,7 +93,7 @@ public class ConnexionServlet extends HttpServlet {
 		try {
 			if(password.equals(user.getPassword())) {
 				System.out.println("Enregistrement de l'utilisateur en session");
-				req.getSession().setAttribute("utilisateurConnecte", user.getNom());
+				req.getSession().setAttribute("utilisateurConnecte", user);
 			} else {
 				
 				System.err.println("Erreur d'identification !!");
