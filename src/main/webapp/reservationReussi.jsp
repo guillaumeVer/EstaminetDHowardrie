@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et Théo">
+    <meta name="author" content="Guillaume et ThÃ©o">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -94,7 +96,7 @@
                     </h2>
                     <hr>
                    <div class="container">
-    	               <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Votre réservation a bien été pris en compte </strong></div>
+    	               <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Votre réservation a bien été prise en compte </strong></div>
     				<div><strong>Nom de Reservation : </strong><strong>${reservation.nomReservation}</strong></div>
                    <div><strong>Date : </strong><strong>${reservation.date}</strong></div>
                    <div><strong>Nombre de Personne : </strong><strong>${reservation.nbPersonne}</strong></div>

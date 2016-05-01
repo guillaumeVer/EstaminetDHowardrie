@@ -3,6 +3,7 @@ package hei.projet.EstaminetDHowardries.controller;
 import java.io.IOException;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,13 +54,20 @@ public class PageReservationServlet extends HttpServlet {
 		utilisateur.setPrenom(prenom);
 		String email = req.getParameter("email");
 		utilisateur.setMail(email);
-		String password;
+		String password = "";
 		
 		
 		Utilisateur user=new Utilisateur();
 		String etatCheckBox=req.getParameter( "creationcompte" );
 		if(etatCheckBox!=null){	
-			password="gg";
+			Random rand = new Random();
+			Integer nombre;
+			for(int i=0;i<8;i++){
+				nombre = rand.nextInt(10);
+				nombre.toString();
+				password=password+nombre;
+			}
+			//password="gg";
 			utilisateur.setPassword(password);
 			
 			UtilisateurManager.getInstance().creatUtilisateur(utilisateur);
