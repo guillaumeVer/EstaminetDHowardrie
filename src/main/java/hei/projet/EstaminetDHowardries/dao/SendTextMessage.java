@@ -1,4 +1,4 @@
-package hei.projet.EstaminetDHowardries.controller;
+package hei.projet.EstaminetDHowardries.dao;
 
 import javax.mail.Transport;
 
@@ -18,8 +18,8 @@ public class SendTextMessage {
 
 	{
 		try {
-			String username = "verjotg@gmail.com";
-			String password = "leverjot02";
+			String username = "estaminet.howardries.resto@gmail.com";
+			String password = "projetestaminet";
 
 			java.util.Properties props = new java.util.Properties();
 			props.put("mail.smtp.host", serveurSTMP);

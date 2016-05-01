@@ -74,12 +74,12 @@ public class PageReservationServlet extends HttpServlet {
 			Integer idhoraire = Integer.parseInt(req.getParameter("horaire"));
 			Horaire horaire = HoraireManager.getInstance().getUnHoraire(idhoraire);
 		
-			Integer idTable = Integer.parseInt(req.getParameter("table"));
-			Table table = TableManager.getInstance().getUneTable(idTable);
+			//Integer idTable = Integer.parseInt(req.getParameter("table"));
+			//Table table = TableManager.getInstance().getUneTable(idTable);
 		
 		
-			Reservation reservation =new Reservation(user,table, horaire,date,user.getNom(),nbPersone);
-			ReservationManager.getInstance().ajouterReservation(reservation);
+			Reservation reservation =new Reservation(user,null, horaire,date,user.getNom(),nbPersone);
+			//ReservationManager.getInstance().ajouterReservation(reservation);
 			
 			req.getSession().setAttribute("reservation", reservation);
 
@@ -94,16 +94,16 @@ public class PageReservationServlet extends HttpServlet {
 			Integer idhoraire = Integer.parseInt(req.getParameter("horaire"));
 			Horaire horaire = HoraireManager.getInstance().getUnHoraire(idhoraire);
 
-			Integer idTable = Integer.parseInt(req.getParameter("table"));
-			Table table = TableManager.getInstance().getUneTable(idTable);
+			//Integer idTable = Integer.parseInt(req.getParameter("table"));
+			//Table table = TableManager.getInstance().getUneTable(idTable);
 		
-			Reservation reservation =new Reservation(null,table, horaire,date,nom,nbPersone);
-			ReservationManager.getInstance().ajouterReservation(reservation);
+			Reservation reservation =new Reservation(null,null, horaire,date,nom,nbPersone);
+			//ReservationManager.getInstance().ajouterReservation(reservation);
 			
 			req.getSession().setAttribute("reservation", reservation);
 
 		}
-		resp.sendRedirect("ReservationReussi");
+		resp.sendRedirect("Reservation2");
 	}
 	
 }

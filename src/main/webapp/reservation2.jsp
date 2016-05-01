@@ -125,93 +125,23 @@
                    <p style="font-size: 12px;">  <a href="Connexion"> <span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Se connecter</a> </p >
 
 
- 				<form method="post" action="Reservation" class="form-horizontal" role="form" >
+
+            	<form method="post" action="Reservation2" class="form-horizontal" role="form" >
             
 
-           
-                
                 <div class="form-group">
-                    <label for="Nom" class="col-sm-3 control-label">Nom</label>
+                    <label for="country" class="col-sm-3 control-label">Table</label>
                     <div class="col-sm-9">
-                        <input type="text" id="Nom" name="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
+                    <select id="table" name="table" class="form-control" style="width:300px;">
                         
-                    </div>
-                </div>
-                 <div class="form-group">
-                    <label for="Prénom" class="col-sm-3 control-label">Prénom</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="Prénom" name="Prenom" placeholder="Prénom" class="form-control" autofocus style="width:300px;">
-                        
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email</label>
-                    <div class="col-sm-9">
-                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" style="width:300px;" >
-                    </div>
-                </div>
-                    <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <div class="checkbox">
-                            
-                                
-                                 <label>
-                                <input type="checkbox" id="creationcompte" name="creationcompte" value ="oui">Voulez vous que l'on ce souvienne de vous
-                            </label>
-                        </div>
-                    </div>
-                </div> <!-- /.form-group -->
-
-
-               
-                <div class="form-group">
-                    <label for="birthDate" class="col-sm-3 control-label">Date de la reservation</label>
-                    <div class="col-sm-9">
-                        <input type="date" id="bookDate" name="bookDate" class="form-control" style="width:300px;">
-                    </div>
-                </div>
-
-                   <div class="form-group">
-                    <label for="country" class="col-sm-3 control-label">Nombre de personne</label>
-                    <div class="col-sm-9">
-                        <select id="nb" name="nb" class="form-control" style="width:300px;">
-                           
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-
-</select>
-
-</div>
-</div>
-
-                
-
-                <div class="form-group">
-                <label for="country" class="col-sm-3 control-label">Horaire</label>
-               <select id="horaire" name="horaire" class="form-control" style="width:300px;">
-                        
-							<c:forEach var="horaire" items="${listedHoraires}">
-									<option value="${horaire.idHoraire}">${horaire.intervalle}</option>
-								</c:forEach>
+							<c:forEach var="table" items="${listeDeTable}">
+									<option value="${table.idTable}">${table.nomTable}</option>
+							</c:forEach>
 								
 						</select>
-
 </div>
 </div>
 
-
-</div>
-          				
-						</select>
-						
-	
-</div>    
 </div>
                
 
@@ -247,16 +177,14 @@
                     <div class="col-sm-9 col-sm-offset-3">
                         <div class="checkbox">
                             
-                                
-                                 <label>
-                                <input type="checkbox">J'accepte de recevoir la newsletter
-                            </label>
+                             
+                          
                         </div>
                     </div>
                 </div> <!-- /.form-group -->
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                       <a href"reservationfait.html"> <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Réserver</button> </a>
+                       <a href"reservationfait.html"> <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Terminer ma Reservation</button> </a>
                     </div>
                 </div>
             </form> <!-- /form -->

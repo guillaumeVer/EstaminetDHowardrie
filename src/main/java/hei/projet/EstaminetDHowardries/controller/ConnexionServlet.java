@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import hei.projet.EstaminetDHowardries.dao.SendTextMessage;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
@@ -29,7 +29,7 @@ public class ConnexionServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");
+		Utilisateur utilisateur = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 		
 		
 		RequestDispatcher view = req.getRequestDispatcher("/connexion.jsp");
@@ -104,6 +104,7 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		} 
 	
+		
 
 	resp.sendRedirect("prive/Intro");
 	}

@@ -42,7 +42,7 @@ public class UtilisateurDao {
 		try{
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
-					"INSERT INTO utilisateur(Nom, Prenom, Mail,password) VALUES (?,?,?,?)");
+					"INSERT INTO utilisateur(Nom, Prenom, Mail,password,`Administrateur`) VALUES (?,?,?,?,0)");
 		
 			stmt.setString(1, utilisateur.getNom());
 			stmt.setString(2, utilisateur.getPrenom());

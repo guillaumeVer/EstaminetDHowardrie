@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.dao.SendTextMessage;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
@@ -36,6 +37,16 @@ public class InscriptionServlet extends HttpServlet{
 		user.setPassword(password);
 
 		UtilisateurManager.getInstance().creatUtilisateur(user);
+		
+		String message = "Merci d'avoir crée un compte sur notre site. Votre nom de Reservation est "+nom+" et votre mot de passe est "+password+".";
+		
+		SendTextMessage envoyeurDeMail = new SendTextMessage();
+		try {
+			envoyeurDeMail.envoyer_email("smtp.gmail.com", "465", "estaminet.howardries.resto@gmail.com",mail, "Inscription",message);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		resp.sendRedirect("InscriptionReussi");
 	}
