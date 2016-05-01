@@ -211,8 +211,7 @@
 						</select>
 						
 	
-</div>    
-</div>
+
                
 
 
@@ -242,18 +241,7 @@
 
                     
                
-                 <!-- /.form-group -->
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <div class="checkbox">
-                            
-                                
-                                 <label>
-                                <input type="checkbox">J'accepte de recevoir la newsletter
-                            </label>
-                        </div>
-                    </div>
-                </div> <!-- /.form-group -->
+              
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
                        <a href"reservationfait.html"> <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Réserver</button> </a>
