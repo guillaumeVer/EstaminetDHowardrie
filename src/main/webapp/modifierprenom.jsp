@@ -12,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et Théo">
+    <meta name="author" content="Guillaume et ThÃ©o">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -36,7 +36,8 @@
 </head>
 
 <body>
-<  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
+<div class="list-group">
+  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
  
   </a>
   <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
@@ -118,9 +119,13 @@
 
             <form class="form-horizontal" role="form">
 
-           
-            
+            <div class="form-group">
+                   
+                           
+                           
                 
+                
+               
                 <div class="form-group">
                    <label for="Nom" class="col-sm-3 control-label"> <a href="ModifierNom" >  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a>Nom:</label><label class="col-sm control-label"> ${user.nom}</label>   
                     <div class="col-sm-9">
@@ -130,16 +135,16 @@
                         
                     </div>
                 </div>
-                 <div class="form-group">
-                    <label for="Prénom" class="col-sm-3 control-label"> <a href="ModifierPrenom" >  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a>Prénom: </label> <label class="col-sm control-label"> ${user.prenom}</label>
+                  <div class="form-group">
+                    <label for="Prénom" class="col-sm-3 control-label">Prénom</label>
                     <div class="col-sm-9">
-                       
+                        <input type="text" id="Prenom" name="Prenom" placeholder="Prenom" class="form-control" autofocus style="width:300px;">
                         
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="mail" class="col-sm-3 control-label">Email:</label> <label class="col-sm control-label"> ${user.mail}</label>
+                    <label for="password" class="col-sm-3 control-label"> Email:</label> <label class="col-sm control-label"> ${user.mail}</label>
                     <div class="col-sm-9">
                      
                     </div>
@@ -149,8 +154,8 @@
                  <!-- /.form-group -->
                
                 <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                      <a href="ModifierProfil" class="btn btn-primary btn-block" role="button" style="width:200px;"> Tout Modifier </a>  <a href="ModifierMDP" class="btn btn-primary btn-block" role="button" style="width:200px;"> Modifier mot de passe </a> <a href="Desinscription" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
+                   <div class="col-sm-9 col-sm-offset-3">
+                      <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Valider </a>  <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Annuler </a> <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
                     </div>
                 </div>
             </form> <!-- /form -->

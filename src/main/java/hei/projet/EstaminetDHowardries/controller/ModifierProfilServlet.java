@@ -39,8 +39,8 @@ public class ModifierProfilServlet extends HttpServlet{
 		usermodifier.setPrenom(prenom);
 		
 		String oldmp=req.getParameter("oldpassword");
-		String newmp1=req.getParameter("newpassword1");
-		String newmp2=req.getParameter("newpassword2");
+		String newmp1=req.getParameter("newmp1");
+		String newmp2=req.getParameter("newmp2");
 		
 		if(oldmp!=null && newmp1 != null && newmp2 != null){
 			if(oldmp.equals(user.getPassword()) && newmp1.equals(newmp2)){

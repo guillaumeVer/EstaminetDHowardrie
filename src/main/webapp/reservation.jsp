@@ -91,23 +91,6 @@
 
     <div class="container">
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Plan du
-                        <strong>Restaurant</strong>
-                    </h2>
-                    <hr>
-                    
-                   <a href="img/plan.png">  <center><img href="img/plan.png" src="img/tn_plan.png" > </center> </a>
-                </div>
-                <div>
-                </div>
-               
-             
-            </div>
-        </div>
 
         <div class="row">
             <div class="box">

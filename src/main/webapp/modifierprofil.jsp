@@ -12,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et ThÃ©o">
+    <meta name="author" content="Guillaume et Théo">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -150,13 +150,13 @@
                <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Nouveau mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" id="newpassword1" nom="newpassword1" placeholder="Mot de passe" class="form-control" style="width:300px;">
+                        <input type="password" id="newmp1" name="newmp1" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
                <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Confirmer mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" id="newpassword2" nom="newpassword2" placeholder="Mot de passe" class="form-control" style="width:300px;">
+                        <input type="password" id="newmp2" name="newmp2" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
 
