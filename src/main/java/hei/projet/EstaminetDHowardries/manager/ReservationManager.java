@@ -35,8 +35,8 @@ public class ReservationManager {
 			return resDao.getReservation(idUtilisateur);
 		}
 		
-		public List<Reservation> listerReservationParCLient(int idUser) {
-			return resDao.listerReservationParClient(idUser);
+		public List<Reservation> listerReservationParCLient(int idClient) {
+			return resDao.listerReservationParClient(idClient);
 		}
 
 		public List<Reservation> listerReservationParDateHoraire(String date, Horaire horaire) {

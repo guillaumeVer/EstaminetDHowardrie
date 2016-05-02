@@ -88,28 +88,47 @@
 
       
 
-    <div class="container">
+ <div class="container">
 
         <div class="row">
             <div class="box">
+                
                 <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Plan du
-                        <strong>Restaurant</strong>
-                    </h2>
-                    <hr>
-                    
-                   <a href="img/plan.png">  <center><img href="img/plan.png" src="img/tn_plan.png" > </center> </a>
+                     <h2>Reservation à venir</h2>
+             
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Date</th>
+        <th>Table</th>
+        <th>Horaire</th>
+        <th>Nombre De Personne</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+   		 <c:forEach var="reservation" items="${listeDeReservation}">
+      <tr class="success">
+        <td>${reservation.nomReservation}</td>
+        <td>${reservation.date}</td>
+        <td>${reservation.table.nomTable}</td>
+        <td>${reservation.horaire.intervalle}</td>
+        <td>${reservation.nbPersonne}</td>
+      </tr>
+      	</c:forEach>
+    
+    </tbody>
+  </table>
                 </div>
-                <div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-lg-12">
                    
-                   
-                  
-                 
                 </div>
                 <div class="clearfix"></div>
+            </div>
+        </div>
+
+        
             </div>
         </div>
 
@@ -189,6 +208,7 @@
 </div>
 <div class="form-group">
                     <label for="country" class="col-sm-3 control-label">Table</label>
+                    <div class="col-sm-9">
                     	<select id="table" name="table" class="form-control" style="width:300px;">
                         
 							<c:forEach var="table" items="${listeDeTable}">
@@ -197,10 +217,7 @@
 								
 						</select>
 						
-	
-</div>    
-
-              
+	</div>
 </div>
                
 
@@ -235,7 +252,7 @@
                
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                       <a href"reservationfait.html"> <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Réserver</button> </a>
+                        <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Réserver</button>
                     </div>
                 </div>
             </form> <!-- /form -->
@@ -248,7 +265,6 @@
             </div>
         </div>
 
-    </div>
     <!-- /.container -->
 
     <footer>

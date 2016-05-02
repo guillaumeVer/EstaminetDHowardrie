@@ -104,13 +104,8 @@
                 </div>
                 <div>
                 </div>
-                <div class="col-md-4">
-                   
-                   
-                  
-                 
-                </div>
-                <div class="clearfix"></div>
+               
+             
             </div>
         </div>
 
@@ -193,24 +188,23 @@
                 
 
                 <div class="form-group">
-                <label for="country" class="col-sm-3 control-label">Horaire</label>
-               <select id="horaire" name="horaire" class="form-control" style="width:300px;">
+                	<label for="country" class="col-sm-3 control-label">Horaire</label>
+                	 <div class="col-sm-9">
+              			 <select id="horaire" name="horaire" class="form-control" style="width:300px;">
                         
 							<c:forEach var="horaire" items="${listedHoraires}">
 									<option value="${horaire.idHoraire}">${horaire.intervalle}</option>
 								</c:forEach>
 								
 						</select>
-
 </div>
 </div>
 
 
-</div>
-          				
-						</select>
-						
-	
+
+
+          			
+
 
                
 
@@ -244,20 +238,17 @@
               
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                       <a href"reservationfait.html"> <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Réserver</button> </a>
+                      <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Réserver</button>
                     </div>
                 </div>
             </form> <!-- /form -->
         </div> <!-- ./container -->
-                    <hr>
-                
-                        </div>
-                    
-                </div>
-            </div>
-        </div>
-
-    </div>
+      </div>                
+              </div>
+              </div>
+         
+</div>
+    
     <!-- /.container -->
 
     <footer>

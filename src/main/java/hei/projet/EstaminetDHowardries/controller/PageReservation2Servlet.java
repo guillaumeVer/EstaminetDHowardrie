@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.dao.SendTextMessage;
 import hei.projet.EstaminetDHowardries.entite.Horaire;
 import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Table;
@@ -43,7 +44,21 @@ public class PageReservation2Servlet extends HttpServlet {
 		ReservationManager.getInstance().ajouterReservation(reservation);
 		req.getSession().setAttribute("reservation", reservation);
 		
-		resp.sendRedirect("ReservationReussi");
+		if(reservation.getUtilisateur()!=null){
+			String message = "Vous avez effectuez une reservation pour le "+reservation.getDate()+" à "+reservation.getHoraire().getIntervalle()+" au nom de "+reservation.getNomReservation()+".";
+			SendTextMessage envoyeurDeMail = new SendTextMessage();
+			try {
+				envoyeurDeMail.envoyer_email("smtp.gmail.com", "465", "estaminet.howardries.resto@gmail.com",reservation.getUtilisateur().getMail(), "Confirmation de reservation",message);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			resp.sendRedirect("ReservationReussi");
+		}else{
+			resp.sendRedirect("ReservationReussi");
+		}
+		
+	
 	}
 
 }

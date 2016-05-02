@@ -82,7 +82,7 @@ public class ReservationDao {
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = (Statement) connection.createStatement(); 	
-		    ResultSet results = stmt.executeQuery("SELECT * FROM reservation"); 
+		    ResultSet results = stmt.executeQuery("SELECT * FROM reservation ORDER BY Date"); 
 			
 			while (results.next()) {
 				Reservation reservation =new Reservation();
@@ -116,13 +116,13 @@ public class ReservationDao {
 		return listereservation;
 	}
 	
-	public List<Reservation> listerReservationParClient(int idUtilisateur) {
+	public List<Reservation> listerReservationParClient(int idClient) {
 		List<Reservation> listereservation=new ArrayList<Reservation>();
 		
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM reservation WHERE idClient = ?");
-			stmt.setInt(1,idUtilisateur);
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM `reservation` WHERE `idClient`=?");
+			stmt.setInt(1,idClient);
 			ResultSet results = stmt.executeQuery();
 			
 			while (results.next()) {
@@ -133,12 +133,8 @@ public class ReservationDao {
 				
 				reservation.setIdReservation(results.getInt("idReservation"));
 			
-				int iduser = results.getInt("idClient");
-				if(iduser==0){
-					reservation.setUtilisateur(null);
-				}else{
-					reservation.setUtilisateur(userDao.getUnUtilisateur(results.getInt("idClient")));
-				}
+				
+				reservation.setUtilisateur(userDao.getUnUtilisateur(results.getInt("idClient")));
 				
 				reservation.setTable(tableDao.getUneTable(results.getInt("idTable")));
 				reservation.setHoraire(horaireDao.getUnHoraire(results.getInt("idHoraire")));

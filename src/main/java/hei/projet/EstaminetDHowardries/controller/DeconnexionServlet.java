@@ -20,16 +20,14 @@ public class DeconnexionServlet extends HttpServlet{
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException {
 			
-			String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");
-			Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyNom(utilisateur);
-			
+			Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 			req.setAttribute("user",user);
-			
-
+		
+			//resp.sendRedirect("Connexion");
 			req.getSession().removeAttribute("utilisateurConnecte");
 
 			
-			//resp.sendRedirect("Intro");
+			
 			
 			
 			

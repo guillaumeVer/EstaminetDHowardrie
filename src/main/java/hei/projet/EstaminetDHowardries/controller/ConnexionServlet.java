@@ -103,7 +103,6 @@ public class ConnexionServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-	
 		
 
 	resp.sendRedirect("prive/Intro");

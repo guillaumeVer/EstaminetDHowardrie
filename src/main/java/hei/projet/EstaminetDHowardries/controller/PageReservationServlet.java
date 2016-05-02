@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import hei.projet.EstaminetDHowardries.dao.SendTextMessage;
 import hei.projet.EstaminetDHowardries.entite.Horaire;
 import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Table;
@@ -71,8 +71,17 @@ public class PageReservationServlet extends HttpServlet {
 			utilisateur.setPassword(password);
 			
 			UtilisateurManager.getInstance().creatUtilisateur(utilisateur);
-		
+			
 			user = UtilisateurManager.getInstance().getUnUtilisateurbyNom(nom);
+			String message = "Nous vous avons crée un compte sur notre site. Votre nom de reservation est "+user.getNom()+" et votre mot de passe est "+user.getPassword()+".";
+			
+			SendTextMessage envoyeurDeMail = new SendTextMessage();
+			try {
+				envoyeurDeMail.envoyer_email("smtp.gmail.com", "465", "estaminet.howardries.resto@gmail.com",user.getMail(), "Inscription",message);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			
 			String date = req.getParameter("bookDate");
