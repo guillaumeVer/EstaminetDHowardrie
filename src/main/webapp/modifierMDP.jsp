@@ -37,7 +37,7 @@
 
 <body>
 <div class="list-group">
-  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
+   <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
  
   </a>
   <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
@@ -70,7 +70,7 @@
                         <a href="Reservation">Reservation</a>
                     </li>
                     <li>
-                        <a href="Avis">Avis</a>
+                        <a href="Connexion">Avis</a>
                     </li>
                     <li>
                         <a href="Contact">Contact</a>
@@ -93,8 +93,8 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                    <h2 class="intro-text text-center">Mon
-                        <strong>Profil</strong>
+                    <h2 class="intro-text text-center">
+                        <strong>Modifier votre profil</strong>
                     </h2>
                     <hr>
                 </div>
@@ -117,36 +117,58 @@
                    <div class="container">
 
 
-             <form method="post" action="ModifierNom" class="form-horizontal" role="form" >
-      
-                 <div class="form-group">
-                    <label for="Nom" class="col-sm-3 control-label">Nom</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="Nom" name="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
-                        
-                    </div>
-                </div>
+            <form class="form-horizontal" role="form" method="post" action="ModifierMDP">
+
+
                 <div class="form-group">
-                    <label for="Prénom" class="col-sm-3 control-label"> <a href="ModifierPrenom" >  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a>Prénom: </label> <label class="col-sm control-label"> ${user.prenom}</label>
+                    <label for="password" class="col-sm-3 control-label">Ancien mot de passe</label>
                     <div class="col-sm-9">
-                       
-                        
+                        <input type="password" id="olspassword" name="oldpassword" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
-                
                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">  Email:</label> <label class="col-sm control-label"> ${user.mail}</label>
+                    <label for="password" class="col-sm-3 control-label">Nouveau mot de passe</label>
                     <div class="col-sm-9">
-                     
+                        <input type="password" id="newmp1" name="newmp1" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
-        
+               <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Confirmer mot de passe</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="newmp2" name="newmp2" placeholder="Mot de passe" class="form-control" style="width:300px;">
+                    </div>
+                </div>
+
+               <!--  <div class="container"> 
+    <div class="col-sm-6" style="height:130px;">
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker11'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker11').datetimepicker({
+                daysOfWeekDisabled: [0, 6]
+            });
+        });
+    </script>
+</div> */ -->
+
+
+          
+
                
-                 <!-- /.form-group -->
-              
+               
+             
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                      <button type="submit" class="btn btn-primary btn-block" style="width:200px;">Valider</button>  <a href="MonProfil" class="btn btn-primary btn-block" role="button" style="width:200px;"> Annuler </a> <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
+                        <button type="submit" class="btn btn-primary btn-block" style="width:200px;">Valider</button>  <a href="MonProfil" class="btn btn-primary btn-block" role="button" style="width:200px;"> Annuler </a> <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
                     </div>
                 </div>
             </form> <!-- /form -->
@@ -159,8 +181,6 @@
             </div>
         </div>
 
-   
-    <!-- /.container -->
 
     <footer>
         <div class="container">

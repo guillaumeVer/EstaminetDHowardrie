@@ -117,9 +117,9 @@
                    <div class="container">
 
 
-            <form class="form-horizontal" role="form">
+          <form class="form-horizontal" role="form" method="post" action="ModifierPrenom">
 
-            <div class="form-group">
+            
                    
                            
                            
@@ -155,7 +155,7 @@
                
                 <div class="form-group">
                    <div class="col-sm-9 col-sm-offset-3">
-                      <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Valider </a>  <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Annuler </a> <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
+                      <button type="submit" class="btn btn-primary btn-block" style="width:200px;">Valider</button> <a href="MonProfil" class="btn btn-primary btn-block" role="button" style="width:200px;"> Annuler </a> <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
                     </div>
                 </div>
             </form> <!-- /form -->

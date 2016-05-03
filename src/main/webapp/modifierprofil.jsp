@@ -189,7 +189,7 @@
              
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block" style="width:300px;">Modifier mes informations</button>
+                         <button type="submit" class="btn btn-primary btn-block" style="width:200px;">Valider</button>  <a href="MonProfil" class="btn btn-primary btn-block" role="button" style="width:200px;"> Annuler </a> <a href="#" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
                     </div>
                 </div>
             </form> <!-- /form -->
@@ -202,7 +202,7 @@
             </div>
         </div>
 
-    </div>
+  
     <!-- /.container -->
 
     <footer>

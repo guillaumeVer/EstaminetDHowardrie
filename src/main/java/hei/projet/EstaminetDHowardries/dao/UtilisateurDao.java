@@ -14,31 +14,10 @@ import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
 public class UtilisateurDao {
 
-	public Utilisateur getUnUtilisateur(int idUtilisateur){
-		Utilisateur user=new Utilisateur();
-		try{
-			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
-			Statement stmt = (Statement) connection.createStatement(); 
-				
-		    ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur` WHERE idUtilisateur ="+idUtilisateur); 
-		    
-			    while (results.next()) {
-			    	user.setIdUtilisateur(idUtilisateur);
-			    	user.setNom(results.getString("Nom"));
-			    	user.setPrenom(results.getString("Prenom"));
-			    	user.setMail(results.getString("Mail"));
-			    	user.setPassword(results.getString("Password"));
-			    } 
-			    connection.close();         
-		}
-		catch (SQLException e) { 
-			e.printStackTrace(); 
-		}
-		return user;
-		}
-	
-	public void creatUtilisateur(Utilisateur utilisateur){
-		List<Utilisateur> lstUser= listerUtilisateur();
+
+	//Creation d'un utilisateur
+		public void creatUtilisateur(Utilisateur utilisateur){
+		
 		try{
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
@@ -56,7 +35,8 @@ public class UtilisateurDao {
 		
 	}
 	
-	public List<Utilisateur> listerUtilisateur(){
+	//Listage des utilisateur autre que administrateur
+		public List<Utilisateur> listerUtilisateur(){
 		List<Utilisateur> listeUtilisateur=new ArrayList<Utilisateur>();
 		 
 		try{
@@ -79,7 +59,32 @@ public class UtilisateurDao {
 		return listeUtilisateur;
 		}
 	
-	public Utilisateur getUnUtilisateurbyNom(String nom){
+	//recuperation d'un utilisateur par l'id
+		public Utilisateur getUnUtilisateur(int idUtilisateur){
+			Utilisateur user=new Utilisateur();
+			try{
+				Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+				Statement stmt = (Statement) connection.createStatement(); 
+					
+			    ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur` WHERE idUtilisateur ="+idUtilisateur); 
+			    
+				    while (results.next()) {
+				    	user.setIdUtilisateur(idUtilisateur);
+				    	user.setNom(results.getString("Nom"));
+				    	user.setPrenom(results.getString("Prenom"));
+				    	user.setMail(results.getString("Mail"));
+				    	user.setPassword(results.getString("Password"));
+				    } 
+				    connection.close();         
+			}
+			catch (SQLException e) { 
+				e.printStackTrace(); 
+			}
+			return user;
+			}
+
+	//recuperation d'un utilisateur pas son son nom	
+		public Utilisateur getUnUtilisateurbyNom(String nom){
 		Utilisateur user=new Utilisateur();
 		try{
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
@@ -106,7 +111,8 @@ public class UtilisateurDao {
 		return user;
 		}
 	
-	public void deleteUser(Utilisateur user){
+	//suppression d'un utilisateur
+		public void deleteUser(Utilisateur user){
 		
 		try{
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
@@ -122,7 +128,8 @@ public class UtilisateurDao {
 		}
 	}
 	
-	public Utilisateur getAdministrateur(){
+	//recuperation de l'administrateur	
+		public Utilisateur getAdministrateur(){
 		Utilisateur user=new Utilisateur();
 		try{
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
@@ -148,7 +155,8 @@ public class UtilisateurDao {
 		return user;
 		}
 	
-	public Utilisateur updateUser(Utilisateur user){
+	//Modification de l'utilisateur	
+		public Utilisateur updateUser(Utilisateur user){
 		Utilisateur newuser = new Utilisateur();
 		
 		try{

@@ -98,9 +98,9 @@
                     <h2 class="intro-text text-center">Plan du
                         <strong>Restaurant</strong>
                     </h2>
-                    <form method="post" action="Reservation2" class="form-horizontal" role="form" >
+                 
                   <center>
-<select id="table" name="ttable"> 
+
 <img id="Image-Maps-Com-image-maps-2016-05-02-104002" src="http://www.image-maps.com/m/private/0/3e99fku1d63kg58bbkhi7uige5_tn_plan.png" border="0" width="410" height="358" orgWidth="410" orgHeight="358" usemap="#image-maps-2016-05-02-104002" alt="" /></center>
 <map name="image-maps-2016-05-02-104002" id="ImageMapsCom-image-maps-2016-05-02-104002">
 <area id="T1" alt="" title="T1: 4 personnes " href="http://www.image-maps.com/" shape="rect" coords="317,264,388,333" style="outline:none;" target="_self"     />
@@ -113,7 +113,7 @@
 <area shape="rect" coords="408,356,410,358" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_65231" />
 
 </map>
-</select>
+
 
                 </div>
                 <div>
@@ -127,10 +127,11 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-
+   
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
+                <form method="post" action="Reservation2" class="form-horizontal" role="form" >
                     <h2 class="intro-text text-center">Votre
                         <strong>Reservation</strong>
                     </h2>
@@ -197,7 +198,7 @@
                 </div> <!-- /.form-group -->
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                       <a href"reservationfait.html"> <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Terminer ma Reservation</button> </a>
+                        <button type="submit" class="btn btn-primary btn-block" style="width:300px;" >Terminer ma Reservation</button> </a>
                     </div>
                 </div>
             </form> <!-- /form -->
@@ -208,9 +209,7 @@
                     
                 </div>
             </div>
-        </div>
-
-    </div>
+    
     <!-- /.container -->
 
     <footer>
