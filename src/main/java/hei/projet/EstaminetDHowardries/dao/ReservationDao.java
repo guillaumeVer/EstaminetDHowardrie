@@ -194,4 +194,57 @@ public class ReservationDao {
 		}
 		return listereservation;
 	}
+	
+	//suppression d'une reservation
+			public void deleteReservation(Reservation reservation){
+			
+			try{
+				Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement(
+						"DELETE FROM `reservation` WHERE `idReservation`=?");
+			
+				stmt.setInt(1, reservation.getIdReservation());
+			
+				stmt.executeUpdate();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			
+			public Reservation getReservationById(int idReservation) {
+				Reservation reservation = new Reservation();
+				TableDao tableDao = new TableDao();
+				HoraireDao horaireDao = new HoraireDao();
+				UtilisateurDao userDao=new UtilisateurDao();
+				try {
+					Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+					PreparedStatement stmt = connection.prepareStatement("SELECT * FROM reservation WHERE idReservation = ?");
+					stmt.setInt(1,idReservation);
+					ResultSet resultSet = stmt.executeQuery();
+					while (resultSet.next()) {
+
+						reservation.setIdReservation(resultSet.getInt("idReservation"));
+						
+						int iduser = resultSet.getInt("idClient");
+						if(iduser==0){
+							reservation.setUtilisateur(null);
+						}else{
+							reservation.setUtilisateur(userDao.getUnUtilisateur(resultSet.getInt("idClient")));
+						}
+						
+						reservation.setTable(tableDao.getUneTable(resultSet.getInt("idTable")));
+						reservation.setHoraire(horaireDao.getUnHoraire(resultSet.getInt("idHoraire")));
+						reservation.setDate(resultSet.getDate("date").toString());
+						reservation.setNomReservation(resultSet.getString("NomReservation"));
+						reservation.setNbPersonne(resultSet.getInt("NbPersonne"));
+						
+					}
+					connection.close();
+					return reservation;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
 }

@@ -104,6 +104,7 @@
         <th>Table</th>
         <th>Horaire</th>
         <th>Nombre De Personne</th>
+        <th>Supprimer Reservation</th>
       </tr>
     </thead>
     
@@ -115,6 +116,7 @@
         <td>${reservation.table.nomTable}</td>
         <td>${reservation.horaire.intervalle}</td>
         <td>${reservation.nbPersonne}</td>
+        <td><a href="SupprimerReservation?idReservation=${reservation.idReservation}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
       </tr>
       	</c:forEach>
     

@@ -35,12 +35,20 @@ public class ReservationManager {
 			return resDao.getReservation(idUtilisateur);
 		}
 		
+		public Reservation getReservationById(int idReservation){
+			return resDao.getReservationById(idReservation);
+		}
+		
 		public List<Reservation> listerReservationParCLient(int idClient) {
 			return resDao.listerReservationParClient(idClient);
 		}
 
 		public List<Reservation> listerReservationParDateHoraire(String date, Horaire horaire) {
-			// TODO Auto-generated method stub
 			return resDao.listerReservationParDateHoraire(date,horaire);
+		}
+		
+		public void SupprimerReservation(Reservation resa){
+			resDao.deleteReservation(resa);
+			
 		}
 }
