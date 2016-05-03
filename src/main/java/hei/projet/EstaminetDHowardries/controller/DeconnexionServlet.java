@@ -25,7 +25,7 @@ public class DeconnexionServlet extends HttpServlet{
 		
 			//resp.sendRedirect("Connexion");
 			req.getSession().removeAttribute("utilisateurConnecte");
-
+			
 			
 			
 			
