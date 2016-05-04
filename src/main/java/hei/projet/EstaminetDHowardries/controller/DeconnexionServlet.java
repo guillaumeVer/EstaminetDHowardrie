@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
@@ -23,9 +24,12 @@ public class DeconnexionServlet extends HttpServlet{
 			Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 			req.setAttribute("user",user);
 		
-			//resp.sendRedirect("Connexion");
-			req.getSession().removeAttribute("utilisateurConnecte");
+			  HttpSession session = req.getSession();
+		      session.invalidate();
+			//req.getSession().removeAttribute("utilisateurConnecte");
+			//req.getSession().invalidate();
 			
+			resp.sendRedirect("../Index");
 			
 			
 			

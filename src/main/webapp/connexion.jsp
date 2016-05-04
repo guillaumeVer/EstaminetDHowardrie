@@ -33,13 +33,15 @@
 			</div>
             <br/>
 			
-			<label for="username" style="font-size: 25px;">Adresse mail</label>
+			<label for="username" style="font-size: 25px;">Adresse mail<span class="requis">*</span></label>
 			<br/>
 			<input type="email" id="username" name="username">
+			<span class="erreur">${form.erreurs['email']}</span>
 			<br/>
-			<label for="password" style="font-size: 25px;">Mot de passe</label>
+			<label for="password" style="font-size: 25px;">Mot de passe<span class="requis">*</span></label>
 			<br/>
 			<input type="password" id="password" name="password">
+			<span class="erreur">${form.erreurs['motdepasse']}</span>
 			<br/>
 			<button type="submit" style="font-size: 25px;">Connexion</button>
 			<br/>

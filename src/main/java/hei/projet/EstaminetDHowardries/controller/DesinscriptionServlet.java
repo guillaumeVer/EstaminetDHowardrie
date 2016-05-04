@@ -8,18 +8,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.dao.SendTextMessage;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
 @WebServlet("/prive/Desinscription")
-public class DeleteUserServlet extends HttpServlet {
+public class DesinscriptionServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");
-		Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyNom(utilisateur);
-		
+		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 		req.setAttribute("user",user);
+		
+		UtilisateurManager.getInstance().deleteUser(user);
+		
+		String message = "Votre compte à bien été supprimé.";
+		
+		SendTextMessage envoyeurDeMail = new SendTextMessage();
+		try {
+			envoyeurDeMail.envoyer_email("smtp.gmail.com", "465", "estaminet.howardries.resto@gmail.com",user.getMail(), "Confirmation de désinscription",message);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		resp.sendRedirect("Deconnexion");
 	}
 
 	@Override
