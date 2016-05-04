@@ -54,7 +54,7 @@ public class ModifierInfoAdminServlet extends HttpServlet{
 		}
 		
 		//appel de la modification
-		UtilisateurManager.getInstance().updateUser(adminModifier);
+		UtilisateurManager.getInstance().updateAdministrateur(adminModifier);
 		
 
 		//modification de l'utilisateur en session

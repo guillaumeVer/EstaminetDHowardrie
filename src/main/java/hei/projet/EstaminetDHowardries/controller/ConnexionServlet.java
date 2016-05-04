@@ -47,7 +47,6 @@ public class ConnexionServlet extends HttpServlet {
 	//recuperation de l'admin de la base de donnée
 	Utilisateur admin= UtilisateurManager.getInstance().getAdministrateur();
 	
-	
 	//Recuperation de l'utilisateur saisie
 	Utilisateur user = null;
 	int i=0;
@@ -60,12 +59,13 @@ public class ConnexionServlet extends HttpServlet {
 	}
 	
 	//test si l'admin essaye de se connecter
-	if(mail!=null && mail.equals(admin.getMail())){
+	if(mail!=null && mail.equals(admin.getMail())&&admin!=null){
 		try {
 			if(password.equals(admin.getPassword())) {
 				//mise en session de l'admin
 				req.getSession().setAttribute("administrateurConnecte", admin);
 				req.getSession().setAttribute("utilisateurConnecte", admin);
+				
 				
 				//Redirection
 				resp.sendRedirect("prive/admin/AcceuilAdministrateur");

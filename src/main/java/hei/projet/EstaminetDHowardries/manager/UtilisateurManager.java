@@ -49,4 +49,7 @@ private static UtilisateurManager inst;
 		return userDao.updateUser(user);
 	}
 	
+	public Utilisateur updateAdministrateur(Utilisateur user){
+		return userDao.updateAdministrateur(user);
+	}
 }
