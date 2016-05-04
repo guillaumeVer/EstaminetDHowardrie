@@ -14,14 +14,9 @@ import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
 @WebServlet("/prive/Contact")
 public class ContactConnecteServlet extends HttpServlet {
-
-	
-	public class ContactServlet extends HttpServlet {
-
-		@Override
+	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
-			
 			req.setAttribute("user",user);
 			
 			RequestDispatcher view = req.getRequestDispatcher("/contactConnecte.jsp");
@@ -33,4 +28,4 @@ public class ContactConnecteServlet extends HttpServlet {
 			
 		}
 	}
-}
+

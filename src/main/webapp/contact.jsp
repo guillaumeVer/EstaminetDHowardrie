@@ -10,7 +10,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et ThÃ©o">
+    <meta name="author" content="Guillaume et Théo">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -96,11 +96,11 @@
                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17403.961585820613!2d3.3477304350854653!3d50.50108379765869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2dd767d57eabd%3A0x9dc25e92194af5b!2s1199+Rue+du+Pr%C3%A9vost%2C+59226+Rumegies!5e0!3m2!1sfr!2sfr!4v1449826121190" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
                 <div class="col-md-4">
-                    <p>TÃ©lÃ©phone:
+                    <p>Téléphone:
                         <strong>123.456.7890</strong>
                     </p>
                     <p>Email:
-                        <strong><a href="mailto:name@example.com">name@example.com</a></strong>
+                        <strong><a href="estaminet.howardries.resto@gmail.com">estaminet.howardries.resto@gmail.com</a></strong>
                     </p>
                     <p>Address:
                         <strong>119 rue Prevost 

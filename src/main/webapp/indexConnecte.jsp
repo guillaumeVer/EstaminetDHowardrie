@@ -12,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et ThÃ©o">
+    <meta name="author" content="Guillaume et Théo">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 

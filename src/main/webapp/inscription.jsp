@@ -121,7 +121,7 @@
                 <div class="form-group">
                     <label for="Nom" class="col-sm-3 control-label">Nom</label>
                     <div class="col-sm-9">
-                        <input type="text" id="Nom" name="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
+                        <input type="text" id="Nom" required="required" name="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
                         
                     </div>
                 </div>
@@ -135,13 +135,13 @@
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" style="width:300px;" >
+                        <input type="email" id="email" name="email" required="required" placeholder="Email" class="form-control" style="width:300px;" >
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" id="mot de passe" name="password" placeholder="Mot de passe" class="form-control" style="width:300px;">
+                        <input type="password" id="mot de passe" name="password" required="required" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
 
@@ -153,9 +153,7 @@
                                 <input type="checkbox">j'accepte les <a href="#">terms</a>
                                 </label>
                                 <br/>
-                                 <label>
-                                <input type="checkbox">j'accepte de recevoir la newsletter
-                            </label>
+                               
                         </div>
                     </div>
                 </div> <!-- /.form-group -->

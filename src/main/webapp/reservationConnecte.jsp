@@ -153,7 +153,7 @@
                 <div class="form-group">
                     <label for="Nom" class="col-sm-3 control-label">Nom de Reservation</label>
                     <div class="col-sm-9">
-                        <input type="text" id="Nom" name="Nom" value=${user.nom} placeholder="Nom" class="form-control" autofocus  style="width:300px;">
+                        <input type="text" id="Nom" name="Nom" value=${user.nom} required="required" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
                         
                     </div>
                    </div>
