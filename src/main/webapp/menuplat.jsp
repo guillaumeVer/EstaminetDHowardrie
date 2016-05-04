@@ -1,4 +1,3 @@
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et Theo">
+    <meta name="author" content="Guillaume et ThÃ©o">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -38,14 +37,14 @@
 
 <body>
 <div class="list-group">
-  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 200px; "  class="list-group-item disabled"> <strong>Bienvenue sur la page administrateur</strong>
+   <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 200px; "  class="list-group-item disabled"> <strong>Bienvenue sur la page administrateur</strong>
  
   </a>
   <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 82px; width: 200px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
   <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px; " href="ModifierInfoAdmin" class="list-group-item"> <strong> Modifier mes informations </strong></a>
  
 </div>
-  <div  class="brand" > <a href="AcceuilAdministrateur" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
+<div  class="brand" > <a href="AcceuilAdministrateur" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
 
     <!-- Navigation -->
@@ -65,7 +64,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                     <li>
                         <a href="Plats">Les Plats</a>
                     </li>
                      <li>
@@ -74,54 +73,127 @@
                     <li>
                         <a href="AcceuilAdministrateur">Reservation</a>
                     </li>
-                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+
+      
+
     <div class="container">
 
         <div class="row">
             <div class="box">
-                
                 <div class="col-lg-12">
-                     <h2>Reservation à venir</h2>
+                    <hr>
+                     <h2 class="intro-text text-center">Le Menu
+                        <strong>Plat</strong>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="col-lg-12">
+                    
              
   <table class="table">
     <thead>
       <tr>
-        <th>Nom</th>
-        <th>Date</th>
-        <th>Table</th>
-        <th>Horaire</th>
-        <th>Nombre De Personne</th>
+        <th>Plat</th>
+        <th>Prix</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+        <th>Plat du jour</th>
       </tr>
     </thead>
-    
     <tbody>
-   		 <c:forEach var="reservation" items="${listedeReservation}">
+     <c:forEach var="plat" items="${listeDePlat}">
       <tr class="success">
-        <td>${reservation.nomReservation}</td>
-        <td>${reservation.date}</td>
-        <td>${reservation.table.nomTable}</td>
-        <td>${reservation.horaire.intervalle}</td>
-        <td>${reservation.nbPersonne}</td>
-      </tr>
-      	</c:forEach>
-    
+        <td>${plat.nomPlat}</td>
+        <td>${plat.prixPlat}</td>
+        <td>${plat.platDuJour}</td>
+        <td><a href="ModifierPlat?id=${plat.idPlat}" class="btn btn-default btn-lg" role="button" style="width:200px;"> Modifier </a></td>
+        <td><a href="SupprimerPlat?id=${plat.idPlat" class="btn btn-default btn-lg" role="button" style="width:200px;"> Supprimer </a></td>
+  		<td><c:if test="${plat.platDuJour != true}">
+				<a href="PasserEnPlatDuJour?id=${plat.idPlat}" class="btn btn-default btn-lg" role="button" style="width:200px;"> Plat Du Jour </a></td>
+	  		</c:if>
+	  	</tr>
+      </c:forEach>
     </tbody>
   </table>
-                </div>
-                <div class="col-lg-12">
-                   
+                  
+                 
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
 
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                     <h2 class="intro-text text-center">Ajouter
+                        <strong>Un plat</strong>
+                    </h2>
+                    <hr>
+                   <div class="container">
+
+
+            <form class="form-horizontal" role="form">
+
+            <div class="form-group">
+                   
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                  
+                              
+                                
+                                
+                               
+                            </div>
+                           
+                           
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                
+                <div class="form-group">
+                    <label for="Nom" class="col-sm-3 control-label">Nom du plat</label>
+                    <div class="col-sm-9">
+                      <input type="text" id="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
+                      
+                        
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="PrÃ©nom" class="col-sm-3 control-label">Prix</label>
+                    <div class="col-sm-9">
+                      <input type="text" id="Nom" placeholder="Nom" class="form-control" autofocus  style="width:300px;">
+                       
+                        
+                    </div>
+                </div>
+                
+                 
+               
         
+               
+                 <!-- /.form-group -->
+               
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block" style="width:150px;">Ajouter </button> <button type="submit" class="btn btn-primary btn-block" style="width:150px;">Annuler</button>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+                    <hr>
+                
+                        </div>
+                    
+                </div>
             </div>
         </div>
 
@@ -132,7 +204,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Notre site</p>
+                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
         </div>

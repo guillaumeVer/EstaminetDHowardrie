@@ -30,8 +30,8 @@ public class ReservationTestCase {
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		Statement stmt = connection.createStatement();
 		stmt.executeUpdate("DELETE FROM reservation");
-		stmt.executeUpdate("INSERT INTO `reservation`(idReservation,idClient,idTable,idHoraire,Date) VALUES (1,1,1,1,'1996-10-10')");
-		stmt.executeUpdate("INSERT INTO `reservation`(idReservation,idClient,idTable,idHoraire,Date) VALUES (2,2,2,2,'2016-10-10')");
+		stmt.executeUpdate("INSERT INTO `reservation`(`idReservation`, `idClient`, `idTable`, `idHoraire`, `Date`, `NomReservation`, `NbPersonne`) VALUES (1,1,1,1,'1996-10-10','gg',1)");
+		stmt.executeUpdate("INSERT INTO `reservation`(idReservation,idClient,idTable,idHoraire,Date ,`NomReservation`, `NbPersonne`) VALUES (2,2,2,2,'2016-10-10','gui',2)");
 		stmt.close();
 		connection.close();
 	}
@@ -50,6 +50,7 @@ public class ReservationTestCase {
 	@Test
 	public void testerAjouterReservation() throws Exception{
 		Reservation res = new Reservation();
+			res.setNomReservation("gg");
 			res.setDate("2017-09-06");
 			res.setTable(tableDao.getUneTable(1));
 			res.setUtilisateur(utilisateurDao.getUnUtilisateur(1));

@@ -71,7 +71,7 @@ public class PlatDao {
 				plat.setNomPlat(results.getString("nomPlat"));
 				plat.setDescriptionPlat(results.getString("descriptionPlat"));
 				plat.setPlatDuJour(results.getBoolean("platDuJour"));
-				plat.setPrixPlat(results.getDouble("prixPlat"));
+				plat.setPrixPlat(results.getDouble("prix"));
 				
 				
 				listePlat.add(plat);
