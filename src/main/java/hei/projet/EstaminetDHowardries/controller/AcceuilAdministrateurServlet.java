@@ -12,15 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import hei.projet.EstaminetDHowardries.entite.Horaire;
 import hei.projet.EstaminetDHowardries.entite.Reservation;
+import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.HoraireManager;
 import hei.projet.EstaminetDHowardries.manager.ReservationManager;
 
-@WebServlet("/AcceuilAdministrateur")
+@WebServlet("/prive/admin/AcceuilAdministrateur")
 public class AcceuilAdministrateurServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
+		req.setAttribute("admin",admin);
+		
 		List<Reservation> lstresa = ReservationManager.getInstance().listerReservation();
 		req.setAttribute("listedeReservation", lstresa);
 
@@ -31,7 +34,7 @@ public class AcceuilAdministrateurServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 	}
 
 	

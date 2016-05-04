@@ -29,8 +29,6 @@ public class ConnexionServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Utilisateur utilisateur = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
-		
 		
 		RequestDispatcher view = req.getRequestDispatcher("/connexion.jsp");
 		view.forward(req, resp);
@@ -61,16 +59,16 @@ public class ConnexionServlet extends HttpServlet {
 		}
 	}
 	
-	
-	String connexion="";
-	req.setAttribute( "connexion", connexion );
-	
+	//test si l'admin essaye de se connecter
 	if(mail!=null && mail.equals(admin.getMail())){
 		try {
 			if(password.equals(admin.getPassword())) {
-				//req.getSession().setAttribute("administrateurConnecte", admin);
+				//mise en session de l'admin
+				req.getSession().setAttribute("administrateurConnecte", admin);
+				req.getSession().setAttribute("utilisateurConnecte", admin);
 				
-				resp.sendRedirect("AcceuilAdministrateur");
+				//Redirection
+				resp.sendRedirect("prive/admin/AcceuilAdministrateur");
 				System.out.println("Connection en tant que administrateur");
 			} else {
 				System.err.println("Erreur d'identification administrateur!!");
@@ -79,25 +77,25 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		} 
 	}else{
-		//test du password
+		//test si l'utilisateur n'existe pas
 		if(user==null){
 			System.out.println("user inconnu");
-		
-			connexion= "Utilisateur inconnu";
-			req.setAttribute( "connexion", connexion );
+		//redirection vers connexion si l'utilisateur n'existe pas
 			resp.sendRedirect("Connexion");
 		}
 		else{
 		
 	
 		try {
+			//test du mdp de l'utilisateur
 			if(password.equals(user.getPassword())) {
+				//mise en session du client
 				System.out.println("Enregistrement de l'utilisateur en session");
 				req.getSession().setAttribute("utilisateurConnecte", user);
 			} else {
 				
 				System.err.println("Erreur d'identification !!");
-					
+				resp.sendRedirect("Connexion");	
 			}
 	
 		} catch (Exception e) {
