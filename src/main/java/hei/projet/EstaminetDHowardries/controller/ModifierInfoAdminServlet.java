@@ -21,7 +21,7 @@ public class ModifierInfoAdminServlet extends HttpServlet{
 		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
 		req.setAttribute("admin",admin);
 		
-		RequestDispatcher view = req.getRequestDispatcher("/modifierMDPAdmin.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/modifierMDPAdmin.jsp");
 		view.forward(req, resp);
 	}
 

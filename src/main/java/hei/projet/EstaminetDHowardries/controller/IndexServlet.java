@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.entite.Boisson;
+import hei.projet.EstaminetDHowardries.entite.Plat;
+import hei.projet.EstaminetDHowardries.manager.BoissonManager;
+import hei.projet.EstaminetDHowardries.manager.PlatManager;
+
 @WebServlet("/Index")
 public class IndexServlet extends HttpServlet {
 
@@ -16,7 +21,13 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher view = req.getRequestDispatcher("/index.jsp");
+		Plat platDuJour = PlatManager.getInstance().getPlatDuJour();
+		req.setAttribute("platDuJour",platDuJour);
+		
+		Boisson boissonDuMois = BoissonManager.getInstance().getBoissonDuMois();
+		req.setAttribute("boissonDuMois", boissonDuMois);
+		
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/index.jsp");
 		view.forward(req, resp);
 	}
 

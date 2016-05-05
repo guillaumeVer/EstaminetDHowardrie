@@ -27,7 +27,7 @@ public class PageReservation2Servlet extends HttpServlet {
 		List<Table> lstTable = TableManager.getInstance().listerTable();
 		req.setAttribute("listeDeTable",lstTable);
 		
-		RequestDispatcher view = req.getRequestDispatcher("/reservation2.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservation2.jsp");
 		view.forward(req, resp);
 
 	}

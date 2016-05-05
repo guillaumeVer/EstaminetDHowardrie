@@ -14,8 +14,9 @@ public class AvisServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");		
-		RequestDispatcher view = req.getRequestDispatcher("/avis.jsp");
+		String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");
+	
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/avis.jsp");
 		view.forward(req, resp);
 	}
 

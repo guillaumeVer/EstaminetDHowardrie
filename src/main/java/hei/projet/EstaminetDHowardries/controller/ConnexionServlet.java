@@ -22,15 +22,13 @@ public class ConnexionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -503526558773322139L;
 	
-	private Map<String, String> utilisateursAutorises;
-	
 	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		RequestDispatcher view = req.getRequestDispatcher("/connexion.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/connexion.jsp");
 		view.forward(req, resp);
 	}
 
@@ -47,6 +45,7 @@ public class ConnexionServlet extends HttpServlet {
 	//recuperation de l'admin de la base de donnée
 	Utilisateur admin= UtilisateurManager.getInstance().getAdministrateur();
 	
+	System.out.println(admin.getPassword());
 	//Recuperation de l'utilisateur saisie
 	Utilisateur user = null;
 	int i=0;

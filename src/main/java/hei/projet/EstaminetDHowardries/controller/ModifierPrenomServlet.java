@@ -22,7 +22,7 @@ public class ModifierPrenomServlet extends HttpServlet{
 		
 		req.setAttribute("user",user);
 		
-		RequestDispatcher view = req.getRequestDispatcher("/modifierprenom.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/modifierprenom.jsp");
 		view.forward(req, resp);
 	}
 	

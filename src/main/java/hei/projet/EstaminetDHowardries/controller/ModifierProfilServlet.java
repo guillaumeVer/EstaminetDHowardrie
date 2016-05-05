@@ -22,7 +22,7 @@ public class ModifierProfilServlet extends HttpServlet{
 		
 		req.setAttribute("user",user);
 		
-		RequestDispatcher view = req.getRequestDispatcher("/modifierprofil.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/modifierprofil.jsp");
 		view.forward(req, resp);
 	}
 

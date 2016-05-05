@@ -22,7 +22,7 @@ public class ModifierMDPServlet extends HttpServlet {
 		
 		req.setAttribute("user",user);
 		
-		RequestDispatcher view = req.getRequestDispatcher("/modifierMDP.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/modifierMDP.jsp");
 		view.forward(req, resp);
 	}
 

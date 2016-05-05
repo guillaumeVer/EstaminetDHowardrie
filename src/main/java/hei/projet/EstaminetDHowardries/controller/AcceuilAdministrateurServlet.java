@@ -28,7 +28,7 @@ public class AcceuilAdministrateurServlet extends HttpServlet {
 		req.setAttribute("listedeReservation", lstresa);
 
 		
-		RequestDispatcher view = req.getRequestDispatcher("/adminlistereservation.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/adminlistereservation.jsp");
 		view.forward(req, resp);
 	}
 

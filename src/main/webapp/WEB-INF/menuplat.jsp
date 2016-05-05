@@ -101,6 +101,7 @@
       <tr>
         <th>Plat</th>
         <th>Prix</th>
+        <th>Description</th>
         <th>Modifier</th>
         <th>Supprimer</th>
         <th>Plat du jour</th>
@@ -111,9 +112,9 @@
       <tr class="success">
         <td>${plat.nomPlat}</td>
         <td>${plat.prixPlat}</td>
-        <td>${plat.platDuJour}</td>
+        <td>${plat.descriptionPlat}</td>
         <td><a href="ModifierPlat?id=${plat.idPlat}" class="btn btn-default btn-lg" role="button" style="width:200px;"> Modifier </a></td>
-        <td><a href="SupprimerPlat?id=${plat.idPlat" class="btn btn-default btn-lg" role="button" style="width:200px;"> Supprimer </a></td>
+        <td><a href="SupprimerPlat?id=${plat.idPlat}" class="btn btn-default btn-lg" role="button" style="width:200px;"> Supprimer </a></td>
   		<td><c:if test="${plat.platDuJour != true}">
 				<a href="PasserEnPlatDuJour?id=${plat.idPlat}" class="btn btn-default btn-lg" role="button" style="width:200px;"> Plat Du Jour </a></td>
 	  		</c:if>

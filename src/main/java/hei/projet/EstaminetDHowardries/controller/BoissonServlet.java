@@ -26,7 +26,7 @@ public class BoissonServlet extends HttpServlet {
 		req.setAttribute("listeDeBoisson", lstBoisson);
 
 		
-		RequestDispatcher view = req.getRequestDispatcher("/menuboisson.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/menuboisson.jsp");
 		view.forward(req, resp);
 	}
 

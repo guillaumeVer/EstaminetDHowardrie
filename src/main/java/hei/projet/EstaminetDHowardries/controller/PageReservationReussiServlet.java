@@ -23,7 +23,7 @@ public class PageReservationReussiServlet extends HttpServlet{
 		req.setAttribute("table",reservation.getTable());
 		req.setAttribute("horaire",reservation.getHoraire());
 		
-		RequestDispatcher view = req.getRequestDispatcher("/reservationReussi.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationReussi.jsp");
 		view.forward(req, resp);
 		
 		req.getSession().removeAttribute("reservation");

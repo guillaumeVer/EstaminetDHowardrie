@@ -21,7 +21,7 @@ public class ModifierNomServlet extends HttpServlet {
 		
 			req.setAttribute("user",user);
 		
-			RequestDispatcher view = req.getRequestDispatcher("/modifiernom.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/modifiernom.jsp");
 			view.forward(req, resp);
 	}
 

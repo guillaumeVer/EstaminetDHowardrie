@@ -20,7 +20,7 @@ public class IndexConnecteServlet extends HttpServlet{
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 		req.setAttribute("user",user);
 		
-		RequestDispatcher view = req.getRequestDispatcher("/indexConnecte.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/indexConnecte.jsp");
 		view.forward(req, resp);
 	}
 

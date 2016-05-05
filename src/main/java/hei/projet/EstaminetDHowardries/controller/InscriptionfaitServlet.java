@@ -14,7 +14,7 @@ public class InscriptionfaitServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher view = req.getRequestDispatcher("/inscriptionfait.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/inscriptionfait.jsp");
 		view.forward(req, resp);
 	}
 

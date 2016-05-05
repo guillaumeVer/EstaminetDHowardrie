@@ -19,7 +19,7 @@ public class ContactConnecteServlet extends HttpServlet {
 			Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 			req.setAttribute("user",user);
 			
-			RequestDispatcher view = req.getRequestDispatcher("/contactConnecte.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/contactConnecte.jsp");
 			view.forward(req, resp);
 		}
 

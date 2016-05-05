@@ -13,7 +13,7 @@ public class DataSourceProvider {
 			dataSource.setServerName("localhost");
 			dataSource.setPort(3306);
 			dataSource.setDatabaseName("estaminet");
-			dataSource.setUser("admin");
+			dataSource.setUser("root");
 			dataSource.setPassword("admin");
 		}
 		return dataSource;

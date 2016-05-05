@@ -23,11 +23,6 @@ public class DesinscriptionServlet extends HttpServlet {
 		
 		UtilisateurManager.getInstance().deleteUser(user);
 		
-		
-		
-		
-		
-		
 		String message = "Votre compte à bien été supprimé.";
 		
 		SendTextMessage envoyeurDeMail = new SendTextMessage();

@@ -21,10 +21,9 @@ public class IntroConnecteServlet extends HttpServlet {
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
-			
 			req.setAttribute("user",user);
 			
-			RequestDispatcher view = req.getRequestDispatcher("/introConnecté.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/introConnecté.jsp");
 			view.forward(req, resp);
 		}
 

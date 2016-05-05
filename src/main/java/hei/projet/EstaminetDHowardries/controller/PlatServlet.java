@@ -27,7 +27,7 @@ public class PlatServlet extends HttpServlet {
 		req.setAttribute("listeDePlat", lstPlat);
 
 		
-		RequestDispatcher view = req.getRequestDispatcher("/menuplat.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/menuplat.jsp");
 		view.forward(req, resp);
 	}
 

@@ -20,7 +20,7 @@ public class MonProfilServlet extends HttpServlet {
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 		req.setAttribute("user",user);
 		
-		RequestDispatcher view = req.getRequestDispatcher("/monprofil.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/monprofil.jsp");
 		view.forward(req, resp);
 	}
 

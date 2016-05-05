@@ -28,7 +28,7 @@ public class PageReservationConnecteReussiServlet extends HttpServlet{
 		req.setAttribute("table",reservation.getTable());
 		req.setAttribute("horaire",reservation.getHoraire());
 		
-		RequestDispatcher view = req.getRequestDispatcher("/reservationReussiConnecte.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationReussiConnecte.jsp");
 		view.forward(req, resp);
 	}
 
