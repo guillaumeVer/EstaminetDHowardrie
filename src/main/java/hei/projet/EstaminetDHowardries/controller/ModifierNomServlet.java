@@ -15,38 +15,39 @@ import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 @WebServlet("/prive/ModifierNom")
 public class ModifierNomServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
-		
-			req.setAttribute("user",user);
-		
-			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/modifiernom.jsp");
-			view.forward(req, resp);
+		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
+
+		req.setAttribute("user", user);
+
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/modifiernom.jsp");
+		view.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		String nom = req.getParameter("Nom");
-		
+
 		Utilisateur usermodifier = new Utilisateur();
-		Utilisateur user= (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
-		
+		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
+
 		usermodifier.setNom(nom);
 		usermodifier.setPrenom(user.getPrenom());
 		usermodifier.setIdUtilisateur(user.getIdUtilisateur());
 		usermodifier.setMail(user.getMail());
 		usermodifier.setPassword(user.getPassword());
-		
+
 		UtilisateurManager.getInstance().updateUser(usermodifier);
-		
+
 		req.getSession().removeAttribute("utilisateurConnecte");
 		req.getSession().setAttribute("utilisateurConnecte", usermodifier);
-		
+
 		resp.sendRedirect("MonProfil");
-		
-		
+
 	}
 
 }

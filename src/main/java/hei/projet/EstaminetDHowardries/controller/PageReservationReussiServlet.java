@@ -10,31 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hei.projet.EstaminetDHowardries.entite.Reservation;
-import hei.projet.EstaminetDHowardries.manager.TableManager;
 
 @WebServlet("/ReservationReussi")
-public class PageReservationReussiServlet extends HttpServlet{
+public class PageReservationReussiServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
 		req.setAttribute("reservation", reservation);
-		req.setAttribute("table",reservation.getTable());
-		req.setAttribute("horaire",reservation.getHoraire());
-		
+		req.setAttribute("table", reservation.getTable());
+		req.setAttribute("horaire", reservation.getHoraire());
+
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationReussi.jsp");
 		view.forward(req, resp);
-		
+
 		req.getSession().removeAttribute("reservation");
-		
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 	}
-	
-	
 
 }

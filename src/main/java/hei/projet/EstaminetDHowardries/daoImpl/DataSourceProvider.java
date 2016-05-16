@@ -1,4 +1,4 @@
-package hei.projet.EstaminetDHowardries.dao;
+package hei.projet.EstaminetDHowardries.daoImpl;
 
 import javax.sql.DataSource;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
@@ -14,7 +14,7 @@ public class DataSourceProvider {
 			dataSource.setPort(3306);
 			dataSource.setDatabaseName("estaminet");
 			dataSource.setUser("root");
-			dataSource.setPassword("admin");
+			dataSource.setPassword("");
 		}
 		return dataSource;
 	}

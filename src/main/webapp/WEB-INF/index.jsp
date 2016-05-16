@@ -110,8 +110,8 @@
                     <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt="">
                     <hr class="visible-xs">
                     <p > <a href="img/carte.jpg" style="margin-left: 185px;"> Découvrez notre carte <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </a> </p>
-                    <p>Le menu de la semaine est: </p>
-                    <p></p>
+                    <p>Le Plat du Jour est: </p>
+                    <p>${platDuJour.nomPlat}</p>
                 </div>
             </div>
         </div>

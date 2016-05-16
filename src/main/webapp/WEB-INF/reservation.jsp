@@ -134,7 +134,7 @@
                             
                                 
                                  <label>
-                                <input type="checkbox" id="creationcompte" name="creationcompte" value ="oui">Voulez vous que l'on ce souvienne de vous
+                                <input type="checkbox" id="creationcompte" name="creationcompte" value ="oui">Créer un compte
                             </label>
                         </div>
                     </div>

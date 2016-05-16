@@ -27,9 +27,9 @@ public class AuthentificationAdminFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		Utilisateur identifiant = (Utilisateur) httpRequest.getSession().getAttribute("utilisateurConnecte");
+		Utilisateur user = (Utilisateur) httpRequest.getSession().getAttribute("utilisateurConnecte");
 		Utilisateur admin = (Utilisateur) httpRequest.getSession().getAttribute("administrateurConnecte");
-		if (identifiant == null || "".equals(identifiant)) {
+		if (user == null || "".equals(user) || admin == null || "".equals(admin)) {
 			System.out.println("Il faut être connecté en tant que administrateur pour accéder à cette page !");
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect("../connexion");

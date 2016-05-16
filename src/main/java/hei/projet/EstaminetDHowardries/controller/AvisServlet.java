@@ -12,19 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/prive/Avis")
 public class AvisServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String utilisateur = (String) req.getSession().getAttribute("utilisateurConnecte");
-	
+
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/avis.jsp");
 		view.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 	}
-	
-	
 
 }

@@ -1,32 +1,31 @@
-package hei.projet.EstaminetDHowardries.dao;
+package hei.projet.EstaminetDHowardries.utils;
 
-import javax.mail.Transport;
-
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.Message;
-import javax.mail.MessagingException;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class SendTextMessage {
-	
-	public void envoyer_email(String serveurSTMP, String portSTMP, String from, String to, String sujet, String message)
+
+	public void envoyer_email(String Serverstmp,String portStmp, String from, String to, String sujet, String message)
 			throws Exception
 
 	{
 		try {
-			String username = "estaminet.howardries.resto@gmail.com";
-			String password = "projetestaminet";
-
+			final String username = "estaminet.howardries.resto@gmail.com";
+			final String password = "projetestaminet";
+	
 			java.util.Properties props = new java.util.Properties();
-			props.put("mail.smtp.host", serveurSTMP);
-			props.put("mail.smtp.socketFactory.port", portSTMP);
+			props.put("mail.smtp.host", "estaminet-howardries.eu");
+			props.put("mail.smtp.socketFactory.port", "587");
 			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 			props.put("mail.smtp.auth", "true");
-			props.put("mail.smtp.port", portSTMP);
+			props.put("mail.smtp.port", 587);
 			props.put("mail.imaps.ssl.trust", "*");
 			props.put("mail.smtp.ssl.enable", "true");
 
@@ -63,4 +62,3 @@ public class SendTextMessage {
 
 	}
 }
-

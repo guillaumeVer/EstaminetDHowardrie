@@ -1,27 +1,21 @@
 package hei.projet.EstaminetDHowardries.entite;
 
 public class Utilisateur {
-	
+
 	private int idUtilisateur;
 	private String nom;
 	private String prenom;
 	private String mail;
 	private String password;
-	
-	public Utilisateur( String nom, String prenom, String mail,String password){
-		this.idUtilisateur=idUtilisateur;
-		this.nom=nom;
-		this.prenom=prenom;
-		this.mail=mail;	
-		this.password=password;
+
+	public Utilisateur(String nom, String prenom, String mail, String password) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.password = password;
 	}
-	
-	public Utilisateur(){
-		this.idUtilisateur=idUtilisateur;
-		this.nom=nom;
-		this.prenom=prenom;
-		this.mail=mail;	
-		this.password=password;
+
+	public Utilisateur() {
 	}
 
 	public String getPassword() {
@@ -64,6 +58,4 @@ public class Utilisateur {
 		this.mail = mail;
 	}
 
-	
-	
 }

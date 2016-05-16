@@ -12,30 +12,37 @@ import javax.servlet.http.HttpServletResponse;
 
 import hei.projet.EstaminetDHowardries.entite.Horaire;
 import hei.projet.EstaminetDHowardries.entite.Reservation;
+import hei.projet.EstaminetDHowardries.entite.Table;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.HoraireManager;
 import hei.projet.EstaminetDHowardries.manager.ReservationManager;
+import hei.projet.EstaminetDHowardries.manager.TableManager;
 
 @WebServlet("/prive/admin/AcceuilAdministrateur")
 public class AcceuilAdministrateurServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
-		req.setAttribute("admin",admin);
-		
-		List<Reservation> lstresa = ReservationManager.getInstance().listerReservation();
-		req.setAttribute("listedeReservation", lstresa);
+		req.setAttribute("admin", admin);
 
-		
+		List<Reservation> lstresa = ReservationManager.getInstance().listerReservation();
+		req.setAttribute("listeDeReservation", lstresa);
+
+		List<Horaire> lstHoraire = HoraireManager.getInstance().listerHoraire();
+		req.setAttribute("listedHoraires", lstHoraire);
+
+		List<Table> lstTable = TableManager.getInstance().listerTable();
+		req.setAttribute("listeDeTable", lstTable);
+
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/adminlistereservation.jsp");
 		view.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 	}
 
-	
 }

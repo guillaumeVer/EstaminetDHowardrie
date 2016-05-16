@@ -8,15 +8,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import hei.projet.EstaminetDHowardries.dao.DataSourceProvider;
-import hei.projet.EstaminetDHowardries.dao.UtilisateurDao;
+import hei.projet.EstaminetDHowardries.daoImpl.DataSourceProvider;
+import hei.projet.EstaminetDHowardries.daoImpl.UtilisateurDaoImpl;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 
 
 
 public class UtilisateurDaoTestCase {
 
-	UtilisateurDao utilisateurDao = new UtilisateurDao();
+	UtilisateurDaoImpl utilisateurDao = new UtilisateurDaoImpl();
 	@Before
 	public void initBdd() throws Exception {
 		Connection connection = DataSourceProvider.getDataSource().getConnection();

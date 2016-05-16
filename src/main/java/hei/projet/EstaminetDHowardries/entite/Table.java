@@ -1,20 +1,18 @@
 package hei.projet.EstaminetDHowardries.entite;
 
 public class Table {
-	
+
 	private int idTable;
 	private String nomTable;
 	private int nbPlace;
-	
-	public Table(int idTable, String nomTable, int nbPlace){
-		this.idTable=idTable;
-		this.nomTable=nomTable;
-		this.nbPlace=nbPlace;
+
+	public Table(int idTable, String nomTable, int nbPlace) {
+		this.idTable = idTable;
+		this.nomTable = nomTable;
+		this.nbPlace = nbPlace;
 	}
-	public Table(){
-		this.idTable=idTable;
-		this.nomTable=nomTable;
-		this.nbPlace=nbPlace;
+
+	public Table() {
 	}
 
 	public int getIdTable() {
@@ -40,6 +38,5 @@ public class Table {
 	public void setNbPlace(int nbPlace) {
 		this.nbPlace = nbPlace;
 	}
-	
-	
+
 }

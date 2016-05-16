@@ -97,7 +97,7 @@
                     </h2>
                     <hr>
                     
-                   <a href="img/plan.png">  <center><img href="img/plan.png" src="img/tn_plan.png" > </center> </a>
+                   <a href="../img/plan.png">  <center><img href="../img/plan.png" src="../img/tn_plan.png" > </center> </a>
                 </div>
                 <div>
                 </div>

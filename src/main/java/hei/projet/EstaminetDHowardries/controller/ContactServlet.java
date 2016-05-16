@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Contact")
 public class ContactServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/contact.jsp");
 		view.forward(req, resp);
@@ -22,9 +23,7 @@ public class ContactServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 	}
-	
-	
 
 }

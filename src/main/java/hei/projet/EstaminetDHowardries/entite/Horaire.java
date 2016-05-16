@@ -11,8 +11,6 @@ public class Horaire {
 	}
 
 	public Horaire() {
-		this.idHoraire = idHoraire;
-		this.intervalle = intervalle;
 	}
 
 	public Integer getIdHoraire() {

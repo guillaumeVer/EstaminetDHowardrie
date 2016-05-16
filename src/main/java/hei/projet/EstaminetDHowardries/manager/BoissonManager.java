@@ -1,41 +1,36 @@
 package hei.projet.EstaminetDHowardries.manager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 
-import hei.projet.EstaminetDHowardries.dao.BoissonDao;
-import hei.projet.EstaminetDHowardries.dao.DataSourceProvider;
+import hei.projet.EstaminetDHowardries.daoImpl.BoissonDaoImpl;
 import hei.projet.EstaminetDHowardries.entite.Boisson;
 
 public class BoissonManager {
 
-private static BoissonManager instance;
-	
-	
-	private BoissonDao boissonDao = new BoissonDao();
-	
+	private static BoissonManager instance;
+
+	private BoissonDaoImpl boissonDao = new BoissonDaoImpl();
+
 	public static BoissonManager getInstance() {
-	    if (instance == null) {
-	        instance = new BoissonManager();
-	    }
-	    return instance;
+		if (instance == null) {
+			instance = new BoissonManager();
+		}
+		return instance;
 	}
-	
+
 	public void ajouterBoisson(Boisson boisson) {
 		boissonDao.ajouterBoisson(boisson);
 	}
-	
-	public Boisson getBoissonDuMois(){
+
+	public Boisson getBoissonDuMois() {
 		return boissonDao.getBoissonDuMois();
 	}
-	
-	public List<Boisson> listerBoisson(){
+
+	public List<Boisson> listerBoisson() {
 		return boissonDao.listerBoisson();
 	}
-	
-	public void deleteBoisson(int idBoisson){
+
+	public void deleteBoisson(int idBoisson) {
 		boissonDao.deleteBoisson(idBoisson);
 	}
 }

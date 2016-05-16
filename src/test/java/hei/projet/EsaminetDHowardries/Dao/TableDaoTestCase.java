@@ -8,14 +8,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import hei.projet.EstaminetDHowardries.dao.DataSourceProvider;
-import hei.projet.EstaminetDHowardries.dao.TableDao;
+import hei.projet.EstaminetDHowardries.daoImpl.DataSourceProvider;
+import hei.projet.EstaminetDHowardries.daoImpl.TableDaoImpl;
 import hei.projet.EstaminetDHowardries.entite.Table;
 
 
 public class TableDaoTestCase {
 
-	private TableDao tableDao = new TableDao();
+	private TableDaoImpl tableDao = new TableDaoImpl();
 	
 	@Before
 	public void initBdd() throws Exception {

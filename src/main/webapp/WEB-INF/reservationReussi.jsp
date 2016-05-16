@@ -12,7 +12,7 @@
     <!-- Eviter mauvaise taille smartphone-->
 
     <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et ThÃ©o">
+    <meta name="author" content="Guillaume et Théo">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -44,7 +44,7 @@
   <a  style=" text-align: center; opacity: 0.7; position:absolute; right: 50px; top:105px; width: 150px; " href="Inscription" class="list-group-item"> <strong> S'inscrire </strong></a>
   
 </div>
-  <div  class="brand" > <a href="intro.html" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
+  <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
 
     <!-- Navigation -->
@@ -97,6 +97,7 @@
                     <hr>
                    <div class="container">
     	               <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Votre réservation a bien été prise en compte </strong></div>
+    	               <div><strong>Un mail vous a été envoyé avec votre mot de passe qui vous permettra d'accéder à votre profil.</strong></div>
     				<div><strong>Nom de Reservation : </strong><strong>${reservation.nomReservation}</strong></div>
                    <div><strong>Date : </strong><strong>${reservation.date}</strong></div>
                    <div><strong>Nombre de Personne : </strong><strong>${reservation.nbPersonne}</strong></div>

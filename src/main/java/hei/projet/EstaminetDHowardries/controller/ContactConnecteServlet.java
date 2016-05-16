@@ -10,22 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
-import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
 
 @WebServlet("/prive/Contact")
 public class ContactConnecteServlet extends HttpServlet {
-	@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
-			req.setAttribute("user",user);
-			
-			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/contactConnecte.jsp");
-			view.forward(req, resp);
-		}
 
-		@Override
-		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
-		}
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
+		req.setAttribute("user", user);
+
+		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/contactConnecte.jsp");
+		view.forward(req, resp);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+	}
+}

@@ -1,37 +1,31 @@
 package hei.projet.EstaminetDHowardries.entite;
 
 public class Plat {
-	
+
 	int idPlat;
 	String nomPlat;
 	Double prixPlat;
 	String descriptionPlat;
 	Boolean platDuJour;
-	
-	public Plat(int idPlat,double prixPlat,String nomPlat, String descriptionPlat, Boolean platDuJour){
-		this.idPlat=idPlat;
-		this.prixPlat=prixPlat;
-		this.nomPlat=nomPlat;
-		this.descriptionPlat=descriptionPlat;
-		this.platDuJour=platDuJour;
-	}
-	
-	public Plat(double prixPlat,String nomPlat, String descriptionPlat, Boolean platDuJour){
-		this.idPlat=idPlat;
-		this.prixPlat=prixPlat;
-		this.nomPlat=nomPlat;
-		this.descriptionPlat=descriptionPlat;
-		this.platDuJour=platDuJour;
-	}
-	public Plat(){
-		this.idPlat=idPlat;
-		this.prixPlat=prixPlat;
-		this.nomPlat=nomPlat;
-		this.descriptionPlat=descriptionPlat;
-		this.platDuJour=platDuJour;
+
+	public Plat(int idPlat, double prixPlat, String nomPlat, String descriptionPlat, Boolean platDuJour) {
+		this.idPlat = idPlat;
+		this.prixPlat = prixPlat;
+		this.nomPlat = nomPlat;
+		this.descriptionPlat = descriptionPlat;
+		this.platDuJour = platDuJour;
 	}
 
-	
+	public Plat(double prixPlat, String nomPlat, String descriptionPlat, Boolean platDuJour) {
+		this.prixPlat = prixPlat;
+		this.nomPlat = nomPlat;
+		this.descriptionPlat = descriptionPlat;
+		this.platDuJour = platDuJour;
+	}
+
+	public Plat() {
+	}
+
 	public int getIdPlat() {
 		return idPlat;
 	}
@@ -71,5 +65,5 @@ public class Plat {
 	public void setPlatDuJour(Boolean platDuJour) {
 		this.platDuJour = platDuJour;
 	}
-	
+
 }

@@ -37,11 +37,11 @@
 
 <body>
 <div class="list-group">
- <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"><strong>Connexion</strong>
+ <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Connexion</strong>
  
   </a>
-  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Connexion" class="list-group-item"> <strong> Se connecter </strong></a>
-  <a  style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7;" href="Inscription" class="list-group-item"> <strong> S'inscrire </strong></a>
+  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Connexion" class="list-group-item"> <strong> Se connecter </strong></a>
+  <a  style=" text-align: center; opacity: 0.7; position:absolute; right: 50px; top:105px; width: 150px; " href="Inscription" class="list-group-item"> <strong> S'inscrire </strong></a>
   
 </div>
 <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
@@ -136,6 +136,7 @@
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
                         <input type="email" id="email" name="email" required="required" placeholder="Email" class="form-control" style="width:300px;" >
+                        <span class="erreur">${erreurs['mail']}</span> <br /> 
                     </div>
                 </div>
                 <div class="form-group">

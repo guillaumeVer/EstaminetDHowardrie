@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import hei.projet.EstaminetDHowardries.dao.DataSourceProvider;
+import hei.projet.EstaminetDHowardries.daoImpl.DataSourceProvider;
 import hei.projet.EstaminetDHowardries.entite.Plat;
 import hei.projet.EstaminetDHowardries.manager.PlatManager;
 

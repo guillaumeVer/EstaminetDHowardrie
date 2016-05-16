@@ -1,7 +1,5 @@
 package hei.projet.EstaminetDHowardries.entite;
 
-import java.sql.Date;
-
 public class Reservation {
 
 	private int idReservation;
@@ -11,36 +9,25 @@ public class Reservation {
 	private String date;
 	private String nomReservation;
 	private int nbPersonne;
-	
 
-	public Reservation(Utilisateur utilisateur, Table table, Horaire horaire, String date, String nomReservation, int nbPersonne){
-		this.idReservation=idReservation;
-		this.utilisateur=utilisateur;
-		this.table=table;
-		this.horaire=horaire;
-		this.date=date;
-		this.nomReservation=nomReservation;
-		this.nbPersonne=nbPersonne;
+	public Reservation(Utilisateur utilisateur, Table table, Horaire horaire, String date, String nomReservation,
+			int nbPersonne) {
+		this.utilisateur = utilisateur;
+		this.table = table;
+		this.horaire = horaire;
+		this.date = date;
+		this.nomReservation = nomReservation;
+		this.nbPersonne = nbPersonne;
 	}
-	
-	public Reservation(Table table, Horaire horaire, String date, String nomReservation){
-		this.idReservation=idReservation;
-		this.utilisateur=utilisateur;
-		this.table=table;
-		this.horaire=horaire;
-		this.date=date;
-		this.nomReservation=nomReservation;
-		this.nbPersonne=nbPersonne;
+
+	public Reservation(Table table, Horaire horaire, String date, String nomReservation) {
+		this.table = table;
+		this.horaire = horaire;
+		this.date = date;
+		this.nomReservation = nomReservation;
 	}
-	
-	public Reservation(){
-		this.idReservation=idReservation;
-		this.utilisateur=utilisateur;
-		this.table=table;
-		this.horaire=horaire;
-		this.date=date;
-		this.nomReservation=nomReservation;
-		this.nbPersonne=nbPersonne;
+
+	public Reservation() {
 	}
 
 	public int getIdReservation() {
@@ -82,11 +69,11 @@ public class Reservation {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+
 	public String getNomReservation() {
 		return nomReservation;
 	}
-	
+
 	public void setNomReservation(String nomReservation) {
 		this.nomReservation = nomReservation;
 	}
@@ -99,7 +86,4 @@ public class Reservation {
 		this.nbPersonne = nbPersonne;
 	}
 
-
-	
-	
 }

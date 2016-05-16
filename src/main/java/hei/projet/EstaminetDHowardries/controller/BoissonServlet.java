@@ -17,23 +17,23 @@ import hei.projet.EstaminetDHowardries.manager.BoissonManager;
 @WebServlet("/prive/admin/Boissons")
 public class BoissonServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
-		req.setAttribute("admin",admin);
-		
+		req.setAttribute("admin", admin);
+
 		List<Boisson> lstBoisson = BoissonManager.getInstance().listerBoisson();
 		req.setAttribute("listeDeBoisson", lstBoisson);
 
-		
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/menuboisson.jsp");
 		view.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 	}
 
-	
 }

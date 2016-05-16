@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/InscriptionReussi")
 public class InscriptionfaitServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/inscriptionfait.jsp");
@@ -20,7 +22,7 @@ public class InscriptionfaitServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 	}
 
 }
