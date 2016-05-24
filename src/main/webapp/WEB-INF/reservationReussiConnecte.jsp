@@ -37,10 +37,12 @@
 
 <body>
 <div class="list-group">
-  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
+  <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
   </a>
-  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
- 
+  
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
+
+  
 </div>
   <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
@@ -90,17 +92,7 @@
 
         <div class="row">
             <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Plan du
-                        <strong>Restaurant</strong>
-                    </h2>
-                    <hr>
-                    
-                   <a href="../img/plan.png">  <center><img href="../img/plan.png" src="../img/tn_plan.png" > </center> </a>
-                </div>
-                <div>
-                </div>
+              
                 <div class="col-md-4">
                    
                    
@@ -143,10 +135,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 

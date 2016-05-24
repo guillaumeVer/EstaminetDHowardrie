@@ -64,17 +64,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="Index">Plats</a>
-                    </li>
-                    <li>
-                        <a href="Reservation">Boisson</a>
-                    </li>
-                    <li>
-                        <a href="AcceuilAdministrateur">Reservation</a>
-                    </li>
-                
-                </ul>
+					<li><a href="Plats">Les Plats</a></li>
+					<li><a href="Boissons">Les Boissons</a></li>
+					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+				</ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -189,10 +182,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
 
 </body>
 

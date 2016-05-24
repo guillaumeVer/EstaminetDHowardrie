@@ -43,17 +43,14 @@
 
 <body>
 	<div class="list-group">
-		<a
-			style="text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px;"
-			class="list-group-item disabled"> <strong> Bonjour
-				${user.nom}</strong>
-		</a> <a
-			style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7;"
-			href="Deconnexion" class="list-group-item"> <strong> Se
-				deconnecter </strong></a>
+  <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
+  </a>
+  
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
 
+  
+</div>
 
-	</div>
 	<div class="brand">
 		<a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a>
 	</div>
@@ -81,6 +78,9 @@
 					<li><a href="Reservation">Reservation</a></li>
 					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
+					 <li>
+                        <a href="MonProfil">Mon Profil</a>
+                    </li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -153,10 +153,10 @@
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	<script src="../js/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 
 </body>
 

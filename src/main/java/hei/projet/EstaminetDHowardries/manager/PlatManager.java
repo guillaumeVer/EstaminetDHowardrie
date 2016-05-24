@@ -37,4 +37,12 @@ public class PlatManager {
 	public void deletePlat(int idPlat) {
 		platDao.deletePlat(idPlat);
 	}
+	
+	public void modifierPlat(Plat plat){
+		platDao.modifierPlat(plat);
+	}
+	
+	public void passerEnPlatDuJour(int idPlat){
+		platDao.passerEnPlatDuJour(idPlat);
+	}
 }

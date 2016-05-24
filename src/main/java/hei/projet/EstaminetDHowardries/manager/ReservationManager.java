@@ -27,10 +27,6 @@ public class ReservationManager {
 		resDao.ajouterReservation(reservation);
 	}
 
-	public Reservation getReservation(int idUtilisateur) {
-		return resDao.getReservation(idUtilisateur);
-	}
-
 	public Reservation getReservationById(int idReservation) {
 		return resDao.getReservationById(idReservation);
 	}

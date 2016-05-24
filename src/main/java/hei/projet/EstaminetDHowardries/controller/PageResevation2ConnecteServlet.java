@@ -15,7 +15,7 @@ import hei.projet.EstaminetDHowardries.entite.Table;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.ReservationManager;
 import hei.projet.EstaminetDHowardries.manager.TableManager;
-import hei.projet.EstaminetDHowardries.utils.SendTextMessage;
+import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/prive/Reservation2")
 public class PageResevation2ConnecteServlet extends HttpServlet {
@@ -33,8 +33,13 @@ public class PageResevation2ConnecteServlet extends HttpServlet {
 		List<Table> lstTable = TableManager.getInstance().listerTableLibre(reservation.getDate(),reservation.getHoraire());
 		req.setAttribute("listeDeTable", lstTable);
 
+		if(lstTable.size()==0){
+			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationImpossibleConnecte.jsp");
+			view.forward(req, resp);
+		}else{
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservation2connecte.jsp");
 		view.forward(req, resp);
+		}
 	}
 
 	@Override
@@ -49,16 +54,15 @@ public class PageResevation2ConnecteServlet extends HttpServlet {
 		req.getSession().setAttribute("reservation", reservation);
 
 		if (reservation.getUtilisateur() != null) {
-			String message = "Vous avez effectuez une reservation pour le " + reservation.getDate() + " à "
-					+ reservation.getHoraire().getIntervalle() + " au nom de " + reservation.getNomReservation() + ".";
-			SendTextMessage envoyeurDeMail = new SendTextMessage();
-			try {
-				envoyeurDeMail.envoyer_email("smtp.gmail.com", "465","estaminet.howardries.resto@gmail.com",
-						reservation.getUtilisateur().getMail(), "Confirmation de reservation", message);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			SendMail mailEnvoie = new SendMail();
+
+			String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
+					+ ",</p><p>Votre avez effectu&aecute; un &aecute;servation"
+					+ "au nom de : " + reservation.getNomReservation() + ""
+					+"à la date de "+ reservation.getDate()+"et à "+reservation.getHoraire().getIntervalle();
+			mailEnvoie.start(reservation.getUtilisateur().getMail(), "[Estaminet d'Howardries] - R&aecute;servation", message);
+
+			System.out.println("Mail envoyé");
 			resp.sendRedirect("ReservationReussi");
 		} else {
 			resp.sendRedirect("ReservationReussi");

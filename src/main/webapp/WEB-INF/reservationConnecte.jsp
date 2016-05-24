@@ -44,17 +44,14 @@
 </head>
 
 <body>
-	<div class="list-group">
-		<a
-			style="text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px;"
-			class="list-group-item disabled"> <strong>Bonjour
-				${user.nom}</strong>
-		</a> <a
-			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px;"
-			href="Deconnexion" class="list-group-item"> <strong> Se
-				Deconnecter </strong></a>
+<div class="list-group">
+  <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
+  </a>
+  
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
 
-	</div>
+  
+</div>
 	<div class="brand">
 		<a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a>
 	</div>
@@ -113,16 +110,16 @@
 						</thead>
 
 						<tbody>
-							<c:forEach var="reservation" items="${listeDeReservation}">
+							<c:forEach var="Reservation" items="${listeDeReservation}">
 								<tr class="success">
-									<td>${reservation.nomReservation}</td>
-									<td>${reservation.date}</td>
-									<td>${reservation.table.nomTable}</td>
-									<td>${reservation.horaire.intervalle}</td>
-									<td>${reservation.nbPersonne}</td>
+									<td>${Reservation.nomReservation}</td>
+									<td>${Reservation.date}</td>
+									<td>${Reservation.table.nomTable}</td>
+									<td>${Reservation.horaire.intervalle}</td>
+									<td>${Reservation.nbPersonne}</td>
 									<td><a
-										href="SupprimerReservation?idReservation=${reservation.idReservation}"><span
-											class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+										href="SupprimerReservation?idReservation=${Reservation.idReservation}"><span
+											class="glyphicon glyphicon-trash" aria-hidden="true" onclick="return confirm('Etes vous sur de vuloir annuler votre réservation?')" ></span></a></td>
 								</tr>
 							</c:forEach>
 
@@ -136,6 +133,8 @@
 
 
 	</div>
+<form method="post" action="Reservation" class="form-horizontal"
+						role="form">
 
 	<div class="row">
 		<div class="box">
@@ -153,9 +152,7 @@
 
 
 
-					<form method="post" action="Reservation" class="form-horizontal"
-						role="form">
-
+					
 
 
 						<div class="form-group">
@@ -267,19 +264,17 @@
 								<button type="submit" class="btn btn-primary btn-block"
 									style="width: 300px;">Réserver</button>
 							</div>
+						
 						</div>
-					</form>
+					
 					<!-- /form -->
 				</div>
+					
 				<!-- ./container -->
 				<hr>
 
 			</div>
-
-		</div>
-	</div>
-
-
+</form>
 	<!-- /.container -->
 
 	<footer>
@@ -293,7 +288,7 @@
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js">
+	<script src="../js/jquery.js">
 		jQuery(function($) {
 
 			var settings = {
@@ -346,7 +341,7 @@
 	</script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 
 </body>
 

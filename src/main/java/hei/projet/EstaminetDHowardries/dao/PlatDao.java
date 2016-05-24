@@ -14,4 +14,8 @@ public interface PlatDao {
 	public void deletePlat(int idPlat);
 
 	public Plat getPlat(int idPlat);
+	
+	public void modifierPlat(Plat plat);
+	
+	public void passerEnPlatDuJour(int idPlat);
 }

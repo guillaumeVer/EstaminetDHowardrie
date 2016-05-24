@@ -13,4 +13,10 @@ public interface BoissonDao {
 	public List<Boisson> listerBoisson();
 
 	public void deleteBoisson(int idBoisson);
+	
+	public void modifierBoisson(Boisson boisson);
+	
+	public void passerEnBoissonDuMois(int idBoisson);
+	
+	public Boisson getBoisson(int idBoisson);
 }

@@ -33,15 +33,28 @@ public class PlatServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		req.setCharacterEncoding("UTF-8");
+		
+		Plat plat =new Plat();
+		
 		String nomPlat = req.getParameter("nomPlat");
+		plat.setNomPlat(nomPlat);
+		
 		String prix = req.getParameter("Prix");
-		double prixPlat = Double.parseDouble(prix);
+		Float prixPlat = Float.parseFloat(prix);
+		plat.setPrixPlat(prixPlat);
+		
 		String description = req.getParameter("Description");
+		plat.setDescriptionPlat(description);
+		
 		String platDuJour = req.getParameter("PlatDuJour");
-		Boolean platDuJourb = Boolean.parseBoolean(platDuJour);
-
-		Plat plat = new Plat(prixPlat, nomPlat, description, platDuJourb);
+		
+		if(platDuJour==null){
+			plat.setPlatDuJour(false);
+		}else{
+			plat.setPlatDuJour(true);
+		}
+		
 
 		PlatManager.getInstance().ajouterPlat(plat);
 		resp.sendRedirect("Plats");

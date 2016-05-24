@@ -51,8 +51,8 @@
 			href="Deconnexion" class="list-group-item"> <strong> Se
 				Deconnecter </strong></a> <a
 			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px;"
-			href="ModifierInfoAdmin" class="list-group-item"> <strong>
-				Modifier mes informations </strong></a>
+			href="ProfilAdministrateur" class="list-group-item"> <strong>
+				Mon Profil </strong></a>
 
 	</div>
 	<div class="brand">
@@ -111,82 +111,34 @@
 							<tr>
 								<th>Plat</th>
 								<th>Prix</th>
+								<th>Description</th>
 								<th>Modifier</th>
 								<th>Supprimer</th>
 								<th>Plat du jour</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="success">
-								<td>Welsh</td>
-								<td>10â¬</td>
-								<td>
-									<button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-										Modifier
-									</button>
-									</span>
-								</td>
-								<td><button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-										Supprimer
-									</button>
-									</span></td>
-								<td>
-									<button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										Plat du jour
-									</button>
-									</span>
-								</td>
-							</tr>
-							<tr class="success">
-								<td>Waterzoi</td>
-								<td>12â¬</td>
-								<td>
-									<button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-										Modifier
-									</button>
-									</span>
-								</td>
-								<td><button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-										Supprimer
-									</button>
-									</span></td>
-								<td>
-									<button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										Plat du jour
-									</button>
-									</span>
-								</td>
-							</tr>
-							<tr class="success">
-								<td>Frite ficadelle</td>
-								<td>7â¬</td>
-								<td>
-									<button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-										Modifier
-									</button>
-									</span>
-								</td>
-								<td><button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-										Supprimer
-									</button>
-									</span></td>
-								<td>
-									<button type="button" class="btn btn-default btn-lg">
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										Plat du jour
-									</button>
-									</span>
-								</td>
-							</tr>
-						</tbody>
+						<c:forEach var="boisson" items="${listeDeBoisson}">
+								<tr>
+									<td>${boisson.nomBoisson}</td>
+									<td>${boisson.prix}</td>
+									<td>${boisson.descriptionBoisson}</td>
+									<td><a href="ModifierBoisson?id=${boisson.idBoisson}"
+										class="btn btn-default btn-lg" role="button"
+										style="width: 200px;"> Modifier </a></td>
+									<td><a href="SupprimerBoisson?id=${boisson.idBoisson}"
+										class="btn btn-default btn-lg" role="button"
+										style="width: 200px;"> Supprimer </a></td>
+									<td><c:if test="${boisson.boissonDuMois != true}">
+											<a href="BoissonDuMois?id=${boisson.idBoisson}"
+												class="btn btn-default btn-lg" role="button"
+												style="width: 200px;"> Boisson Du Mois </a>
+												</c:if>
+												</td>
+										
+								</tr>
+							</c:forEach>
+							</tbody>
 					</table>
 
 
@@ -206,38 +158,23 @@
 					<div class="container">
 
 
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" method="post" action="Boissons" accept-charset="UTF-8">
 
 							<div class="form-group">
-
-								<div class="col-sm-6">
-									<div class="row">
-										<div class="col-sm-4">
-											<label class="radio-inline">
-										</div>
-
-
-									</div>
-								</div>
-							</div>
-							<!-- /.form-group -->
-
-							<div class="form-group">
-								<label for="Nom" class="col-sm-3 control-label">Nom de
-									la boisson</label>
+								<label for="Nom" class="col-sm-3 control-label">Nom de la boisson</label>
 								<div class="col-sm-9">
-									<input type="text" id="Nom" placeholder="Nom"
-										class="form-control" autofocus style="width: 300px;">
+									<input type="text" id="Nom" name="Nom" placeholder="Nom"
+										class="form-control" autofocus style="width: 300px;" required>
 
 
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="PrÃ©nom" class="col-sm-3 control-label">QuantitÃ©</label>
+								<label for="PrÃ©nom" class="col-sm-3 control-label">Description</label>
 								<div class="col-sm-9">
-									<input type="text" id="Nom" placeholder="Nom"
-										class="form-control" autofocus style="width: 300px;">
+									<input type="text" id="Description" name="Description" placeholder="Description"
+										class="form-control" autofocus style="width: 300px;" required>
 
 
 								</div>
@@ -247,23 +184,26 @@
 							<div class="form-group">
 								<label for="PrÃ©nom" class="col-sm-3 control-label">Prix</label>
 								<div class="col-sm-9">
-									<input type="text" id="Nom" placeholder="Nom"
-										class="form-control" autofocus style="width: 300px;">
+									<input type="number" step="0.01" id="Prix" name="Prix" placeholder="Prix"
+										class="form-control" autofocus style="width: 300px;" required>
 
 
 								</div>
 							</div>
+
+
+							
 
 							<div class="form-group">
-								<div class="col-sm-9 col-sm-offset-3">
-									<div class="checkbox">
-										<label> <input type="checkbox"> AlcolisÃ©
-										</label>
+								<label for="PrÃ©nom" class="col-sm-3 control-label">Boisson Du Mois</label>
+								<div class="col-sm-9">
+									<input type="checkBox" id="BoissonDuMois" name="BoissonDuMois" placeholder="Description"
+										class="form-control" autofocus style="width: 300px;">
 
-									</div>
 								</div>
 							</div>
-
+							
+							
 
 
 
@@ -290,7 +230,7 @@
 		</div>
 	</div>
 
-	</div>
+	
 	<!-- /.container -->
 
 	<footer>
@@ -304,10 +244,10 @@
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	<script src="../../js/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
 
 </body>
 

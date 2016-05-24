@@ -36,11 +36,13 @@
 </head>
 
 <body>
-<  <a style=" text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
- 
+<div class="list-group">
+  <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
   </a>
-  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
- 
+  
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
+
+  
 </div>
 <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
@@ -150,7 +152,7 @@
                
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                      <a href="ModifierProfil" class="btn btn-primary btn-block" role="button" style="width:200px;"> Tout Modifier </a>  <a href="ModifierMDP" class="btn btn-primary btn-block" role="button" style="width:200px;"> Modifier mot de passe </a> <a href="Desinscription" class="btn btn-primary btn-block" role="button" style="width:200px;"> Se désinscrire </a>
+                      <a href="ModifierProfil" class="btn btn-primary btn-block" role="button" style="width:200px;"> Tout Modifier </a>  <a href="ModifierMDP" class="btn btn-primary btn-block" role="button" style="width:200px;"> Modifier mot de passe </a> <a href="Desinscription" class="btn btn-primary btn-block" onclick="return confirm('Voulez vous supprimer votre compte?')" role="button" style="width:200px;"> Se désinscrire </a>
                     </div>
                 </div>
             </form> <!-- /form -->
@@ -163,7 +165,6 @@
             </div>
         </div>
 
-    </div>
     <!-- /.container -->
 
     <footer>
@@ -177,10 +178,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 

@@ -4,11 +4,11 @@ public class Plat {
 
 	int idPlat;
 	String nomPlat;
-	Double prixPlat;
+	Float prixPlat;
 	String descriptionPlat;
 	Boolean platDuJour;
 
-	public Plat(int idPlat, double prixPlat, String nomPlat, String descriptionPlat, Boolean platDuJour) {
+	public Plat(int idPlat, Float prixPlat, String nomPlat, String descriptionPlat, Boolean platDuJour) {
 		this.idPlat = idPlat;
 		this.prixPlat = prixPlat;
 		this.nomPlat = nomPlat;
@@ -16,7 +16,7 @@ public class Plat {
 		this.platDuJour = platDuJour;
 	}
 
-	public Plat(double prixPlat, String nomPlat, String descriptionPlat, Boolean platDuJour) {
+	public Plat(Float prixPlat, String nomPlat, String descriptionPlat, Boolean platDuJour) {
 		this.prixPlat = prixPlat;
 		this.nomPlat = nomPlat;
 		this.descriptionPlat = descriptionPlat;
@@ -42,11 +42,11 @@ public class Plat {
 		this.nomPlat = nomPlat;
 	}
 
-	public Double getPrixPlat() {
+	public Float getPrixPlat() {
 		return prixPlat;
 	}
 
-	public void setPrixPlat(Double prixPlat) {
+	public void setPrixPlat(Float prixPlat) {
 		this.prixPlat = prixPlat;
 	}
 

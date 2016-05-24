@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
-import hei.projet.EstaminetDHowardries.utils.SendTextMessage;
+import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/prive/ModifierProfil")
 public class ModifierProfilServlet extends HttpServlet {
@@ -30,6 +30,7 @@ public class ModifierProfilServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		Utilisateur usermodifier = new Utilisateur();
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 
@@ -57,18 +58,15 @@ public class ModifierProfilServlet extends HttpServlet {
 
 		UtilisateurManager.getInstance().updateUser(usermodifier);
 
-		// Envoie de mail
-		String message = "Vous venez de modifier votre profil. " + "Votre nouveau mot de passe est : "
-				+ usermodifier.getPassword() + ". " + "Votre nom de reservation est : " + usermodifier.getNom() + "."
-				+ "Votre prenom de reservation est : " + usermodifier.getPrenom() + ".";
-		SendTextMessage envoyeurDeMail = new SendTextMessage();
-		try {
-			envoyeurDeMail.envoyer_email("smtp.gmail.com", "465","estaminet.howardries.resto@gmail.com",
-					usermodifier.getMail(), "Modificaton du mot de passe", message);
-		} catch (Exception e) {
+		SendMail mailEnvoie = new SendMail();
 
-			e.printStackTrace();
-		}
+		String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
+				+ ",</p><p>Votre nouveau mot de passe de connexion est: <span style=\"background-color:yellow;\"><strong>"
+				+ usermodifier.getPassword() + "";
+		mailEnvoie.start(usermodifier.getMail(), "[Estaminet d'Howardries] - Modification de profil", message);
+
+		System.out.println("Mail envoyé");
+		
 
 		req.getSession().removeAttribute("utilisateurConnecte");
 		req.getSession().setAttribute("utilisateurConnecte", usermodifier);

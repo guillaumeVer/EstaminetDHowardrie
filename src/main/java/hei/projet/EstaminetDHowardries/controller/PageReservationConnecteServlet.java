@@ -15,7 +15,6 @@ import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.HoraireManager;
 import hei.projet.EstaminetDHowardries.manager.ReservationManager;
-import hei.projet.EstaminetDHowardries.utils.SendTextMessage;
 
 @WebServlet("/prive/Reservation")
 public class PageReservationConnecteServlet extends HttpServlet {
@@ -24,7 +23,8 @@ public class PageReservationConnecteServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		req.setCharacterEncoding("UTF-8");
+		
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 		req.setAttribute("user", user);
 
@@ -33,11 +33,11 @@ public class PageReservationConnecteServlet extends HttpServlet {
 
 		List<Reservation> lstReservation = ReservationManager.getInstance().listerReservationParCLient(user.getIdUtilisateur());
 		req.setAttribute("listeDeReservation", lstReservation);
-		
-		if(lstReservation.size()>0){
+
+		if (lstReservation.size() > 0) {
 			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationConnecte.jsp");
 			view.forward(req, resp);
-		}else{
+		} else {
 			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationConnecteVide.jsp");
 			view.forward(req, resp);
 		}
@@ -57,16 +57,6 @@ public class PageReservationConnecteServlet extends HttpServlet {
 		Horaire horaire = HoraireManager.getInstance().getUnHoraire(idhoraire);
 
 		Reservation reservation = new Reservation(user, null, horaire, date, nomReservation, nbPersonne);
-
-		String message = "Vous avez effectuez une reservation pour le " + reservation.getDate() + " à "
-				+ reservation.getHoraire().getIntervalle() + " au nom de " + reservation.getNomReservation() + ".";
-		SendTextMessage envoyeurDeMail = new SendTextMessage();
-		try {
-			envoyeurDeMail.envoyer_email("smtp.gmail.com", "465","estaminet.howardries.resto@gmail.com", reservation.getUtilisateur().getMail(),
-					"Confirmation de reservation", message);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		req.getSession().setAttribute("reservation", reservation);
 

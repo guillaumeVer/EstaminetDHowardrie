@@ -1,4 +1,3 @@
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
@@ -52,8 +51,8 @@
 			href="Deconnexion" class="list-group-item"> <strong> Se
 				Deconnecter </strong></a> <a
 			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px;"
-			href="ModifierInfoAdmin" class="list-group-item"> <strong>
-				Modifier mes informations </strong></a>
+			href="ProfilAdministrateur" class="list-group-item"> <strong>
+				Mon Profil </strong></a>
 
 	</div>
 	<div class="brand">
@@ -91,6 +90,7 @@
 		</div>
 		<!-- /.container -->
 	</nav>
+
 	<div class="container">
 
 		<div class="row">
@@ -111,13 +111,17 @@
 						</thead>
 
 						<tbody>
-							<c:forEach var="reservation" items="${listeDeReservation}">
-								<tr class="success">
-									<td>${reservation.nomReservation}</td>
-									<td>${reservation.date}</td>
-									<td>${reservation.table.nomTable}</td>
-									<td>${reservation.horaire.intervalle}</td>
-									<td>${reservation.nbPersonne}</td>
+							<c:forEach var="Reservation" items="${listeDeReservation}">
+								<tr>
+									<td>${Reservation.nomReservation}</td>
+									<td>${Reservation.date}</td>
+									<td>${Reservation.table.nomTable}</td>
+									<td>${Reservation.horaire.intervalle}</td>
+									<td>${Reservation.nbPersonne}</td>
+									<td><a
+										href="SupprimerAdministrateurReservation?idReservation=${Reservation.idReservation}"><span
+											class="glyphicon glyphicon-trash" aria-hidden="true" onclick="return confirm('Etes vous sur de vouloir annuler cette réservation?')" ></span></a></td>
+								</tr>
 							</c:forEach>
 
 						</tbody>
@@ -125,122 +129,22 @@
 				</div>
 				<div class="col-lg-12"></div>
 				<div class="clearfix"></div>
-			</div>
-		</div>
-
-
-	</div>
-	<div class="row">
-		<div class="box">
-			<div class="col-lg-12">
-				<h2 class="intro-text text-center">Reserver</h2>
-				<hr>
-				<div class="container">
-
-					<form method="post" action="AcceuilAdministrateur"
-						class="form-horizontal" role="form">
-
-
-
-						<div class="form-group">
-							<label for="Nom" class="col-sm-3 control-label">Nom de
-								Reservation</label>
-							<div class="col-sm-9">
-								<input type="text" id="Nom" name="Nom"
-									value=${user.nom
-									} required="required"
-									placeholder="Nom" class="form-control" autofocus
-									style="width: 300px;">
-
-							</div>
-						</div>
-
-
-
-						<div class="form-group">
-							<label for="birthDate" class="col-sm-3 control-label">Date
-								de la reservation</label>
-							<div class="col-sm-9">
-								<input type="date" name="bookDate" id="bookDate"
-									class="form-control" style="width: 300px;">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="country" class="col-sm-3 control-label">Nombre
-								de personne</label>
-							<div class="col-sm-9">
-								<select id="nbPersonne" name="nbPersonne" class="form-control"
-									style="width: 300px;">
-
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-									<option>7</option>
-									<option>8</option>
-
-								</select>
-
-							</div>
-						</div>
-
-
-
-						<div class="form-group">
-							<label for="country" class="col-sm-3 control-label">Heure
-								de réservation</label>
-							<div class="col-sm-9">
-								<select id="horaire" name="horaire" class="form-control"
-									style="width: 300px;">
-
-									<c:forEach var="horaire" items="${listedHoraires}">
-										<option value="${horaire.idHoraire}">${horaire.intervalle}</option>
-									</c:forEach>
-
-								</select>
-
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="country" class="col-sm-3 control-label">Table</label>
-							<div class="col-sm-9">
-								<select id="table" name="table" class="form-control"
-									style="width: 300px;">
-
-									<c:forEach var="table" items="${listeDeTable}">
-										<option value="${table.idTable}">${table.nomTable}</option>
-									</c:forEach>
-
-								</select>
-
-							</div>
-						</div>
-
-
-
-
-						<!-- /.form-group -->
-
-						<div class="form-group">
-							<div class="col-sm-9 col-sm-offset-3">
-								<button type="submit" class="btn btn-primary btn-block"
-									style="width: 300px;">Réserver</button>
-							</div>
-						</div>
-					</form>
-					<!-- /form -->
-				</div>
-				<!-- ./container -->
-				<hr>
+				<p style="line-height: 70px; text-align: center;">
+					<a href="ReservationAdministrateur" class="btn btn-primary "
+						role="button" style="width: 300px;">Effectuer une réservation
+					</a>
+				</p>
 
 			</div>
 
+
+
+
+
 		</div>
+
 	</div>
-	</div>
+
 	<!-- /.container -->
 
 	<footer>
@@ -254,10 +158,10 @@
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	<script src="../../js/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
 
 </body>
 

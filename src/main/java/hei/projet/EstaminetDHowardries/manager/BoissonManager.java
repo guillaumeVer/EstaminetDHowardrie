@@ -33,4 +33,16 @@ public class BoissonManager {
 	public void deleteBoisson(int idBoisson) {
 		boissonDao.deleteBoisson(idBoisson);
 	}
+	
+	public void modifierBoisson(Boisson boisson){
+		boissonDao.modifierBoisson(boisson);
+	}
+	
+	public void passerEnBoissonDuMois(int idBoisson){
+		boissonDao.passerEnBoissonDuMois(idBoisson);
+	}
+
+	public Boisson getBoisson(int id) {
+		return boissonDao.getBoisson(id);
+	}
 }

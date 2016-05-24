@@ -33,7 +33,31 @@ public class BoissonServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		req.setCharacterEncoding("UTF-8");
+		
+		Boisson boisson = new Boisson();
+		
+		String nomBoisson = req.getParameter("Nom");
+		boisson.setNomBoisson(nomBoisson);
+		
+		String description = req.getParameter("Description");
+		boisson.setDescriptionBoisson(description);
+		
+		String prix = req.getParameter("Prix");
+		Float prixBoisson = Float.parseFloat(prix);
+		boisson.setPrix(prixBoisson);
+		
+		String boissonDuMois = req.getParameter("BoissonDuMois");
+		
+		if(boissonDuMois==null){
+			boisson.setBoissonDuMois(false);
+		}else{
+			boisson.setBoissonDuMois(true);
+		}
+		
+		
+		BoissonManager.getInstance().ajouterBoisson(boisson);
+		resp.sendRedirect("Boissons");
 	}
 
 }

@@ -2,7 +2,6 @@ package hei.projet.EstaminetDHowardries.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
-import hei.projet.EstaminetDHowardries.utils.SendTextMessage;
+import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/Inscription")
 public class InscriptionServlet extends HttpServlet {
@@ -32,70 +31,59 @@ public class InscriptionServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+
 		Utilisateur user = new Utilisateur();
 
 		String nom = req.getParameter("Nom");
 		user.setNom(nom);
 		String prenom = req.getParameter("Prenom");
 		user.setPrenom(prenom);
-		String mail = req.getParameter("email");
-		
+
+		String mail = req.getParameter("Email");
 		Boolean email = false;
 		try {
 			email = validationEmail(mail);
 		} catch (Exception e) {
 			setErreur("mail", e.getMessage());
 		}
-		
-		if(email == false){
-		req.setAttribute("erreurs", erreurs);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(req, resp);
-		}else{
-		user.setMail(mail);
-		String password = req.getParameter("password");
-		user.setPassword(password);
+		if (email) {
+			req.setAttribute("erreurs", erreurs);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(req, resp);
+		} else {
+			user.setMail(mail);
+			System.out.println(mail);
+			String password = req.getParameter("password");
+			user.setPassword(password);
 
-		UtilisateurManager.getInstance().creatUtilisateur(user);
+			UtilisateurManager.getInstance().creatUtilisateur(user);
 
-		String message = "Merci d'avoir crée un compte sur notre site. Votre nom de Reservation est " + nom
-				+ " et votre mot de passe est " + password + ".";
+			SendMail mailEnvoie = new SendMail();
 
-		SendTextMessage envoyeurDeMail = new SendTextMessage();
-		try {
-			envoyeurDeMail.envoyer_email("smtp.gmail.com", "465","estaminet.howardries.resto@gmail.com", mail,
-					"Inscription", message);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
+					+ "Bonjour " + prenom + " " + nom
+					+ ",</p><p>Votre mot de passe de connexion est: <span style=\"background-color:yellow;\"><strong>"
+					+ password
+					+ "</strong></span>.</p><p>Vous pouvez le modifier une fois connect&eacute; dans l&#39;onglet &quot;<strong>Mon profil</strong></p><p>Voici l'adresse de la plateforme web:  .</p><p>Nous sommes &agrave; votre &eacute;coute pour toutes futures demandes.</p>";
 
-		resp.sendRedirect("InscriptionReussi");
+			mailEnvoie.start(mail, "[Estaminet d'Howardries] - Création de votre compte", message);
+
+			System.out.println("Mail envoyé");
+
+			resp.sendRedirect("InscriptionReussi");
 		}
 	}
 
 	// validation de l'email
 	public boolean validationEmail(String email) throws Exception {
-		Utilisateur admin = UtilisateurManager.getInstance().getAdministrateur();
-		List<Utilisateur> lstUser = UtilisateurManager.getInstance().listerUtilisateur();
+		Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyMail(email);
 
 		Boolean utilise = false;
-		if (email.equals(admin.getMail())) {
-			throw new Exception("L'e-mail saisie est déjà utilisé");
+		if (user.getMail() == null) {
+			utilise = false;
 		} else {
-			// test si le mail existe
-			int i = 0;
-			while (i < lstUser.size()) {
-				if (lstUser.get(i).getMail().equals(email)) {
-					utilise = true;
-					i = lstUser.size() + 1;
-				} else {
-					i++;
-				}
-			}
-			// mise en place de l'exception si il exuste
-			if (utilise) {
-				throw new Exception("L'e-mail saisie est déjà utilisé");
-			}
+			utilise = true;
+			throw new Exception("L'e-mail saisie est déjà utilisé");
 		}
 		return utilise;
 	}

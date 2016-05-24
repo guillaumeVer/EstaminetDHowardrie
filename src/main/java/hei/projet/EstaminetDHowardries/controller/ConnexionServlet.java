@@ -37,7 +37,7 @@ public class ConnexionServlet extends HttpServlet {
 		String mp = req.getParameter("password");
 
 		// recuperation de l'admin de la base de donnée Utilisateur admin =
-		Utilisateur admin = UtilisateurManager.getInstance().getAdministrateur();
+		Utilisateur admin = UtilisateurManager.getInstance().getAdministrateur(mail);
 
 		List<Utilisateur> lstUser = UtilisateurManager.getInstance().listerUtilisateur();
 

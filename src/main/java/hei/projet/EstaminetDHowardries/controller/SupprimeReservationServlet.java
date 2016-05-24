@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.ReservationManager;
-import hei.projet.EstaminetDHowardries.utils.SendTextMessage;
+import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/prive/SupprimerReservation")
 public class SupprimeReservationServlet extends HttpServlet {
@@ -30,14 +30,14 @@ public class SupprimeReservationServlet extends HttpServlet {
 		Reservation resa = ReservationManager.getInstance().getReservationById(id);
 		ReservationManager.getInstance().SupprimerReservation(resa);
 
-		String message = "L'annulation de votre réservation à bien été prise en compte.";
-		SendTextMessage envoyeurDeMail = new SendTextMessage();
-		try {
-			envoyeurDeMail.envoyer_email("smtp.gmail.com", "465","estaminet.howardries.resto@gmail.com",
-					user.getMail(), "Confirmation d'annulation", message);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		SendMail mailEnvoie = new SendMail();
+
+		String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
+				+ ",</p><p>Votre réservation a bien été supprimé<p>";
+				
+		mailEnvoie.start(resa.getUtilisateur().getMail(), "[Estaminet d'Howardries] - Annulation de réservation", message);
+
+		System.out.println("Mail envoyé");
 
 		resp.sendRedirect("Reservation");
 	}

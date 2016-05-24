@@ -14,7 +14,7 @@ import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Table;
 import hei.projet.EstaminetDHowardries.manager.ReservationManager;
 import hei.projet.EstaminetDHowardries.manager.TableManager;
-import hei.projet.EstaminetDHowardries.utils.SendTextMessage;
+import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/Reservation2")
 public class PageReservation2Servlet extends HttpServlet {
@@ -25,12 +25,17 @@ public class PageReservation2Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
-		
+
 		List<Table> lstTable = TableManager.getInstance().listerTableLibre(reservation.getDate(),reservation.getHoraire());
 		req.setAttribute("listeDeTable", lstTable);
-		
-		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservation2.jsp");
-		view.forward(req, resp);
+
+		if (lstTable.size() == 0) {
+			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationImpossible.jsp");
+			view.forward(req, resp);
+		} else {
+			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservation2.jsp");
+			view.forward(req, resp);
+		}
 
 	}
 
@@ -44,23 +49,35 @@ public class PageReservation2Servlet extends HttpServlet {
 		reservation.setTable(table);
 
 		ReservationManager.getInstance().ajouterReservation(reservation);
-		req.getSession().setAttribute("reservation", reservation);
-
+		
 		if (reservation.getUtilisateur() != null) {
-			String message = "Vous avez effectuez une reservation pour le " + reservation.getDate() + " à "
-					+ reservation.getHoraire().getIntervalle() + " au nom de " + reservation.getNomReservation() + ".";
-			SendTextMessage envoyeurDeMail = new SendTextMessage();
-			try {
-				envoyeurDeMail.envoyer_email("smtp.gmail.com", "465","estaminet.howardries.resto@gmail.com",
-						reservation.getUtilisateur().getMail(), "Confirmation de reservation", message);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			resp.sendRedirect("ReservationReussi");
-		} else {
-			resp.sendRedirect("ReservationReussi");
+
+			SendMail mailEnvoie = new SendMail();
+
+			String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
+					+ ",</p><p>Votre avez effectué un réservation" + "au nom de : " + reservation.getNomReservation()
+					+ "" + "à la date de " + reservation.getDate() + "et à " + reservation.getHoraire().getIntervalle()+"";
+			
+			mailEnvoie.start(reservation.getUtilisateur().getMail(), "[Estaminet d'Howardries] - Réservation", message);
+
+			System.out.println("Mail envoyé");
 		}
+		
+		String email = (String) req.getSession().getAttribute("mail");
+		if(email!=null){
+			SendMail mailEnvoie = new SendMail();
+
+			String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
+					+ ",</p><p>Votre avez effectué un réservation" + "au nom de : " + reservation.getNomReservation()
+					+ "" + "à la date de " + reservation.getDate() + "et à " + reservation.getHoraire().getIntervalle()+"";
+			
+			mailEnvoie.start(reservation.getUtilisateur().getMail(), "[Estaminet d'Howardries] - Réservation", message);
+
+			System.out.println("Mail envoyé");
+		}
+
+		
+		resp.sendRedirect("ReservationReussi");
 
 	}
 

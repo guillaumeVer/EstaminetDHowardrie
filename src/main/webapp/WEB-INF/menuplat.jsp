@@ -15,7 +15,7 @@
 <meta name="author" content="Guillaume et ThÃ©o">
 
 <title>Projet- Site Internet Estaminet Howardries</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Bootstrap Core CSS -->
 <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
@@ -51,8 +51,8 @@
 			href="Deconnexion" class="list-group-item"> <strong> Se
 				Deconnecter </strong></a> <a
 			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px;"
-			href="ModifierInfoAdmin" class="list-group-item"> <strong>
-				Modifier mes informations </strong></a>
+			href="ProfilAdministrateur" class="list-group-item"> <strong>
+				Mon Profil </strong></a>
 
 	</div>
 	<div class="brand">
@@ -119,7 +119,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="plat" items="${listeDePlat}">
-								<tr class="success">
+								<tr>
 									<td>${plat.nomPlat}</td>
 									<td>${plat.prixPlat}</td>
 									<td>${plat.descriptionPlat}</td>
@@ -130,10 +130,12 @@
 										class="btn btn-default btn-lg" role="button"
 										style="width: 200px;"> Supprimer </a></td>
 									<td><c:if test="${plat.platDuJour != true}">
-											<a href="PasserEnPlatDuJour?id=${plat.idPlat}"
+											<a href="PlatDuJour?id=${plat.idPlat}"
 												class="btn btn-default btn-lg" role="button"
-												style="width: 200px;"> Plat Du Jour </a></td>
-									</c:if>
+												style="width: 200px;"> Plat Du Jour </a>
+												</c:if>
+												</td>
+										
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -156,13 +158,13 @@
 					<div class="container">
 
 
-						<form class="form-horizontal" role="form" action="Plats" method="post">
+						<form class="form-horizontal" role="form" action="Plats" method="post" accept-charset="UTF-8">
 							<div class="form-group">
 								<label for="Nom" class="col-sm-3 control-label">Nom du
 									plat</label>
 								<div class="col-sm-9">
-									<input type="text" id="Nom" name="nomPlat" placeholder="Nom"
-										class="form-control" autofocus style="width: 300px;">
+									<input type="text" step="0.01" id="Nom" name="nomPlat" placeholder="Nom"
+										class="form-control" autofocus style="width: 300px;" required>
 
 
 								</div>
@@ -170,15 +172,16 @@
 							<div class="form-group">
 								<label for="PrÃ©nom" class="col-sm-3 control-label">Prix</label>
 								<div class="col-sm-9">
-									<input type="number" id="Prix" name="Prix" placeholder="Nom"
-										class="form-control" autofocus style="width: 300px;">
+									<input type="number" step="0.01" id="Prix" name="Prix" placeholder="Prix"
+										class="form-control" autofocus style="width: 300px;" required>
+
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="PrÃ©nom" class="col-sm-3 control-label">Description</label>
 								<div class="col-sm-9">
 									<input type="text" id="Description" name="Description" placeholder="Description"
-										class="form-control" autofocus style="width: 300px;">
+										class="form-control" autofocus style="width: 300px;" required>
 
 
 								</div>
@@ -227,10 +230,10 @@
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	<script src="../../js/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
 
 </body>
 

@@ -40,49 +40,13 @@ public class ReservationDaoImpl implements ReservationDao {
 		}
 	}
 
-	public Reservation getReservation(int idUtilisateur) {
-		Reservation reservation = new Reservation();
-		TableDaoImpl tableDao = new TableDaoImpl();
-		HoraireDaoImpl horaireDao = new HoraireDaoImpl();
-		UtilisateurDaoImpl userDao = new UtilisateurDaoImpl();
-		try {
-			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM reservation WHERE idClient = ?");
-			stmt.setInt(1, idUtilisateur);
-			ResultSet resultSet = stmt.executeQuery();
-			while (resultSet.next()) {
-
-				reservation.setIdReservation(resultSet.getInt("idReservation"));
-
-				int iduser = resultSet.getInt("idClient");
-				if (iduser == 0) {
-					reservation.setUtilisateur(null);
-				} else {
-					reservation.setUtilisateur(userDao.getUnUtilisateur(resultSet.getInt("idClient")));
-				}
-
-				reservation.setTable(tableDao.getUneTable(resultSet.getInt("idTable")));
-				reservation.setHoraire(horaireDao.getUnHoraire(resultSet.getInt("idHoraire")));
-				reservation.setDate(resultSet.getDate("date").toString());
-				reservation.setNomReservation(resultSet.getString("NomReservation"));
-				reservation.setNbPersonne(resultSet.getInt("NbPersonne"));
-
-			}
-			connection.close();
-			return reservation;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public List<Reservation> listerReservation() {
 		List<Reservation> listereservation = new ArrayList<Reservation>();
 
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = (Statement) connection.createStatement();
-			ResultSet results = stmt.executeQuery("SELECT * FROM reservation ORDER BY Date");
+			ResultSet results = stmt.executeQuery("SELECT * FROM reservation");
 
 			while (results.next()) {
 				Reservation reservation = new Reservation();
@@ -101,7 +65,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
 				reservation.setTable(tableDao.getUneTable(results.getInt("idTable")));
 				reservation.setHoraire(horaireDao.getUnHoraire(results.getInt("idHoraire")));
-				reservation.setDate(results.getDate("date").toString());
+				reservation.setDate(results.getDate("Date").toString());
 				reservation.setNomReservation(results.getString("NomReservation"));
 				reservation.setNbPersonne(results.getInt("NbPersonne"));
 

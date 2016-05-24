@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" name="email" required="required" placeholder="Email" class="form-control" style="width:300px;" >
+                        <input type="email" id="Email" name="Email" required="required" placeholder="Email" class="form-control" style="width:300px;" >
                         <span class="erreur">${erreurs['mail']}</span> <br /> 
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                     <div class="col-sm-9 col-sm-offset-3">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox">j'accepte les <a href="#">terms</a>
+                                <input type="checkbox">j'accepte les <a href="#">termes</a>
                                 </label>
                                 <br/>
                                
@@ -173,7 +173,6 @@
             </div>
         </div>
 
-    </div>
     <!-- /.container -->
 
     <footer>

@@ -41,8 +41,25 @@ public class ReservationTestCase {
 		List<Reservation> lstreservation = reservationDao.listerReservation();
 		Assert.assertEquals(2, lstreservation.size());
 		Assert.assertEquals(1, lstreservation.get(0).getIdReservation());
-		Assert.assertEquals(0, lstreservation.get(1).getUtilisateur().getIdUtilisateur());
+		Assert.assertEquals(2, lstreservation.get(1).getUtilisateur().getIdUtilisateur());
 
+	}
+
+	@Test
+	public void testerSupprimerReservation() {
+		List<Reservation> lstreservation = reservationDao.listerReservation();
+		Assert.assertEquals(2, lstreservation.size());
+		Reservation res = new Reservation(null, tableDao.getUneTable(1), horaireDao.getUnHoraire(1), "2017-09-06", "gg",
+				5);
+		reservationDao.ajouterReservation(res);
+		List<Reservation> lstreservation1 = reservationDao.listerReservation();
+		Assert.assertEquals(3, lstreservation1.size());
+
+		Reservation resa = reservationDao.getReservationById(1);
+		reservationDao.deleteReservation(resa);
+
+		List<Reservation> lstreservation2 = reservationDao.listerReservation();
+		Assert.assertEquals(2, lstreservation2.size());
 	}
 
 	@Test
@@ -53,18 +70,25 @@ public class ReservationTestCase {
 		res.setTable(tableDao.getUneTable(1));
 		res.setUtilisateur(utilisateurDao.getUnUtilisateur(1));
 		res.setHoraire(horaireDao.getUnHoraire(1));
-
+		res.setNbPersonne(5);
 		reservationDao.ajouterReservation(res);
 
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		Statement stmt = connection.createStatement();
-		ResultSet resultSet = stmt.executeQuery("SELECT * FROM `reservation` WHERE `idReservation` = 3");
+		ResultSet resultSet = stmt.executeQuery("SELECT * FROM `reservation` WHERE `NomReservation` = 'gg'");
 		Assert.assertTrue(resultSet.next());
 		Assert.assertEquals(1, resultSet.getInt("idTable"));
 		Assert.assertEquals(1, resultSet.getInt("idHoraire"));
-		Assert.assertFalse(resultSet.next());
 		stmt.close();
 		connection.close();
 	}
 
+	@Test
+	public void testergetReservationById() {
+		Reservation res = reservationDao.getReservationById(2);
+		Assert.assertEquals(2, res.getNbPersonne());
+		Assert.assertEquals("gui", res.getNomReservation());
+		Assert.assertEquals("2016-10-10", res.getDate());
+
+	}
 }

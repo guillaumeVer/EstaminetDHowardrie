@@ -14,9 +14,8 @@ public class DataSourceProvider {
 			dataSource.setPort(3306);
 			dataSource.setDatabaseName("estaminet");
 			dataSource.setUser("root");
-			dataSource.setPassword("");
+			dataSource.setPassword("d1dyp5gr");
 		}
 		return dataSource;
 	}
-
 }

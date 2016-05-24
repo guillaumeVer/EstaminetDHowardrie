@@ -40,20 +40,14 @@
 </head>
 
 <body>
-	<div class="list-group">
-		<a
-			style="text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px;"
-			class="list-group-item disabled"> <strong>Bonjour
-				${user.nom}</strong>
-		</a>
-		<form method="post" action="Deconnexion">
-			<a
-				style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px;"
-				href="Deconnexion" class="list-group-item"> <strong> Se
-					deconnecter </strong></a>
-		</form>
+<div class="list-group">
+  <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
+  </a>
+  
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
 
-	</div>
+  
+</div>
 
 
 	<!-- <p style="font-size: 25px; text-align: right; margin-right: 10px; color: E6D3A8; ">  <a href="connexion.html"> Se connecter <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a> </p>
@@ -90,7 +84,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
 					<li><a href="Reservation">Reservation</a></li>
-					<li><a href="Connexion">Avis</a></li>
+					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
 					<li><a href="MonProfil">Mon Profil</a></li>
 				</ul>
@@ -220,10 +214,10 @@
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	<script src="../js/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 
 	<!-- Script to Activate the Carousel -->
 	<script>

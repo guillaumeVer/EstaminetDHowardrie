@@ -10,18 +10,25 @@ import java.util.List;
 
 import hei.projet.EstaminetDHowardries.dao.BoissonDao;
 import hei.projet.EstaminetDHowardries.entite.Boisson;
+import hei.projet.EstaminetDHowardries.manager.BoissonManager;
 
 public class BoissonDaoImpl implements BoissonDao {
+	
 	public void ajouterBoisson(Boisson boisson) {
+		if (boisson.getBoissonDuMois() == true) {
+			Boisson boisson2 = BoissonManager.getInstance().getBoissonDuMois();
+			boisson2.setBoissonDuMois(false);
+			BoissonManager.getInstance().modifierBoisson(boisson2);
+		}
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
-					"INSERT INTO `boisson`(`idBoisson`, `nomBoisson`, `descriptionBoisson`, `prix`, `alcoolise`, `boissonDuMoi`) VALUES (?,?,?,?,?,?)");
-			stmt.setString(2, boisson.getNomBoisson());
-			stmt.setString(3, boisson.getDescriptionBoisson());
-			stmt.setDouble(4, boisson.getPrix());
-			stmt.setBoolean(5, boisson.getAlcoolise());
-			stmt.setBoolean(6, boisson.getBoissonDuMois());
+					"INSERT INTO `boisson`(`nomBoisson`, `descriptionBoisson`, `prix`, `alcoolise`, `boissonDuMoi`) VALUES (?,?,?,?,?)");
+			stmt.setString(1, boisson.getNomBoisson());
+			stmt.setString(2, boisson.getDescriptionBoisson());
+			stmt.setDouble(3, boisson.getPrix());
+			stmt.setInt(4, 1);
+			stmt.setBoolean(5, boisson.getBoissonDuMois());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -29,6 +36,7 @@ public class BoissonDaoImpl implements BoissonDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public Boisson getBoissonDuMois() {
@@ -42,9 +50,8 @@ public class BoissonDaoImpl implements BoissonDao {
 				boisson.setIdBoisson(resultSet.getInt("idBoisson"));
 				boisson.setNomBoisson(resultSet.getString("nomBoisson"));
 				boisson.setDescriptionBoisson(resultSet.getString("descriptionBoisson"));
-				boisson.setPrix(resultSet.getDouble("prix"));
+				boisson.setPrix(resultSet.getFloat("prix"));
 				boisson.setBoissonDuMois(resultSet.getBoolean("boissonDuMoi"));
-				boisson.setAlcoolise(resultSet.getBoolean("alccolise"));
 			}
 			connection.close();
 			return boisson;
@@ -68,9 +75,8 @@ public class BoissonDaoImpl implements BoissonDao {
 				boisson.setIdBoisson(results.getInt("idBoisson"));
 				boisson.setNomBoisson(results.getString("nomBoisson"));
 				boisson.setDescriptionBoisson(results.getString("descriptionBoisson"));
-				boisson.setPrix(results.getDouble("prix"));
+				boisson.setPrix(results.getFloat("prix"));
 				boisson.setBoissonDuMois(results.getBoolean("boissonDuMoi"));
-				boisson.setAlcoolise(results.getBoolean("alccolise"));
 
 				listeBoisson.add(boisson);
 
@@ -80,6 +86,63 @@ public class BoissonDaoImpl implements BoissonDao {
 			e.printStackTrace();
 		}
 		return listeBoisson;
+	}
+
+	public void modifierBoisson(Boisson boisson) {
+		if(boisson.getBoissonDuMois()==null){
+			boisson.setBoissonDuMois(false);
+		}
+		if (boisson.getBoissonDuMois() == true) {
+			Boisson boisson2 = BoissonManager.getInstance().getBoissonDuMois();
+			boisson2.setBoissonDuMois(false);
+			BoissonManager.getInstance().modifierBoisson(boisson2);
+		}else{
+			boisson.setBoissonDuMois(false);
+		}
+
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement(
+					"UPDATE `boisson` SET `nomBoisson`=?,`descriptionBoisson`=?,`prix`=?,`alcoolise`=?,`boissonDuMoi`=? WHERE `idBoisson`=?");
+
+			stmt.setString(1, boisson.getNomBoisson());
+			stmt.setString(2, boisson.getDescriptionBoisson());
+			stmt.setDouble(3, boisson.getPrix());
+			stmt.setInt(4, 1);
+			stmt.setBoolean(5, boisson.getBoissonDuMois());
+			stmt.setInt(6, boisson.getIdBoisson());
+
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void passerEnBoissonDuMois(int idBoisson) {
+
+		Boisson boissonDuMois = BoissonManager.getInstance().getBoissonDuMois();
+
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("UPDATE `boisson` SET `boissonDuMoi`=? WHERE `idBoisson`=?");
+			stmt.setBoolean(1, false);
+			stmt.setInt(2, boissonDuMois.getIdBoisson());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("UPDATE `boisson` SET `boissonDuMoi`=? WHERE `idBoisson`=?");
+			stmt.setBoolean(1, true);
+			stmt.setInt(2, idBoisson);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void deleteBoisson(int idBoisson) {
@@ -95,4 +158,29 @@ public class BoissonDaoImpl implements BoissonDao {
 			e.printStackTrace();
 		}
 	}
+
+	public Boisson getBoisson(int idBoisson) {
+		Boisson boisson = new Boisson();
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM `boisson` WHERE idBoisson=?");
+			stmt.setInt(1, idBoisson);
+			
+			ResultSet resultSet = stmt.executeQuery();
+			while (resultSet.next()) {
+
+				boisson.setIdBoisson(resultSet.getInt("idBoisson"));
+				boisson.setNomBoisson(resultSet.getString("nomBoisson"));
+				boisson.setDescriptionBoisson(resultSet.getString("descriptionBoisson"));
+				boisson.setPrix(resultSet.getFloat("prix"));
+				boisson.setBoissonDuMois(resultSet.getBoolean("boissonDuMoi"));
+			}
+			connection.close();
+			return boisson;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

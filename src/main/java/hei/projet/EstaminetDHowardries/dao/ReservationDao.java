@@ -9,8 +9,6 @@ public interface ReservationDao {
 
 	public void ajouterReservation(Reservation reservation);
 
-	public Reservation getReservation(int idUtilisateur);
-
 	public List<Reservation> listerReservation();
 
 	public List<Reservation> listerReservationParClient(int idClient);

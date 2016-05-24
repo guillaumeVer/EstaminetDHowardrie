@@ -38,8 +38,8 @@ public class UtilisateurManager {
 		userDao.deleteUser(user);
 	}
 
-	public Utilisateur getAdministrateur() {
-		return userDao.getAdministrateur();
+	public Utilisateur getAdministrateur(String email) {
+		return userDao.getAdministrateur(email);
 	}
 
 	public Utilisateur updateUser(Utilisateur user) {
@@ -48,5 +48,13 @@ public class UtilisateurManager {
 
 	public Utilisateur updateAdministrateur(Utilisateur user) {
 		return userDao.updateAdministrateur(user);
+	}
+	
+	public Utilisateur getUnUtilisateurbyMail(String mail){
+		return userDao.getUnUtilisateurbyMail(mail);
+	}
+	
+	public void creatAdministrateur(Utilisateur utilisateur){
+		userDao.creatAdministrateur(utilisateur);
 	}
 }

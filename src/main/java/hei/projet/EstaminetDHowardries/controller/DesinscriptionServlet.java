@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
-import hei.projet.EstaminetDHowardries.utils.SendTextMessage;
+import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/prive/Desinscription")
 public class DesinscriptionServlet extends HttpServlet {
@@ -25,15 +25,12 @@ public class DesinscriptionServlet extends HttpServlet {
 
 		UtilisateurManager.getInstance().deleteUser(user);
 
-		String message = "Votre compte à bien été supprimé.";
+		SendMail mailEnvoie = new SendMail();
 
-		SendTextMessage envoyeurDeMail = new SendTextMessage();
-		try {
-			envoyeurDeMail.envoyer_email("smtp.gmail.com", "465","estaminet.howardries.resto@gmail.com",
-					user.getMail(), "Confirmation de désinscription", message);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
+				+ "Votre compte a bien &eacute;t&eacute; supprim&eacute;. " + "Nous &eacute;sperons vous revoir bient&ocirc;t";
+
+		mailEnvoie.start(user.getMail(), "[Estaminet d'Howardries] - Suppression de compte", message);
 
 		resp.sendRedirect("Deconnexion");
 	}

@@ -46,17 +46,14 @@
 </head>
 
 <body>
-	<div class="list-group">
-		<a
-			style="text-align: center; opacity: 0.9; position: absolute; right: 50px; width: 150px;"
-			class="list-group-item disabled"> <strong>Bonjour
-				${user.nom}</strong>
-		</a> <a
-			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 62px; width: 150px;"
-			href="Deconnexion" class="list-group-item"> <strong> Se
-				Deconnecter </strong></a>
+<div class="list-group">
+  <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
+  </a>
+  
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
 
-	</div>
+  
+</div>
 	<div class="brand">
 		<a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a>
 	</div>
@@ -82,9 +79,9 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
 					<li><a href="Reservation">Reservation</a></li>
-					<li><a href="Connexion">Avis</a></li>
+					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
-					<li><a href="MonProfil">Mon Profil</a></li>
+					<li><a href="PagePerso">Contact</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -114,24 +111,24 @@
 					<map name="image-maps-2016-05-02-104002"
 						id="ImageMapsCom-image-maps-2016-05-02-104002">
 						<area id="T1" alt="" title="T1: 4 personnes "
-							href="http://www.image-maps.com/" shape="rect"
+							 shape="rect"
 							coords="317,264,388,333" style="outline: none;" target="_self" />
-						<area id="T2" alt="" title="T2" href="http://www.image-maps.com/"
+						<area id="T2" alt="" title="T2" 
 							shape="rect" coords="228,265,305,334" style="outline: none;"
 							target="_self" />
-						<area id="T3" alt="" title="T3" href="http://www.image-maps.com/"
+						<area id="T3" alt="" title="T3" 
 							shape="rect" coords="140,265,214,334" style="outline: none;"
 							target="_self" />
-						<area id="T4" alt="" title="T4" href="http://www.image-maps.com/"
+						<area id="T4" alt="" title="T4" 
 							shape="rect" coords="50,265,133,342" style="outline: none;"
 							target="_self" />
-						<area id="T5" alt="" title="T5" href="http://www.image-maps.com/"
+						<area id="T5" alt="" title="T5" 
 							shape="rect" coords="223,166,319,248" style="outline: none;"
 							target="_self" />
-						<area id="T6" alt="" title="T6" href="http://www.image-maps.com/"
+						<area id="T6" alt="" title="T6" 
 							shape="rect" coords="22,101,153,177" style="outline: none;"
 							target="_self" />
-						<area id="T7" alt="" title="T7" href="http://www.image-maps.com/"
+						<area id="T7" alt="" title="T7" 
 							shape="rect" coords="27,189,169,261" style="outline: none;"
 							target="_self" />
 						<area shape="rect" coords="408,356,410,358" alt="Image Map"
@@ -158,6 +155,11 @@
 						</h2>
 						<hr>
 						<div class="container">
+							<p style="font-size: 12px;">
+								<a href="Connexion"> <span class="glyphicon glyphicon-off"
+									aria-hidden="true"></span> Se connecter
+								</a>
+							</p>
 
 
 
@@ -218,7 +220,7 @@
 							<div class="col-sm-9 col-sm-offset-3">
 								<button type="submit" class="btn btn-primary btn-block"
 									style="width: 300px;">Terminer ma Reservation</button>
-								</a>
+								
 							</div>
 						</div>
 					</form>
@@ -245,9 +247,8 @@
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery.js">
+	<script src="../js/jquery.js">
 		jQuery(function($) {
-
 			var settings = {
 				thumbListId : "thumbs",
 				imgViewerId : "viewer",
@@ -256,7 +257,6 @@
 				loaderTitle : "Chargement en cours",
 				loaderImage : "images/loader.gif"
 			};
-
 			var thumbLinks = $("#" + settings.thumbListId).find("a"), firstThumbLink = thumbLinks
 					.eq(0), highlight = function(elt) {
 				thumbLinks.removeClass(settings.activeClass)
@@ -268,9 +268,7 @@
 				title : settings.loaderTitle,
 				src : settings.loaderImage
 			});
-
 			highlight(firstThumbLink);
-
 			$("#" + settings.thumbListId).after(
 					$(document.createElement("p")).attr("id",
 							settings.imgViewerId).append(
@@ -278,10 +276,8 @@
 								alt : "",
 								src : firstThumbLink.attr("href")
 							})));
-
 			var imgViewer = $("#" + settings.imgViewerId), bigPic = imgViewer
 					.children("img");
-
 			thumbLinks.click(function(e) {
 				e.preventDefault();
 				var $this = $(this), target = $this.attr("href");
@@ -293,12 +289,11 @@
 					imgViewer.html($(this).fadeIn(250));
 				}).attr("src", target);
 			});
-
 		});
 	</script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 
 </body>
 

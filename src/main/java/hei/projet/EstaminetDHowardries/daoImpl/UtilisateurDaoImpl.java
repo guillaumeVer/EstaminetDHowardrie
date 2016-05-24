@@ -34,6 +34,26 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	}
 
+	// Creation d'un administrateur
+	public void creatAdministrateur(Utilisateur utilisateur) {
+
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement(
+					"INSERT INTO utilisateur(Nom, Prenom, Mail,password,`Administrateur`) VALUES (?,?,?,?,1)");
+
+			stmt.setString(1, utilisateur.getNom());
+			stmt.setString(2, utilisateur.getPrenom());
+			stmt.setString(3, utilisateur.getMail());
+			stmt.setString(4, utilisateur.getPassword());
+			stmt.executeUpdate();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	// Listage des utilisateur autre que administrateur
 	public List<Utilisateur> listerUtilisateur() {
 		List<Utilisateur> listeUtilisateur = new ArrayList<Utilisateur>();
@@ -107,6 +127,31 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		return user;
 	}
 
+	public Utilisateur getUnUtilisateurbyMail(String email) {
+		Utilisateur user = new Utilisateur();
+		try {
+			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement(
+					"SELECT `IdUtilisateur`, `Nom`, `Prenom`, `password`, `Mail` FROM `utilisateur` WHERE `Mail`=?");
+
+			stmt.setString(1, email);
+			ResultSet results = stmt.executeQuery();
+
+			while (results.next()) {
+				user.setIdUtilisateur(results.getInt("IdUtilisateur"));
+				user.setNom(results.getString("Nom"));
+				user.setPrenom(results.getString("Prenom"));
+				user.setMail(results.getString("Mail"));
+				user.setPassword(results.getString("password"));
+
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
 	// suppression d'un utilisateur
 	public void deleteUser(Utilisateur user) {
 
@@ -124,13 +169,14 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	}
 
 	// recuperation de l'administrateur
-	public Utilisateur getAdministrateur() {
+	public Utilisateur getAdministrateur(String email) {
 		Utilisateur user = new Utilisateur();
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
-			Statement stmt = (Statement) connection.createStatement();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM `utilisateur` WHERE Administrateur && Mail=?");
 
-			ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur` WHERE Administrateur");
+			stmt.setString(1, email);
+			ResultSet results = stmt.executeQuery();
 
 			while (results.next()) {
 				user.setIdUtilisateur(results.getInt("IdUtilisateur"));

@@ -110,7 +110,7 @@
 					
 						Email: <strong><a
 							href="estaminet.howardries.resto@gmail.com">estaminet.howardries.resto@gmail.com</a></strong>
-					</p>
+				
 					<p>
 						Addresse: <strong>119 rue Prevost <br>59226 Rumegies
 						</strong>

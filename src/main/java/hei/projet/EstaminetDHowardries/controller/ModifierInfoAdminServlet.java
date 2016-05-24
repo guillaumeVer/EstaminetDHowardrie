@@ -28,6 +28,8 @@ public class ModifierInfoAdminServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
 		// recuperation de l'admin en session
 		Utilisateur adminModifier = new Utilisateur();
 		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
