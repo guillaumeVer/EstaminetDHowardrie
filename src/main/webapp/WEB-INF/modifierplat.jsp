@@ -82,7 +82,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Plats">Les Plats</a></li>
 					<li><a href="Boissons">Les Boissons</a></li>
-					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+					<li><a href="AcceuilAdministrateur">Réservation</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -134,15 +134,7 @@
 
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="PrÃ©nom" class="col-sm-3 control-label">Plat Du Jour</label>
-								<div class="col-sm-9">
-									<input type="checkBox" id="PlatDuJour" name="PlatDuJour" value=${plat.platDuJour} placeholder="Description"
-										class="form-control" autofocus style="width: 300px;">
-
-
-								</div>
-							</div>
+						
 							<!-- /.form-group -->
 
 							<div class="form-group">

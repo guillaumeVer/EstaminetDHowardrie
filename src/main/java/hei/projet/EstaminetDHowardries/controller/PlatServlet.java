@@ -47,13 +47,6 @@ public class PlatServlet extends HttpServlet {
 		String description = req.getParameter("Description");
 		plat.setDescriptionPlat(description);
 		
-		String platDuJour = req.getParameter("PlatDuJour");
-		
-		if(platDuJour==null){
-			plat.setPlatDuJour(false);
-		}else{
-			plat.setPlatDuJour(true);
-		}
 		
 
 		PlatManager.getInstance().ajouterPlat(plat);

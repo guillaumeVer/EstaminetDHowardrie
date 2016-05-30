@@ -15,11 +15,7 @@ import hei.projet.EstaminetDHowardries.manager.PlatManager;
 public class PlatDaoImpl implements PlatDao {
 
 	public void ajouterPlat(Plat plat) {
-		if (plat.getPlatDuJour() == true) {
-			Plat plat2 = PlatManager.getInstance().getPlatDuJour();
-			plat2.setPlatDuJour(false);
-			PlatManager.getInstance().modifierPlat(plat2);
-		}
+		
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
@@ -27,7 +23,7 @@ public class PlatDaoImpl implements PlatDao {
 			stmt.setString(1, plat.getNomPlat());
 			stmt.setString(2, plat.getDescriptionPlat());
 			stmt.setFloat(3, plat.getPrixPlat());
-			stmt.setBoolean(4, plat.getPlatDuJour());
+			stmt.setBoolean(4, false);
 			stmt.executeUpdate();
 
 			stmt.close();
@@ -143,8 +139,8 @@ public class PlatDaoImpl implements PlatDao {
 			stmt.setInt(5, plat.getIdPlat());
 			stmt.setString(1, plat.getNomPlat());
 			stmt.setString(2, plat.getDescriptionPlat());
-			stmt.setBoolean(3, plat.getPlatDuJour());
-			stmt.setFloat(4, plat.getPrixPlat());
+			stmt.setBoolean(4, plat.getPlatDuJour());
+			stmt.setFloat(3, plat.getPrixPlat());
 
 			stmt.executeUpdate();
 		} catch (SQLException e) {

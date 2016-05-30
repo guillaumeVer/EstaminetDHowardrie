@@ -1,6 +1,7 @@
 package hei.projet.EstaminetDHowardries.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +24,11 @@ public class ReservationAdministrateurReussi extends HttpServlet {
 		req.setAttribute("admin", admin);
 		
 		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
+		if(reservation==null){
+			resp.sendRedirect("ReservationAdministrateur");
+		}else{
+		reservation.setDate(new Date(reservation.getDate().getTime()));
+			
 		req.setAttribute("reservation", reservation);
 		req.setAttribute("table", reservation.getTable());
 		req.setAttribute("horaire", reservation.getHoraire());
@@ -30,7 +36,7 @@ public class ReservationAdministrateurReussi extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationReussiAdministrateur.jsp");
 		view.forward(req, resp);
 	}
-
+	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			}

@@ -46,7 +46,7 @@ public class UtilisateurDaoTestCase {
 	public void testercreatUtilisateur(){
 		List<Utilisateur> lstuser0 = utilisateurDao.listerUtilisateur();
 		Assert.assertEquals(1, lstuser0.size());
-		Utilisateur user = new Utilisateur("nom1","prenom1", "mail@hei.fr", "password");
+		Utilisateur user = new Utilisateur(null, "nom1","prenom1", "mail@hei.fr", "password");
 		utilisateurDao.creatUtilisateur(user);
 		List<Utilisateur> lstuser = utilisateurDao.listerUtilisateur();
 		Assert.assertEquals(2, lstuser.size());
@@ -54,7 +54,7 @@ public class UtilisateurDaoTestCase {
 	
 	@Test
 	public void testerdeleteUser(){
-		Utilisateur user = new Utilisateur("nom1","prenom1", "mail@hei.fr", "password");
+		Utilisateur user = new Utilisateur(null,"nom1","prenom1", "mail@hei.fr", "password");
 		utilisateurDao.creatUtilisateur(user);
 		List<Utilisateur> lstuser = utilisateurDao.listerUtilisateur();
 		Assert.assertEquals(2, lstuser.size());
@@ -66,7 +66,7 @@ public class UtilisateurDaoTestCase {
 	
 	@Test
 	public void testerUpdateUser(){
-		Utilisateur user = new Utilisateur("nom1","prenom1", "mail@hei.fr", "password");
+		Utilisateur user = new Utilisateur(null,"nom1","prenom1", "mail@hei.fr", "password");
 		utilisateurDao.creatUtilisateur(user);
 		Utilisateur utilisateur = utilisateurDao.getUnUtilisateurbyNom("nom1");
 		Assert.assertEquals("prenom1",utilisateur.getPrenom());

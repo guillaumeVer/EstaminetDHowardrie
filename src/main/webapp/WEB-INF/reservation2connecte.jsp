@@ -78,10 +78,10 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
-					<li><a href="Reservation">Reservation</a></li>
+					<li><a href="Reservation">Réservation</a></li>
 					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
-					<li><a href="PagePerso">Contact</a></li>
+					<li><a href="PagePerso">Mon Profil</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -151,7 +151,7 @@
 					<form method="post" action="Reservation2" class="form-horizontal"
 						role="form">
 						<h2 class="intro-text text-center">
-							Votre <strong>Reservation</strong>
+							Votre <strong>Réservation</strong>
 						</h2>
 						<hr>
 						<div class="container">

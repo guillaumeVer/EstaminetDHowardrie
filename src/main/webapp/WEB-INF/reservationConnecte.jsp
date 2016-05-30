@@ -29,17 +29,17 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
 	rel="stylesheet" type="text/css">
-
+	
+ <link href="../css/jq/jquery-ui.css" rel="stylesheet">
+ <script src="../js/jquery-ui.js" type="text/javascript"></script>
+ 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
-	type="text/javascript"></script>
-<script src="../gallery.js" type="text/javascript"></script>
+
 
 </head>
 
@@ -48,7 +48,7 @@
   <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
   </a>
   
-  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
+  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se déconnecter </strong></a>
 
   
 </div>
@@ -76,7 +76,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
-					<li><a href="Reservation">Reservation</a></li>
+					<li><a href="Reservation">Réservation</a></li>
 					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
 					<li><a href="MonProfil">Mon Profil</a></li>
@@ -104,8 +104,8 @@
 								<th>Date</th>
 								<th>Table</th>
 								<th>Horaire</th>
-								<th>Nombre De Personne</th>
-								<th>Supprimer Reservation</th>
+								<th>Nombre De Personnes</th>
+								<th>Supprimer Réservation</th>
 							</tr>
 						</thead>
 
@@ -119,7 +119,7 @@
 									<td>${Reservation.nbPersonne}</td>
 									<td><a
 										href="SupprimerReservation?idReservation=${Reservation.idReservation}"><span
-											class="glyphicon glyphicon-trash" aria-hidden="true" onclick="return confirm('Etes vous sur de vuloir annuler votre réservation?')" ></span></a></td>
+											class="glyphicon glyphicon-trash" aria-hidden="true" onclick="return confirm('Etes vous sur de vouloir annuler votre réservation?')" ></span></a></td>
 								</tr>
 							</c:forEach>
 
@@ -140,24 +140,14 @@
 		<div class="box">
 			<div class="col-lg-12">
 				<h2 class="intro-text text-center">
-					Votre <strong>Reservation</strong>
+					Votre <strong>Réservation</strong>
 				</h2>
 				<hr>
 				<div class="container">
-					<p style="font-size: 12px;">
-						<a href="Connexion"> <span class="glyphicon glyphicon-off"
-							aria-hidden="true"></span> Se connecter
-						</a>
-					</p>
-
-
-
 					
-
-
 						<div class="form-group">
 							<label for="Nom" class="col-sm-3 control-label">Nom de
-								Reservation</label>
+								Réservation</label>
 							<div class="col-sm-9">
 								<input type="text" id="Nom" name="Nom" value=${user.nom
 									} required="required" placeholder="Nom" class="form-control"
@@ -178,17 +168,31 @@
 
 
 						<div class="form-group">
-							<label for="birthDate" class="col-sm-3 control-label">Date
-								de la reservation</label>
-							<div class="col-sm-9">
-								<input type="date" name="bookDate" id="bookDate"
-									class="form-control" style="width: 300px;">
-							</div>
-						</div>
+								<label for="birthDate" class="col-sm-3 control-label">Date
+									de la reservation</label>
+							<div class="col-sm-9">	
+                     <input type="date" name="bookDate" required id="date" value="" class="col-sm-3 control-label"  autofocus  style="width:300px;" />
+                       </div>
+                </div>
+               
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script>
+   (function() {
+      var elem = document.createElement('input');
+      elem.setAttribute('type', 'date');
+ 
+      if ( elem.type === 'text' ) {
+         $('#date').datepicker(); 
+      }
+   })();
+ 
+</script>
+						
 						<div class="form-group">
 							<label for="country" class="col-sm-3 control-label">Nombre
-								de personne</label>
+								de personnes</label>
 							<div class="col-sm-9">
 								<select id="nbPersonne" name="nbPersonne" class="form-control"
 									style="width: 300px;">
@@ -197,10 +201,6 @@
 									<option>2</option>
 									<option>3</option>
 									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-									<option>7</option>
-									<option>8</option>
 
 								</select>
 
@@ -213,7 +213,7 @@
 							<label for="country" class="col-sm-3 control-label">Heure
 								de réservation</label>
 							<div class="col-sm-9">
-								<select id="horaire" name="horaire" class="form-control"
+								<select id="horaire" required name="horaire" class="form-control"
 									style="width: 300px;">
 
 									<c:forEach var="horaire" items="${listedHoraires}">
@@ -225,9 +225,6 @@
 							</div>
 						</div>
 						
-
-							</div>
-						</div>
 
 
 
@@ -266,14 +263,17 @@
 							</div>
 						
 						</div>
-					
+							</div>
+						
+						
+					</div>
 					<!-- /form -->
 				</div>
 					
 				<!-- ./container -->
 				<hr>
-
-			</div>
+</div>
+			
 </form>
 	<!-- /.container -->
 

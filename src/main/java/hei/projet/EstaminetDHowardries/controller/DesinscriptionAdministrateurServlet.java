@@ -28,8 +28,8 @@ public class DesinscriptionAdministrateurServlet extends HttpServlet {
 		SendMail mailEnvoie = new SendMail();
 
 		String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
-				+ "Votre compte a bien été supprimé "
-				+"Nous ésperons vous revoir bientôt";
+				+ "Votre compte a bien &eacute;t&eacute; supprim&eacute; "
+				+"Nous &eacute;sperons vous revoir bient&ocirc;t";
 				
 				
 

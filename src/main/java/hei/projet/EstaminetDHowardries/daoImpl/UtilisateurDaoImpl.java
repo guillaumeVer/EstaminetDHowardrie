@@ -64,8 +64,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 			ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur` WHERE NOT Administrateur");
 			while (results.next()) {
-				Utilisateur user = new Utilisateur(results.getString("Nom"), results.getString("Prenom"),
-						results.getString("Mail"), results.getString("password"));
+				Utilisateur user = new Utilisateur(results.getInt("idUtilisateur"), results.getString("Nom"),
+						results.getString("Prenom"), results.getString("Mail"), results.getString("password"));
 				user.setIdUtilisateur(results.getInt("IdUtilisateur"));
 
 				listeUtilisateur.add(user);
@@ -80,30 +80,30 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	// recuperation d'un utilisateur par l'id
 	public Utilisateur getUnUtilisateur(int idUtilisateur) {
-		Utilisateur user = new Utilisateur();
+
 		try {
-			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
-			Statement stmt = (Statement) connection.createStatement();
+			Connection connection = DataSourceProvider.getDataSource().getConnection();
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM `utilisateur` WHERE idUtilisateur = ?");
+			stmt.setInt(1, idUtilisateur);
 
-			ResultSet results = stmt.executeQuery("SELECT * FROM `utilisateur` WHERE idUtilisateur =" + idUtilisateur);
+			ResultSet results = stmt.executeQuery();
 
-			while (results.next()) {
-				user.setIdUtilisateur(idUtilisateur);
-				user.setNom(results.getString("Nom"));
-				user.setPrenom(results.getString("Prenom"));
-				user.setMail(results.getString("Mail"));
-				user.setPassword(results.getString("Password"));
+			if (results.next()) {
+
+				Utilisateur user = new Utilisateur(idUtilisateur, results.getString("Nom"), results.getString("Prenom"),
+						results.getString("Mail"), results.getString("Password"));
+
+				return user;
 			}
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
+		return null;
 	}
 
 	// recuperation d'un utilisateur pas son son nom
 	public Utilisateur getUnUtilisateurbyNom(String nom) {
-		Utilisateur user = new Utilisateur();
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
@@ -112,23 +112,21 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 			stmt.setString(1, nom);
 			ResultSet results = stmt.executeQuery();
 
-			while (results.next()) {
-				user.setIdUtilisateur(results.getInt("IdUtilisateur"));
-				user.setNom(results.getString("Nom"));
-				user.setPrenom(results.getString("Prenom"));
-				user.setMail(results.getString("Mail"));
-				user.setPassword(results.getString("password"));
+			if (results.next()) {
 
+				Utilisateur user = new Utilisateur(results.getInt("idUtilisateur"), results.getString("Nom"),
+						results.getString("Prenom"), results.getString("Mail"), results.getString("Password"));
+
+				return user;
 			}
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
+		return null;
 	}
 
 	public Utilisateur getUnUtilisateurbyMail(String email) {
-		Utilisateur user = new Utilisateur();
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
@@ -137,19 +135,18 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 			stmt.setString(1, email);
 			ResultSet results = stmt.executeQuery();
 
-			while (results.next()) {
-				user.setIdUtilisateur(results.getInt("IdUtilisateur"));
-				user.setNom(results.getString("Nom"));
-				user.setPrenom(results.getString("Prenom"));
-				user.setMail(results.getString("Mail"));
-				user.setPassword(results.getString("password"));
+			if (results.next()) {
 
+				Utilisateur user = new Utilisateur(results.getInt("idUtilisateur"), results.getString("Nom"),
+						results.getString("Prenom"), results.getString("Mail"), results.getString("Password"));
+
+				return user;
 			}
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
+		return null;
 	}
 
 	// suppression d'un utilisateur
@@ -170,32 +167,30 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	// recuperation de l'administrateur
 	public Utilisateur getAdministrateur(String email) {
-		Utilisateur user = new Utilisateur();
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM `utilisateur` WHERE Administrateur && Mail=?");
+			PreparedStatement stmt = connection
+					.prepareStatement("SELECT * FROM `utilisateur` WHERE Administrateur && Mail=?");
 
 			stmt.setString(1, email);
 			ResultSet results = stmt.executeQuery();
 
-			while (results.next()) {
-				user.setIdUtilisateur(results.getInt("IdUtilisateur"));
-				user.setNom(results.getString("Nom"));
-				user.setPrenom(results.getString("Prenom"));
-				user.setMail(results.getString("Mail"));
-				user.setPassword(results.getString("Password"));
+			if (results.next()) {
 
+				Utilisateur user = new Utilisateur(results.getInt("idUtilisateur"), results.getString("Nom"),
+						results.getString("Prenom"), results.getString("Mail"), results.getString("Password"));
+
+				return user;
 			}
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user;
+		return null;
 	}
 
 	// Modification de l'utilisateur
 	public Utilisateur updateUser(Utilisateur user) {
-		Utilisateur newuser = new Utilisateur();
 
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
@@ -211,18 +206,18 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 			stmt.setInt(7, user.getIdUtilisateur());
 			stmt.executeUpdate();
 
-			newuser = UtilisateurManager.getInstance().getUnUtilisateur(user.getIdUtilisateur());
-
+			Utilisateur newuser = UtilisateurManager.getInstance().getUnUtilisateur(user.getIdUtilisateur());
 			connection.close();
+			return newuser;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return newuser;
+		return null;
 	}
 
 	// modification administrateur
 	public Utilisateur updateAdministrateur(Utilisateur user) {
-		Utilisateur newuser = new Utilisateur();
 
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
@@ -238,13 +233,15 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 			stmt.setInt(7, user.getIdUtilisateur());
 			stmt.executeUpdate();
 
-			newuser = UtilisateurManager.getInstance().getUnUtilisateur(user.getIdUtilisateur());
-
+			Utilisateur newuser = UtilisateurManager.getInstance().getUnUtilisateur(user.getIdUtilisateur());
 			connection.close();
+			return newuser;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return newuser;
+
+		return null;
 	}
 
 }

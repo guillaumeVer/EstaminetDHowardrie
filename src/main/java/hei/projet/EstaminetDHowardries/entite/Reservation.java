@@ -1,26 +1,28 @@
 package hei.projet.EstaminetDHowardries.entite;
 
+import java.util.Date;
+
 public class Reservation {
 
 	private int idReservation;
 	private Utilisateur utilisateur;
 	private Table table;
 	private Horaire horaire;
-	private String date;
+	private Date date;
 	private String nomReservation;
 	private int nbPersonne;
 
-	public Reservation(Utilisateur utilisateur, Table table, Horaire horaire, String date, String nomReservation,
+	public Reservation(Utilisateur utilisateur, Table table, Horaire horaire, Date date_compte, String nomReservation,
 			int nbPersonne) {
 		this.utilisateur = utilisateur;
 		this.table = table;
 		this.horaire = horaire;
-		this.date = date;
+		this.date = date_compte;
 		this.nomReservation = nomReservation;
 		this.nbPersonne = nbPersonne;
 	}
 
-	public Reservation(Table table, Horaire horaire, String date, String nomReservation) {
+	public Reservation(Table table, Horaire horaire, Date date, String nomReservation) {
 		this.table = table;
 		this.horaire = horaire;
 		this.date = date;
@@ -62,11 +64,11 @@ public class Reservation {
 		this.horaire = horaire;
 	}
 
-	public String getDate() {
-		return date;
+	public Date getDate() {
+		return  date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

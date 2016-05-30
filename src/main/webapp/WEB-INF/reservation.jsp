@@ -27,13 +27,16 @@
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link href="css/jq/jquery-ui.css" rel="stylesheet">
+    
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+    
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
 <script src="gallery.js" type="text/javascript"></script>
 
@@ -72,7 +75,7 @@
                         <a href="Index">Le Menu</a>
                     </li>
                     <li>
-                        <a href="Reservation">Reservation</a>
+                        <a href="Reservation">Réservation</a>
                     </li>
                     <li>
                         <a href="Connexion">Avis</a>
@@ -96,7 +99,7 @@
             <div class="box">
                 <div class="col-lg-12">
                     <h2 class="intro-text text-center">Votre
-                        <strong>Reservation</strong>
+                        <strong>Réservation</strong>
                     </h2>
                     <hr>
                    <div class="container">
@@ -126,7 +129,9 @@
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
                         <input type="email" id="email" name="email" placeholder="Email" class="form-control" style="width:300px;" >
+                          <span class="erreur">${erreurs}</span> <br />
                     </div>
+                  
                 </div>
                     <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
@@ -143,14 +148,30 @@
 
                
                 <div class="form-group">
-                    <label for="birthDate" class="col-sm-3 control-label">Date de la reservation</label>
+                    <label for="birthDate" class="col-sm-3 control-label">Date de la réservation</label>
                     <div class="col-sm-9">
-                        <input type="date" id="bookDate" name="bookDate" class="form-control" style="width:300px;">
-                    </div>
+                     <input type="date" name="bookDate" required id="date" value="" class="col-sm-3 control-label"  autofocus  style="width:300px;" />
+ 
+                        </div>
                 </div>
+               
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script>
+   (function() {
+      var elem = document.createElement('input');
+      elem.setAttribute('type', 'date');
+ 
+      if ( elem.type === 'text' ) {
+         $('#date').datepicker(); 
+      }
+   })();
+ 
+</script>
 
                    <div class="form-group">
-                    <label for="country" class="col-sm-3 control-label">Nombre de personne</label>
+                    <label for="country" class="col-sm-3 control-label">Nombre de personnes</label>
                     <div class="col-sm-9">
                         <select id="nb" name="nb" class="form-control" style="width:300px;">
                            
@@ -158,10 +179,6 @@
 <option>2</option>
 <option>3</option>
 <option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
 
 </select>
 
@@ -173,7 +190,7 @@
                 <div class="form-group">
                 	<label for="country" class="col-sm-3 control-label">Horaire</label>
                 	 <div class="col-sm-9">
-              			 <select id="horaire" name="horaire" class="form-control" style="width:300px;">
+              			 <select id="horaire" required name="horaire" class="form-control" style="width:300px;">
                         
 							<c:forEach var="horaire" items="${listedHoraires}">
 									<option value="${horaire.idHoraire}">${horaire.intervalle}</option>

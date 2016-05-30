@@ -68,7 +68,7 @@
                         <a href="Index">Le Menu</a>
                     </li>
                     <li>
-                        <a href="Reservation">Reservation</a>
+                        <a href="Reservation">Réservation</a>
                     </li>
                     <li>
                         <a href="Connexion">Avis</a>
@@ -90,15 +90,15 @@
             <div class="box">
                 <div class="col-lg-12">
                   <h2 class="intro-text text-center">Votre
-                        <strong>Reservation</strong>
+                        <strong>Réservation</strong>
                     </h2>
                     <hr>
                    <div class="container">
     	               <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Votre réservation a bien été prise en compte </strong></div>
-    	               <div><strong>Un mail vous a été envoyé avec votre mot de passe qui vous permettra d'accéder à votre profil.</strong></div>
-    				<div><strong>Nom de Reservation : </strong><strong>${reservation.nomReservation}</strong></div>
+    	               <div><strong>${mail}</strong></div>
+    				<div><strong>Nom de Réservation : </strong><strong>${reservation.nomReservation}</strong></div>
                    <div><strong>Date : </strong><strong>${reservation.date}</strong></div>
-                   <div><strong>Nombre de Personne : </strong><strong>${reservation.nbPersonne}</strong></div>
+                   <div><strong>Nombre de Personnes : </strong><strong>${reservation.nbPersonne}</strong></div>
                    <div><strong>Table : </strong><strong>${table.nomTable}</strong></div>
               		<div><strong>Horaire : </strong><strong>${horaire.intervalle}</strong></div>
     </div>

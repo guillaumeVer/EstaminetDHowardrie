@@ -82,7 +82,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Plats">Les Plats</a></li>
 					<li><a href="Boissons">Les Boissons</a></li>
-					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+					<li><a href="AcceuilAdministrateur">Réservation</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -194,14 +194,7 @@
 
 							
 
-							<div class="form-group">
-								<label for="PrÃ©nom" class="col-sm-3 control-label">Boisson Du Mois</label>
-								<div class="col-sm-9">
-									<input type="checkBox" id="BoissonDuMois" name="BoissonDuMois" placeholder="Description"
-										class="form-control" autofocus style="width: 300px;">
-
-								</div>
-							</div>
+						
 							
 							
 
@@ -214,8 +207,7 @@
 								<div class="col-sm-9 col-sm-offset-3">
 									<button type="submit" class="btn btn-primary btn-block"
 										style="width: 150px;">Ajouter</button>
-									<button type="submit" class="btn btn-primary btn-block"
-										style="width: 150px;">Annuler</button>
+								
 								</div>
 							</div>
 						</form>

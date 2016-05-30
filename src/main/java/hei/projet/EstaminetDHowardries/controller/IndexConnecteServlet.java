@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hei.projet.EstaminetDHowardries.entite.Boisson;
+import hei.projet.EstaminetDHowardries.entite.Plat;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
+import hei.projet.EstaminetDHowardries.manager.BoissonManager;
+import hei.projet.EstaminetDHowardries.manager.PlatManager;
 
 @WebServlet("/prive/Index")
 public class IndexConnecteServlet extends HttpServlet {
@@ -21,6 +25,12 @@ public class IndexConnecteServlet extends HttpServlet {
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 		req.setAttribute("user", user);
 
+		Plat platDuJour = PlatManager.getInstance().getPlatDuJour();
+		req.setAttribute("platDuJour",platDuJour);
+		
+		Boisson boissonDuMois = BoissonManager.getInstance().getBoissonDuMois();
+		req.setAttribute("boissonDuMois", boissonDuMois);
+		
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/indexConnecte.jsp");
 		view.forward(req, resp);
 	}

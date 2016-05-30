@@ -72,7 +72,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
-					<li><a href="Reservation">Reservation</a></li>
+					<li><a href="Reservation">Réservation</a></li>
 					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
 					<li><a href="MonProfil">Mon Profil</a></li>
@@ -95,6 +95,7 @@
 					<h2 class="intro-text text-center">
 						<strong>Modifier votre profil</strong>
 					</h2>
+					 <p class="bg-danger">${erreurs}</p> <br />
 					<hr>
 				</div>
 				<div></div>
@@ -145,7 +146,7 @@
 									mot de passe</label>
 								<div class="col-sm-9">
 									<input type="password" id="olspassword" name="oldpassword"
-										placeholder="Mot de passe" class="form-control"
+										placeholder="Mot de passe" required="required" class="form-control"
 										style="width: 300px;">
 								</div>
 							</div>
@@ -154,7 +155,7 @@
 									mot de passe</label>
 								<div class="col-sm-9">
 									<input type="password" id="newmp1" name="newmp1"
-										placeholder="Mot de passe" class="form-control"
+										placeholder="Mot de passe" required="required" class="form-control"
 										style="width: 300px;">
 								</div>
 							</div>
@@ -163,7 +164,7 @@
 									mot de passe</label>
 								<div class="col-sm-9">
 									<input type="password" id="newmp2" name="newmp2"
-										placeholder="Mot de passe" class="form-control"
+										placeholder="Mot de passe" required="required" class="form-control"
 										style="width: 300px;">
 								</div>
 							</div>

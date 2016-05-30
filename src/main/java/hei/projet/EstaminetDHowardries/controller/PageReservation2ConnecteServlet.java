@@ -18,7 +18,7 @@ import hei.projet.EstaminetDHowardries.manager.TableManager;
 import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/prive/Reservation2")
-public class PageResevation2ConnecteServlet extends HttpServlet {
+public class PageReservation2ConnecteServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,9 @@ public class PageResevation2ConnecteServlet extends HttpServlet {
 		req.setAttribute("user", user);
 
 		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
-
+		if(reservation==null){
+			resp.sendRedirect("ReservationConnecte");
+		}else{
 		List<Table> lstTable = TableManager.getInstance().listerTableLibre(reservation.getDate(),reservation.getHoraire());
 		req.setAttribute("listeDeTable", lstTable);
 
@@ -39,7 +41,7 @@ public class PageResevation2ConnecteServlet extends HttpServlet {
 		}else{
 		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservation2connecte.jsp");
 		view.forward(req, resp);
-		}
+		}}
 	}
 
 	@Override
@@ -57,10 +59,10 @@ public class PageResevation2ConnecteServlet extends HttpServlet {
 			SendMail mailEnvoie = new SendMail();
 
 			String message = "<h3><span style=\"color:#3399ff;\">Bienvenue chez l'Estaminet d'Howardries !</span></h3><p>"
-					+ ",</p><p>Votre avez effectu&aecute; un &aecute;servation"
+					+ ",</p><p>Votre avez effectu&eacute; un &eacute;servation"
 					+ "au nom de : " + reservation.getNomReservation() + ""
-					+"à la date de "+ reservation.getDate()+"et à "+reservation.getHoraire().getIntervalle();
-			mailEnvoie.start(reservation.getUtilisateur().getMail(), "[Estaminet d'Howardries] - R&aecute;servation", message);
+					+"&agrave; la date de "+ reservation.getDate()+"et à "+reservation.getHoraire().getIntervalle();
+			mailEnvoie.start(reservation.getUtilisateur().getMail(), "[Estaminet d'Howardries] - Réservation", message);
 
 			System.out.println("Mail envoyé");
 			resp.sendRedirect("ReservationReussi");

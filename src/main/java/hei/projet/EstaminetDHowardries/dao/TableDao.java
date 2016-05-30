@@ -1,5 +1,6 @@
 package hei.projet.EstaminetDHowardries.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import hei.projet.EstaminetDHowardries.entite.Horaire;
@@ -11,5 +12,5 @@ public interface TableDao {
 
 	public Table getUneTable(int idTable);
 
-	public List<Table> listerTableLibre(String date, Horaire horaire);
+	public List<Table> listerTableLibre(Date date, Horaire horaire);
 }

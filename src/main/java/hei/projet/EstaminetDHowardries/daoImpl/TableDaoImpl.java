@@ -1,6 +1,7 @@
 package hei.projet.EstaminetDHowardries.daoImpl;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -58,7 +59,7 @@ public class TableDaoImpl implements TableDao {
 		return table;
 	}
 
-	public List<Table> listerTableLibre(String date, Horaire horaire) {
+	public List<Table> listerTableLibre(Date date, Horaire horaire){
 		List<Reservation> lstResa = ReservationManager.getInstance().listerReservationParDateHoraire(date, horaire);
 		List<Table> lstTableTrier = new ArrayList<Table>();
 		List<Table> lstTable = TableManager.getInstance().listerTable();
@@ -96,5 +97,6 @@ public class TableDaoImpl implements TableDao {
 		}
 	return 	lstTableTrier;
 	}
+
 	
 }

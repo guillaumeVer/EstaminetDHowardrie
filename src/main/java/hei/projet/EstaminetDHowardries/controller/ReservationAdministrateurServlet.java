@@ -1,6 +1,10 @@
 package hei.projet.EstaminetDHowardries.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +22,7 @@ import hei.projet.EstaminetDHowardries.manager.HoraireManager;
 public class ReservationAdministrateurServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -32,11 +36,30 @@ public class ReservationAdministrateurServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		Date date_compte = null;
 		
 		String nomReservation = req.getParameter("Nom");
-		String date = req.getParameter("bookDate");
-		if(date==null){
-			resp.sendRedirect("ReservationAdministrateur");
+		
+		String bookdate= req.getParameter("bookDate");
+		if(bookdate.indexOf("/")!=-1){
+			String jour = bookdate.substring(3,5);
+			String mois = bookdate.substring(0,2);
+			String year = bookdate.substring(6,10);
+			bookdate = year+"-"+mois+"-"+jour;
+			
+			try {
+				date_compte = dateFormat.parse(bookdate);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}else{
+			
+		
+		try {
+			date_compte = dateFormat.parse(req.getParameter("bookDate"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		}
 		
 		String nb=req.getParameter("nb");
@@ -45,7 +68,7 @@ public class ReservationAdministrateurServlet extends HttpServlet {
 		Integer idhoraire = Integer.parseInt(req.getParameter("horaire"));
 		Horaire horaire = HoraireManager.getInstance().getUnHoraire(idhoraire);
 
-		Reservation reservation = new Reservation(null, null, horaire, date, nomReservation, nbPersonne);
+		Reservation reservation = new Reservation(null, null, horaire, date_compte, nomReservation, nbPersonne);
 		
 		req.getSession().setAttribute("reservation", reservation);
 

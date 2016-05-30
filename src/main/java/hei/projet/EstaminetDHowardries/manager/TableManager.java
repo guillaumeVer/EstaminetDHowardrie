@@ -25,8 +25,8 @@ public class TableManager {
 	public Table getUneTable(Integer idTable) {
 		return tableDao.getUneTable(idTable);
 	}
-	
-	public List<Table> listerTableLibre(String date, Horaire horaire) {
+
+	public List<Table> listerTableLibre(java.util.Date date, Horaire horaire) {
 		return tableDao.listerTableLibre(date, horaire);
 	}
 }

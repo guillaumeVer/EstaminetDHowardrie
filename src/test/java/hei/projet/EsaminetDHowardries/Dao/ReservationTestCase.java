@@ -41,15 +41,14 @@ public class ReservationTestCase {
 		List<Reservation> lstreservation = reservationDao.listerReservation();
 		Assert.assertEquals(2, lstreservation.size());
 		Assert.assertEquals(1, lstreservation.get(0).getIdReservation());
-		Assert.assertEquals(2, lstreservation.get(1).getUtilisateur().getIdUtilisateur());
-
+	
 	}
 
 	@Test
 	public void testerSupprimerReservation() {
 		List<Reservation> lstreservation = reservationDao.listerReservation();
 		Assert.assertEquals(2, lstreservation.size());
-		Reservation res = new Reservation(null, tableDao.getUneTable(1), horaireDao.getUnHoraire(1), "2017-09-06", "gg",
+		Reservation res = new Reservation(null, tableDao.getUneTable(1), horaireDao.getUnHoraire(1), null, "gg",
 				5);
 		reservationDao.ajouterReservation(res);
 		List<Reservation> lstreservation1 = reservationDao.listerReservation();
@@ -66,7 +65,6 @@ public class ReservationTestCase {
 	public void testerAjouterReservation() throws Exception {
 		Reservation res = new Reservation();
 		res.setNomReservation("gg");
-		res.setDate("2017-09-06");
 		res.setTable(tableDao.getUneTable(1));
 		res.setUtilisateur(utilisateurDao.getUnUtilisateur(1));
 		res.setHoraire(horaireDao.getUnHoraire(1));

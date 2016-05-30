@@ -50,7 +50,7 @@
 		</a> <a
 			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 82px; width: 200px;"
 			href="Deconnexion" class="list-group-item"> <strong> Se
-				Deconnecter </strong></a> <a
+				Déconnecter </strong></a> <a
 			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px;"
 			href="ProfilAdministrateur" class="list-group-item"> <strong>
 				Mon Profil </strong></a>
@@ -83,7 +83,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Plats">Les Plats</a></li>
 					<li><a href="Boissons">Les Boissons</a></li>
-					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+					<li><a href="AcceuilAdministrateur">Réservation</a></li>
 
 				</ul>
             </div>

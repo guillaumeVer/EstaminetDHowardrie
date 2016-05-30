@@ -32,15 +32,10 @@ public class ModifierNomServlet extends HttpServlet {
 
 		String nom = req.getParameter("Nom");
 
-		Utilisateur usermodifier = new Utilisateur();
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 
-		usermodifier.setNom(nom);
-		usermodifier.setPrenom(user.getPrenom());
-		usermodifier.setIdUtilisateur(user.getIdUtilisateur());
-		usermodifier.setMail(user.getMail());
-		usermodifier.setPassword(user.getPassword());
-
+		Utilisateur usermodifier = new Utilisateur(user.getIdUtilisateur(),nom, user.getPrenom(), user.getMail(), user.getPassword());
+		
 		UtilisateurManager.getInstance().updateUser(usermodifier);
 
 		req.getSession().removeAttribute("utilisateurConnecte");

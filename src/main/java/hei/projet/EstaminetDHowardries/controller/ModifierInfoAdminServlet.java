@@ -17,6 +17,8 @@ public class ModifierInfoAdminServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	private String messageErreur = "";
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
@@ -29,44 +31,60 @@ public class ModifierInfoAdminServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		
-		// recuperation de l'admin en session
-		Utilisateur adminModifier = new Utilisateur();
-		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
 
-		adminModifier.setIdUtilisateur(admin.getIdUtilisateur());
-		adminModifier.setMail(admin.getMail());
-		adminModifier.setNom(admin.getNom());
-		adminModifier.setPrenom(admin.getPrenom());
+		// recuperation de l'admin en session
+		Utilisateur admin = (Utilisateur) req.getSession().getAttribute("administrateurConnecte");
 
 		// recuperation des mot de passe
 		String oldmp = req.getParameter("oldpassword");
 		String newmp1 = req.getParameter("newmp1");
 		String newmp2 = req.getParameter("newmp2");
 
-		// test de mot de passe
-		if (oldmp != null && newmp1 != null && newmp2 != null) {
-			if (oldmp.equals(admin.getPassword()) && newmp1.equals(newmp2)) {
-				adminModifier.setPassword(newmp1);
-			} else {
+		String mp = validationMp(oldmp, newmp1, newmp2, admin);
+		if (messageErreur.equals("")) {
 
-			}
+			Utilisateur adminModifier = new Utilisateur(admin.getIdUtilisateur(), admin.getNom(), admin.getPrenom(),
+					admin.getMail(), mp);
+
+			// appel de la modification
+			UtilisateurManager.getInstance().updateAdministrateur(adminModifier);
+
+			// modification de l'utilisateur en session
+			req.getSession().removeAttribute("utilisateurConnecte");
+			req.getSession().setAttribute("utilisateurConnecte", adminModifier);
+
+			req.getSession().removeAttribute("administrateurConnecte");
+			req.getSession().setAttribute("administrateurConnecte", adminModifier);
+
+			// redirection
+			resp.sendRedirect("AcceuilAdministrateur");
 		} else {
-			adminModifier.setPassword(adminModifier.getPassword());
+			req.setAttribute("erreurs", messageErreur);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierMDPAdmin.jsp").forward(req, resp);
 		}
+	}
 
-		// appel de la modification
-		UtilisateurManager.getInstance().updateAdministrateur(adminModifier);
+	// validation du mot de passe
+	public String validationMp(String oldmp, String newmp1, String newmp2, Utilisateur user) {
+		// test de mot de passe
+		
+		if(oldmp.length()<3 || newmp1.length()<3 || newmp2.length()<3){
+			messageErreur = "Les mots de passe doivent faire plus de 3 caractères.";
+		}
+		if (oldmp != null && newmp1 != null && newmp2 != null) {
+			if (oldmp.equals(user.getPassword())) {
+				if (newmp1.equals(newmp2)) {
+					oldmp = newmp1;
 
-		// modification de l'utilisateur en session
-		req.getSession().removeAttribute("utilisateurConnecte");
-		req.getSession().setAttribute("utilisateurConnecte", adminModifier);
-
-		req.getSession().removeAttribute("administrateurConnecte");
-		req.getSession().setAttribute("administrateurConnecte", adminModifier);
-
-		// redirection
-		resp.sendRedirect("AcceuilAdministrateur");
+					return oldmp;
+				} else {
+					messageErreur = "Les mots de passe ne concordent pas.";
+				}
+			} else {
+				messageErreur = "L'ancien mot de passe est faux";
+			}
+		}
+		return oldmp;
 	}
 
 }

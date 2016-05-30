@@ -1,5 +1,6 @@
 package hei.projet.EstaminetDHowardries.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import hei.projet.EstaminetDHowardries.entite.Horaire;
@@ -13,7 +14,7 @@ public interface ReservationDao {
 
 	public List<Reservation> listerReservationParClient(int idClient);
 
-	public List<Reservation> listerReservationParDateHoraire(String date, Horaire horaire);
+	public List<Reservation> listerReservationParDateHoraire(Date date, Horaire horaire);
 
 	public void deleteReservation(Reservation reservation);
 

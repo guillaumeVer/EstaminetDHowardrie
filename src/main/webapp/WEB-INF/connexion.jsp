@@ -40,11 +40,11 @@
 				<br /> 
 				<label for="username" style="font-size: 25px;">Adresse mail<span class="requis"></span></label> <br />
 				<input type="email" id="username" name="username"><br/> 
-				<span class="erreur">${erreurs['username']}</span> <br /> 
+				<span class="erreur">${erreursMail}</span> <br /> 
 				
 				<label for="password" style="font-size: 25px;">Mot de passe<span class="requis"></span></label> <br />
 				<input type="password" id="password" name="password"><br/>
-				<span class="erreur">${erreurs['password']}</span><br />
+				<span class="erreur">${erreursMp}</span><br />
 				
 				<button type="submit" style="font-size: 25px;">Connexion</button>
 				<br />

@@ -7,12 +7,9 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Eviter le plantage sur InternetExplorer-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Eviter mauvaise taille smartphone-->
-
-    <meta name="description" content="Notre Site">
-    <meta name="author" content="Guillaume et Théo">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>Projet- Site Internet Estaminet Howardries</title>
 
@@ -35,107 +32,68 @@
 
 </head>
 
-<body class="intro">
+<body >
+<div class="lintro">
+ <div class="row">
 
 
-<div class="list-group">
-  <a style="margin-top:15px; margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.9; "  class="list-group-item disabled"> <strong>Bonjour ${user.nom}</strong>
-  </a>
-  
-  <a style="margin-left: 1650px; margin-right: 17px; text-align: center; opacity: 0.7; " href="Deconnexion" class="list-group-item"> <strong> Se deconnecter </strong></a>
-
-  
-</div>
     <div class="brand">Estaminet d'Howardries</div>
     <div class="address-bar">1199 rue Prevost 59226, Rumegies</div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
+    
+<div class="container-fluid">
+    <div class="container">
 
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="Index">Estaminet d'Howardries</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-           
-
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-   
-
-
-       
-
-       <div class="container">
-	<div class="row">
-        
+        <div class="row">
+            <div class="box" style="position: center;">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Que 
+                        <strong>voulez vous faire ?</strong>
+                    </h2>
+                    <hr>
+                </div>
                
-           
-                      
-            			<p style="text-align: center; margin-top: 70px;" ><a href="Index"> <button class="btn btn-lg btn-warning "style="width: 550px; height: 80px; font-size:26px; "> Consulter notre menu  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> </button></a> </p>
-            			<p style="text-align: center; margin-top: 70px;"> <a href="Reservation"><button class="btn btn-lg btn-danger" style="width: 550px; height: 80px; font-size:26px;">Reserver une table <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></button> </a></p>
+               
+
+
+                <p style="text-align: center; margin-top: 70px;" ><a href="Index"> <button class="btn  btn-warning "style="width: 550px; height: 80px; font-size:26px;  "> Consulter notre menu  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> </button></a> </p>
+                        <p style="text-align: center; margin-top: 70px;"> <a href="Reservation"><button class="btn btn-lg btn-danger" style="width: 550px; height: 80px; font-size:26px;">Réserver une table <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></button> </a></p>
                    
-                		<p style="text-align: center; margin-top: 70px;"> <a href="Avis"><button class="btn btn-lg btn-progress" style="width: 550px; height: 80px; font-size:26px;">Donner et voir les avis <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> </a></p>
-            			<p style="text-align: center; margin-top: 70px;"> <a href="MonProfil"><button class="btn btn-lg btn-progress" style="width: 550px; height: 80px; font-size:26px;">Acceder à mon profil <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> </a></p>
-            			
-              
-              
-               
+                        <p style="text-align: center; margin-top: 70px;"> <a href="Avis"><button class="btn btn-lg btn-info" style="width: 550px; height: 80px; font-size:26px;">Donner et voir les avis <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> </a></p>
+                         <p style="text-align: center; margin-top: 70px;"> <a href="MonProfil"><button class="btn btn-primary" style="width: 550px; height: 80px; font-size:26px;">Accéder à mon profil <span class="glyphicon glyphicon-off" aria-hidden="true"></span></button> </a></p>
+                         <p style="text-align: center; margin-top: 70px;"> <a href="Deconnexion"><button class="btn btn-success" style="width: 550px; height: 80px; font-size:26px;">Se deconnecter <span class="glyphicon glyphicon-user" aria-hidden="true"></span></button> </a></p>
+
+
+
+                  </div>
+                </div>
+                </div>
+                <div class="clearfix"></div>
            
-		</div>
-	</div>
+        </div>
+        </div>
+        </div>
 
 
-
-
-  
-
- 
-  <!--* <p style="text-align: center; margin-top: 150px; "> <a class="btn btn-primary btn-lg" href="index.html" role="button" style="width: 450px; background-color:#C94503; border-color: #000000 ;" >Voir le Menu</a> </p>
- <p style="text-align: center; margin-top:25px; "> <a class="btn btn-primary btn-lg" href="reservation.html" role="button" style="width: 450px; background-color:#AB3A01; border-color: #000000;" >Faire une reservation</a> </p>
- <p style="text-align: center; margin-top: 25px; "> <a class="btn btn-primary btn-lg" href="inscription.html" role="button" style="width: 450px; background-color:#9B3401; border-color: #000000;" >Consulter les avis</a> </p>
- <p style="text-align: center; margin-top: 25px; "> <a class="btn btn-primary btn-lg" href="contact.html" role="button" style="width: 450px; background-color:#873207; border-color: #000000;" >En savoir plus</a> </p> -->
-
-
-
-
-
+    <!-- /.container -->
 
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Droits</p>
+                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
         </div>
     </footer>
-
-
-
-    <!-- /.container -->
-
-   
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-   
 
 </body>
 

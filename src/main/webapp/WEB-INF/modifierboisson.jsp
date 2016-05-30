@@ -51,8 +51,8 @@
 			href="Deconnexion" class="list-group-item"> <strong> Se
 				Deconnecter </strong></a> <a
 			style="text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px;"
-			href="ModifierInfoAdmin" class="list-group-item"> <strong>
-				Modifier mes informations </strong></a>
+			href="ProfilAdministrateur" class="list-group-item"> <strong>
+				Mon Profil </strong></a>
 
 	</div>
 	<div class="brand">
@@ -82,7 +82,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Plats">Les Plats</a></li>
 					<li><a href="Boissons">Les Boissons</a></li>
-					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+					<li><a href="AcceuilAdministrateur">Réservation</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -145,17 +145,7 @@
 							</div>
 
 					
-							<div class="form-group">
-								<label for="PrÃ©nom" class="col-sm-3 control-label">Boisson
-									Du Mois</label>
-								<div class="col-sm-9">
-									<input type="checkBox" id="BoissonDuMois" name="BoissonDuMois"
-										value=${boisson.boissonDuMois } placeholder="Description"
-										class="form-control" autofocus style="width: 300px;">
-
-								</div>
-							</div>
-
+							
 
 
 

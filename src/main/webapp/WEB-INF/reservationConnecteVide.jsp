@@ -76,7 +76,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
-					<li><a href="Reservation">Reservation</a></li>
+					<li><a href="Reservation">Réservation</a></li>
 					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
 					<li><a href="MonProfil">Mon Profil</a></li>

@@ -69,7 +69,7 @@
                         <a href="Index">Le Menu</a>
                     </li>
                     <li>
-                        <a href="Reservation">Reservation</a>
+                        <a href="Reservation">Réservation</a>
                     </li>
                     <li>
                         <a href="Connexion">Avis</a>
@@ -116,7 +116,7 @@
                    <div class="container">
 
 
-            <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> Votre inscription a bien été pris en compte, vous allez recevoir un mail de confiramtion </strong></div>
+            <div class="alert alert-success" role="alert" style="margin-right: 45px;" > <strong> Votre inscription a bien été prise en compte, vous allez recevoir un mail de confirmation </strong></div>
 
     </div>
     </div>

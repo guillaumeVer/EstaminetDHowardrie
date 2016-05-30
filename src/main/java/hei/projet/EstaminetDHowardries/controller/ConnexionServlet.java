@@ -1,9 +1,7 @@
 package hei.projet.EstaminetDHowardries.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +18,8 @@ public class ConnexionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -503526558773322139L;
 
-	private Map<String, String> erreurs = new HashMap<String, String>();
+	private String messageErreurMail = "";
+	private String messageErreurMp = "";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,28 +43,27 @@ public class ConnexionServlet extends HttpServlet {
 		Utilisateur utilisateur = null;
 		Boolean password = false;
 		/* Validation du champ email. */
-		try {
-			utilisateur = validationEmail(mail, admin, lstUser);
-		} catch (Exception e) {
-			setErreur("username", e.getMessage());
+		utilisateur = validationEmail(mail, admin, lstUser);
+		if (utilisateur == null) {
+			req.setAttribute("erreursMail", messageErreurMail);
+
 		}
 
+		/* Validation du champ mot de passe. */
 		if (utilisateur != null) {
-			/* Validation du champ mot de passe. */
-			try {
-				password = validationMotDePasse(mp, utilisateur);
-			} catch (Exception e) {
-				setErreur("password", e.getMessage());
+			password = validationMotDePasse(mp, utilisateur);
+			if (password != true) {
+				req.setAttribute("erreursMp", messageErreurMp);
 			}
 		}
 
 		if (utilisateur == null || password != true) {
 			req.setAttribute("utilisateur", utilisateur);
-			req.setAttribute("erreurs", erreurs);
+
 			this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp").forward(req, resp);
 
 		} else {
-			if (utilisateur.getMail().equals(admin.getMail())) {
+			if (admin != null && utilisateur.getMail().equals(admin.getMail())) {
 
 				req.getSession().setAttribute("administrateurConnecte", utilisateur);
 				req.getSession().setAttribute("utilisateurConnecte", utilisateur);
@@ -73,7 +71,7 @@ public class ConnexionServlet extends HttpServlet {
 				resp.sendRedirect("prive/admin/AcceuilAdministrateur");
 
 			} else {
-
+				
 				req.getSession().setAttribute("utilisateurConnecte", utilisateur);
 				System.out.println("Mise en session de l'utilisateur");
 				resp.sendRedirect("prive/Intro");
@@ -83,52 +81,14 @@ public class ConnexionServlet extends HttpServlet {
 
 	}
 
-	/*
-	 * // test si l'admin essaye de se connecter if (mail != null &&
-	 * mail.equals(admin.getMail()) && admin != null) { try { if
-	 * (password.equals(admin.getPassword())) { // mise en session de l'admin
-	 * req.getSession().setAttribute("administrateurConnecte", admin);
-	 * req.getSession().setAttribute("utilisateurConnecte", admin);
-	 * 
-	 * // Redirection resp.sendRedirect("prive/admin/AcceuilAdministrateur");
-	 * System.out.println("Connection en tant que administrateur"); } else {
-	 * system.err.println("Erreur d'identification administrateur!!"); } } catch
-	 * (Exception e) { e.printStackTrace(); } } else {
-	 * 
-	 * int i = 0; while (user == null && i < lstUser.size()) { if
-	 * (lstUser.get(i).getMail().equals(mail)) { user = lstUser.get(i); } else {
-	 * i++; } }
-	 * 
-	 * // test si l'utilisateur n'existe pas if (user == null) {
-	 * System.out.println("user inconnu"); // redirection vers connexion si
-	 * l'utilisateur n'existe pas resp.sendRedirect("Connexion"); } else {
-	 * 
-	 * try { // test du mdp de l'utilisateur if
-	 * (password.equals(user.getPassword())) { // mise en session du client
-	 * System.out.println("Enregistrement de l'utilisateur en session");
-	 * req.getSession().setAttribute("utilisateurConnecte", user);
-	 * resp.sendRedirect("prive/Index"); } else {
-	 * 
-	 * System.err.println("Erreur d'identification !!");
-	 * resp.sendRedirect("Connexion"); }
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * } }
-	 * 
-	 * }
-	 */
-
-	// set Erreur
-	private void setErreur(String champ, String message) {
-		erreurs.put(champ, message);
-	}
 
 	// validation email et recuperation de l'user
-	public Utilisateur validationEmail(String email, Utilisateur admin, List<Utilisateur> lstUser) throws Exception {
+	public Utilisateur validationEmail(String email, Utilisateur admin, List<Utilisateur> lstUser) {
+	
+
 		Utilisateur user = null;
 		// verifie si c'est l'admin
-		if (email != null && email.equals(admin.getMail())) {
+		if (email != null && admin != null && email.equals(admin.getMail())) {
 			user = admin;
 		} else {
 			// verifie si c'est un autre client
@@ -144,20 +104,22 @@ public class ConnexionServlet extends HttpServlet {
 		if (user != null) {
 			return user;
 		} else {
-			throw new Exception("Merci de saisir une adresse mail valide.");
+			messageErreurMail = "Merci de saisir une adresse mail valide.";
 		}
+		return user;
 	}
 
 	// validation de mot de passe
-	private Boolean validationMotDePasse(String motDePasse, Utilisateur user) throws Exception {
+	private Boolean validationMotDePasse(String motDePasse, Utilisateur user) {
 		if (motDePasse != null) {
 			if (motDePasse.equals(user.getPassword())) {
 				return true;
 			} else {
-				throw new Exception("Merci de saisir un mot de passe valide");
+				messageErreurMp = "Merci de saisir un mot de passe valide";
 			}
 		} else {
-			throw new Exception("Merci de saisir votre mot de passe.");
+			messageErreurMp = "Merci de saisir votre mot de passe.";
 		}
+		return false;
 	}
 }

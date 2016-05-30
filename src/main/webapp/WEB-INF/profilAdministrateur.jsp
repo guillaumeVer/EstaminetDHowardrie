@@ -83,7 +83,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Plats">Les Plats</a></li>
 					<li><a href="Boissons">Les Boissons</a></li>
-					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+					<li><a href="AcceuilAdministrateur">Réservation</a></li>
 
 				</ul>
             </div>

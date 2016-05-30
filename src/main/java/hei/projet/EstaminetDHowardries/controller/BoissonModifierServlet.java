@@ -53,13 +53,6 @@ public class BoissonModifierServlet extends HttpServlet {
 		Float prixBoisson = Float.parseFloat(prix);
 		boissonmodifier.setPrix(prixBoisson);
 
-		String boissonDuMois = req.getParameter("BoissonDuMois");
-
-		if (boissonDuMois != null) {
-			boissonmodifier.setBoissonDuMois(true);
-		}else{
-			boissonmodifier.setBoissonDuMois(false);
-		}
 
 		BoissonManager.getInstance().modifierBoisson(boissonmodifier);
 		resp.sendRedirect("Boissons");

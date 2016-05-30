@@ -53,13 +53,7 @@ public class PlatModifierServlet extends HttpServlet {
 		String description = req.getParameter("Description");
 		platmodifier.setDescriptionPlat(description);
 		
-		String platDuJour = req.getParameter("PlatDuJour");
 		
-		if(platDuJour!=null){
-			platmodifier.setPlatDuJour(true);
-		}else{
-			platmodifier.setPlatDuJour(false);
-		}
 		
 		PlatManager.getInstance().modifierPlat(platmodifier);
 		

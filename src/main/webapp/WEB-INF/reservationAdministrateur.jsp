@@ -37,7 +37,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+ <link href="../../css/jq/jquery-ui.css" rel="stylesheet">
+    
+    <script src="../../js/jquery-ui.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -83,7 +85,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Plats">Les Plats</a></li>
 					<li><a href="Boissons">Les Boissons</a></li>
-					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+					<li><a href="AcceuilAdministrateur">Réservation</a></li>
 
 				</ul>
             </div>
@@ -91,7 +93,8 @@
         </div>
         <!-- /.container -->
     </nav>
-
+<form method="post" action="ReservationAdministrateur" class="form-horizontal"
+							role="form">
 	<div class="container">
 
 
@@ -99,7 +102,7 @@
 			<div class="box">
 				<div class="col-lg-12">
 					<h2 class="intro-text text-center">
-						Votre <strong>Reservation</strong>
+						Votre <strong>Réservation</strong>
 					</h2>
 					<hr>
 					<div class="container">
@@ -110,8 +113,7 @@
 						</p>
 
 
-						<form method="post" action="ReservationAdministrateur" class="form-horizontal"
-							role="form">
+						
 
 
 
@@ -139,14 +141,31 @@
 								<label for="birthDate" class="col-sm-3 control-label">Date
 									de la reservation</label>
 								<div class="col-sm-9">
-									<input type="date" id="bookDate" name="bookDate"
-										class="form-control" style="width: 300px;">
-								</div>
-							</div>
+									
+                     <input type="date" name="bookDate" required id="date" value="" class="col-sm-3 control-label"  autofocus  style="width:300px;" />
+ 
+                        </div>
+                </div>
+               
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script src="../../js/jquery-ui.js"></script>
+<script>
+   (function() {
+      var elem = document.createElement('input');
+      elem.setAttribute('type', 'date');
+ 
+      if ( elem.type === 'text' ) {
+         $('#date').datepicker(); 
+      }
+   })();
+ 
+</script>
+							
 
 							<div class="form-group">
 								<label for="country" class="col-sm-3 control-label">Nombre
-									de personne</label>
+									de personnes</label>
 								<div class="col-sm-9">
 									<select id="nb" name="nb" class="form-control" style="width: 300px;">
 
@@ -154,10 +173,6 @@
 										<option>2</option>
 										<option>3</option>
 										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-										<option>8</option>
 
 									</select>
 
@@ -169,7 +184,7 @@
 							<div class="form-group">
 								<label for="country" class="col-sm-3 control-label">Horaire</label>
 								<div class="col-sm-9">
-									<select id="horaire" name="horaire" class="form-control"
+									<select id="horaire" required name="horaire" class="form-control"
 										style="width: 300px;">
 
 										<c:forEach var="horaire" items="${listedHoraires}">
@@ -222,15 +237,17 @@
 										style="width: 300px;">Réserver</button>
 								</div>
 							</div>
-						</form>
+						
 						<!-- /form -->
+					</div>
 					</div>
 					<!-- ./container -->
 				</div>
 			</div>
+			
 		</div>
-
-	</div>
+	</form>
+	
 
 	<!-- /.container -->
 

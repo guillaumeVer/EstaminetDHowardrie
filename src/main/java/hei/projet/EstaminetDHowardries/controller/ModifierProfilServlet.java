@@ -17,6 +17,7 @@ import hei.projet.EstaminetDHowardries.utils.SendMail;
 public class ModifierProfilServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private String messageErreur = "";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,30 +32,19 @@ public class ModifierProfilServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		Utilisateur usermodifier = new Utilisateur();
 		Utilisateur user = (Utilisateur) req.getSession().getAttribute("utilisateurConnecte");
 
-		usermodifier.setIdUtilisateur(user.getIdUtilisateur());
-		usermodifier.setMail(user.getMail());
-
 		String nom = req.getParameter("Nom");
-		usermodifier.setNom(nom);
 		String prenom = req.getParameter("Prenom");
-		usermodifier.setPrenom(prenom);
 
 		String oldmp = req.getParameter("oldpassword");
 		String newmp1 = req.getParameter("newmp1");
 		String newmp2 = req.getParameter("newmp2");
 
-		if (oldmp != null && newmp1 != null && newmp2 != null) {
-			if (oldmp.equals(user.getPassword()) && newmp1.equals(newmp2)) {
-				usermodifier.setPassword(newmp1);
-			} else {
-
-			}
-		} else {
-			usermodifier.setPassword(user.getPassword());
-		}
+		
+		String mp = validationMp(oldmp,newmp1,newmp2, user);
+		if (messageErreur.equals("")) {
+		Utilisateur usermodifier = new Utilisateur(user.getIdUtilisateur(), nom, prenom, user.getMail(), mp);
 
 		UtilisateurManager.getInstance().updateUser(usermodifier);
 
@@ -72,6 +62,30 @@ public class ModifierProfilServlet extends HttpServlet {
 		req.getSession().setAttribute("utilisateurConnecte", usermodifier);
 
 		resp.sendRedirect("MonProfil");
+		}
+		else{
+		req.setAttribute("erreurs", messageErreur);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/modifierMDP.jsp").forward(req, resp);
+		} 
 	}
+	
+	// validation du mot de passe
+			public String validationMp(String oldmp, String newmp1, String newmp2, Utilisateur user) {
+				// test de mot de passe
+				if (oldmp != null && newmp1 != null && newmp2 != null) {
+					if(oldmp.equals(user.getPassword())){
+						if(newmp1.equals(newmp2)){
+							oldmp=newmp1;
+							
+							return oldmp;
+						}else{
+							messageErreur="Les mots de passe ne concordent pas.";
+						}
+					}else{
+						messageErreur="L'ancien mot de passe est faux";	
+					}
+				} 
+				return oldmp;
+			}
 
 }

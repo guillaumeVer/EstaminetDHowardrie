@@ -37,7 +37,7 @@ public class AvisServlet extends HttpServlet {
 
 		Avis avis = new Avis();
 		
-		String note = req.getParameter("star");
+		String note = req.getParameter("rating");
 		Integer note1 = Integer.parseInt(note);
 		avis.setNote(note1);
 		

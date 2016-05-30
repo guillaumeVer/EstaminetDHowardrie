@@ -15,11 +15,7 @@ import hei.projet.EstaminetDHowardries.manager.BoissonManager;
 public class BoissonDaoImpl implements BoissonDao {
 	
 	public void ajouterBoisson(Boisson boisson) {
-		if (boisson.getBoissonDuMois() == true) {
-			Boisson boisson2 = BoissonManager.getInstance().getBoissonDuMois();
-			boisson2.setBoissonDuMois(false);
-			BoissonManager.getInstance().modifierBoisson(boisson2);
-		}
+	
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement(
@@ -28,7 +24,7 @@ public class BoissonDaoImpl implements BoissonDao {
 			stmt.setString(2, boisson.getDescriptionBoisson());
 			stmt.setDouble(3, boisson.getPrix());
 			stmt.setInt(4, 1);
-			stmt.setBoolean(5, boisson.getBoissonDuMois());
+			stmt.setBoolean(5, false);
 
 			stmt.executeUpdate();
 			stmt.close();

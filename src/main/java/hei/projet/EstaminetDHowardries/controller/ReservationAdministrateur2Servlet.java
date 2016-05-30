@@ -28,24 +28,26 @@ public class ReservationAdministrateur2Servlet extends HttpServlet {
 		req.setAttribute("admin", admin);
 
 		Reservation reservation = (Reservation) req.getSession().getAttribute("reservation");
-
+		if(reservation==null){
+			resp.sendRedirect("ReservationAdministrateur");
+		}else{
 		List<Table> lstTable = TableManager.getInstance().listerTableLibre(reservation.getDate(),
 				reservation.getHoraire());
 		req.setAttribute("listeDeTable", lstTable);
 
-		if(lstTable.size()==0){
+		if (lstTable.size() == 0) {
 			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationImpossibleAdmnistrateur.jsp");
 			view.forward(req, resp);
-		}else{
-		RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationAdministrateur2.jsp");
-		view.forward(req, resp);
-		}
+		} else {
+			RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/reservationAdministrateur2.jsp");
+			view.forward(req, resp);
+		}}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		
+
 		Integer idTable = Integer.parseInt(req.getParameter("table"));
 		Table table = TableManager.getInstance().getUneTable(idTable);
 

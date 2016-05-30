@@ -83,7 +83,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
-					<li><a href="Reservation">Reservation</a></li>
+					<li><a href="Reservation">Réservation</a></li>
 					<li><a href="Avis">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
 					<li><a href="MonProfil">Mon Profil</a></li>
@@ -99,7 +99,7 @@
 	<div class="container">
 
 
-		<div class="row">
+	<div class="row">
 			<div class="box">
 				<div class="col-lg-12">
 					<hr>
@@ -116,8 +116,9 @@
 							aria-hidden="true"></span>
 						</a>
 					</p>
-					<p>Le menu de la semaine est:</p>
-					<p></p>
+					<p>Le Plat du Jour est: ${platDuJour.nomPlat}</p>
+					<p>Prix : ${platDuJour.prixPlat} €</p>
+					<p>Description : ${platDuJour.descriptionPlat}</p>
 				</div>
 			</div>
 		</div>
@@ -133,16 +134,17 @@
 					<img class="img-responsive img-border img-left"
 						src="../img/intro-pic.jpg" alt="">
 					<p>
-						<a href="../img/bieres.jpg" style="margin-left: 185px;">
+						<a href="../img/carte.jpg" style="margin-left: 185px;">
 							Découvrez nos bières <span class="glyphicon glyphicon-grain"
 							aria-hidden="true"></span>
 						</a>
 					</p>
-					<p>Voici les bières du mois:</p>
+					<p>Voici la bière du mois: ${boissonDuMois.nomBoisson}</p>
+					<p>Prix : ${boissonDuMois.prix} €</p>
+					<p>Description : ${boissonDuMois.descriptionBoisson}</p>
 				</div>
 			</div>
 		</div>
-
 
 
 
@@ -161,15 +163,15 @@
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner">
 							<div class="item active">
-								<img class="img-responsive img-full" src="img/slide-1.jpg"
+								<img class="img-responsive img-full" src="../img/slide-1.jpg"
 									alt="">
 							</div>
 							<div class="item">
-								<img class="img-responsive img-full" src="img/slide-2.jpg"
+								<img class="img-responsive img-full" src="../img/slide-2.jpg"
 									alt="">
 							</div>
 							<div class="item">
-								<img class="img-responsive img-full" src="img/slide-3.jpg"
+								<img class="img-responsive img-full" src="../img/slide-3.jpg"
 									alt="">
 							</div>
 						</div>

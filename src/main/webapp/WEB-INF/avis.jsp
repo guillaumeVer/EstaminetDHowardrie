@@ -18,7 +18,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
-
+<link href="../font-awesome-4.6.1/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="../css/business-casual.css" rel="stylesheet">
@@ -31,10 +31,8 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
 	rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="../css/font-awesome-4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +40,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 
 
 </head>
@@ -81,7 +78,7 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="Index">Le Menu</a></li>
-						<li><a href="Reservation">Reservation</a></li>
+						<li><a href="Reservation">Réservation</a></li>
 						<li><a href="Avis">Avis</a></li>
 						<li><a href="Contact">Contact</a></li>
 						<li><a href="MonProfil">Mon Profil</a></li>
@@ -106,29 +103,30 @@
 						</div>
 						<div class="col-lg-12">
 
-							<div class="form-group">
-								<label for="usr">Pseudo</label> <input type="text"
-									class="form-control" id="usr" style="width: 300px;">
+						<div class="stars">	
+							<div class="rating">
+								<label>Donnez votre avis</label>
+								
+								
+<span class="starRating">
+  <input id="rating5" type="radio" name="rating" value="5" title="5">
+  <label for="rating5">5</label>
+  <input id="rating4" type="radio" name="rating" value="4" title="4">
+  <label for="rating4">4</label>
+  <input id="rating3" type="radio" name="rating" value="3" title="3">
+  <label for="rating3">3</label>
+  <input id="rating2" type="radio" name="rating" value="2" title="2">
+  <label for="rating2">2</label>
+  <input id="rating1" type="radio" name="rating" value="1" title="1">
+  <label for="rating1">1</label>
+</span>
 
+							</div>
+								</div>
 							</div>
 
 
-							<div class="stars">
-								<label>Donnez votre avis</label> <input class="star star-5"
-									id="star-5" value="1" type="radio" name="star" /> <label
-									class="star star-5" for="star-5"></label> <input
-									class="star star-4" id="star-4" value="2" type="radio"
-									name="star" /> <label class="star star-4" for="star-4"></label>
-								<input class="star star-3" id="star-3" value="3" type="radio"
-									name="star" /> <label class="star star-3" for="star-3"></label>
-								<input class="star star-2" id="star-2" value="4" type="radio"
-									name="star" /> <label class="star star-2" for="star-2"></label>
-								<input class="star star-2" id="star-1" value="5" type="radio"
-									name="star" /> <label class="star star-2" for="star-1"></label>
-							</div>
-
-
-
+							<br/>
 
 
 
@@ -153,8 +151,9 @@
 						
 		
 	</div>
+	</form>
 	</div>
-</form>
+
 
 
 
@@ -177,7 +176,7 @@
 								</thead>
 				<tbody>
 				<c:forEach var="avis" items="${lstDeAvis}">
-				<tr class="success">
+				<tr>
 									<td>${avis.note}/5</td>
 									<td>${avis.commentaire}</td>
 				</tr>
@@ -190,7 +189,7 @@
 	</div>
 	
 
-</div>
+
 
 	<!-- /.container -->
 

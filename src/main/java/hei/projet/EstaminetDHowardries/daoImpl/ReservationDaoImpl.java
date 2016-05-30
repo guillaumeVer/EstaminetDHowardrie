@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import hei.projet.EstaminetDHowardries.dao.ReservationDao;
@@ -29,7 +30,7 @@ public class ReservationDaoImpl implements ReservationDao {
 			}
 			stmt.setInt(2, reservation.getTable().getIdTable());
 			stmt.setInt(3, reservation.getHoraire().getIdHoraire());
-			stmt.setString(4, reservation.getDate());
+			stmt.setDate(4, new Date(reservation.getDate().getTime()));
 			stmt.setString(5, reservation.getNomReservation());
 			stmt.setInt(6, reservation.getNbPersonne());
 			stmt.executeUpdate();
@@ -46,7 +47,7 @@ public class ReservationDaoImpl implements ReservationDao {
 		try {
 			Connection connection = (Connection) DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = (Statement) connection.createStatement();
-			ResultSet results = stmt.executeQuery("SELECT * FROM reservation");
+			ResultSet results = stmt.executeQuery("SELECT * FROM reservation ORDER BY Date");
 
 			while (results.next()) {
 				Reservation reservation = new Reservation();
@@ -65,7 +66,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
 				reservation.setTable(tableDao.getUneTable(results.getInt("idTable")));
 				reservation.setHoraire(horaireDao.getUnHoraire(results.getInt("idHoraire")));
-				reservation.setDate(results.getDate("Date").toString());
+				reservation.setDate(results.getDate("Date"));
 				reservation.setNomReservation(results.getString("NomReservation"));
 				reservation.setNbPersonne(results.getInt("NbPersonne"));
 
@@ -100,7 +101,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
 				reservation.setTable(tableDao.getUneTable(results.getInt("idTable")));
 				reservation.setHoraire(horaireDao.getUnHoraire(results.getInt("idHoraire")));
-				reservation.setDate(results.getDate("Date").toString());
+				reservation.setDate(results.getDate("Date"));
 				reservation.setNomReservation(results.getString("NomReservation"));
 				reservation.setNbPersonne(results.getInt("NbPersonne"));
 
@@ -114,7 +115,7 @@ public class ReservationDaoImpl implements ReservationDao {
 		return listereservation;
 	}
 
-	public List<Reservation> listerReservationParDateHoraire(String date, Horaire horaire) {
+	public List<Reservation> listerReservationParDateHoraire(java.util.Date date, Horaire horaire) {
 		List<Reservation> listereservation = new ArrayList<Reservation>();
 
 		try {
@@ -122,7 +123,7 @@ public class ReservationDaoImpl implements ReservationDao {
 			PreparedStatement stmt = connection
 					.prepareStatement("SELECT * FROM reservation WHERE (`idHoraire` = ? AND `Date` = ?)");
 			stmt.setInt(1, horaire.getIdHoraire());
-			stmt.setString(2, date);
+			stmt.setDate(2, new Date(date.getTime()));
 			ResultSet results = stmt.executeQuery();
 
 			while (results.next()) {
@@ -142,7 +143,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
 				reservation.setTable(tableDao.getUneTable(results.getInt("idTable")));
 				reservation.setHoraire(horaireDao.getUnHoraire(results.getInt("idHoraire")));
-				reservation.setDate(results.getDate("date").toString());
+				reservation.setDate(results.getDate("date"));
 				reservation.setNomReservation(results.getString("NomReservation"));
 				reservation.setNbPersonne(results.getInt("NbPersonne"));
 
@@ -195,7 +196,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
 				reservation.setTable(tableDao.getUneTable(resultSet.getInt("idTable")));
 				reservation.setHoraire(horaireDao.getUnHoraire(resultSet.getInt("idHoraire")));
-				reservation.setDate(resultSet.getDate("date").toString());
+				reservation.setDate(resultSet.getDate("date"));
 				reservation.setNomReservation(resultSet.getString("NomReservation"));
 				reservation.setNbPersonne(resultSet.getInt("NbPersonne"));
 
@@ -207,4 +208,5 @@ public class ReservationDaoImpl implements ReservationDao {
 		}
 		return null;
 	}
+
 }

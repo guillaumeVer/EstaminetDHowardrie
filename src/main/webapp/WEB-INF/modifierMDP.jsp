@@ -68,7 +68,7 @@
                         <a href="Index">Le Menu</a>
                     </li>
                     <li>
-                        <a href="Reservation">Reservation</a>
+                        <a href="Reservation">Réservation</a>
                     </li>
                     <li>
                         <a href="Avis">Avis</a>
@@ -96,8 +96,10 @@
                     <hr>
                     <h2 class="intro-text text-center">
                         <strong>Modifier votre profil</strong>
+            
                     </h2>
                     <hr>
+                  <p class="bg-danger">${erreurs}</p> <br />
                 </div>
                 <div>
                 </div>
@@ -119,24 +121,24 @@
 
 
             <form class="form-horizontal" role="form" method="post" action="ModifierMDP">
-
+				
 
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Ancien mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" id="olspassword" name="oldpassword" placeholder="Mot de passe" class="form-control" style="width:300px;">
+                        <input type="password" required="required" id="olspassword" name="oldpassword" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
                <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Nouveau mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" id="newmp1" name="newmp1" placeholder="Mot de passe" class="form-control" style="width:300px;">
+                        <input type="password" required="required" id="newmp1" name="newmp1" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
                <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Confirmer mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" id="newmp2" name="newmp2" placeholder="Mot de passe" class="form-control" style="width:300px;">
+                        <input type="password" required="required" id="newmp2" name="newmp2" placeholder="Mot de passe" class="form-control" style="width:300px;">
                     </div>
                 </div>
 

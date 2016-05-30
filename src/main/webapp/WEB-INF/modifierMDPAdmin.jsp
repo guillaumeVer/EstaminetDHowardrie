@@ -41,7 +41,7 @@
  
   </a>
   <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 82px; width: 200px; " href="Deconnexion" class="list-group-item"> <strong> Se Deconnecter </strong></a>
-  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px; " href="ModifierInfoAdmin" class="list-group-item"> <strong> Modifier mes informations </strong></a>
+  <a style=" text-align: center; opacity: 0.7; position: absolute; right: 50px; top: 125px; width: 200px; " href="ProfilAdministrateur" class="list-group-item"> <strong> Mon Profil </strong></a>
  
 </div>
 <div  class="brand" > <a href="Intro" style="color: #FFFAF0;"> Estaminet d'Howardries </a> </div>
@@ -66,7 +66,7 @@
                 <ul class="nav navbar-nav">
 					<li><a href="Plats">Les Plats</a></li>
 					<li><a href="Boissons">Les Boissons</a></li>
-					<li><a href="AcceuilAdministrateur">Reservation</a></li>
+					<li><a href="AcceuilAdministrateur">Réservation</a></li>
 				</ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -86,6 +86,7 @@
                         <strong>Modifier votre profil</strong>
                     </h2>
                     <hr>
+                     <p class="bg-danger">${erreurs}</p> <br />
                 </div>
                 <div>
                 </div>

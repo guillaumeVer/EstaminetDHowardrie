@@ -1,9 +1,12 @@
 package hei.projet.EstaminetDHowardries.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +20,6 @@ import hei.projet.EstaminetDHowardries.entite.Reservation;
 import hei.projet.EstaminetDHowardries.entite.Utilisateur;
 import hei.projet.EstaminetDHowardries.manager.HoraireManager;
 import hei.projet.EstaminetDHowardries.manager.UtilisateurManager;
-import hei.projet.EstaminetDHowardries.utils.MdpGenerator;
 import hei.projet.EstaminetDHowardries.utils.SendMail;
 
 @WebServlet("/Reservation")
@@ -25,8 +27,10 @@ public class PageReservationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 5116801608350465763L;
 
-	private Map<String, String> erreurs = new HashMap<String, String>();
+	private String messageErreur = "";
 
+	private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -41,43 +45,36 @@ public class PageReservationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 
-		Utilisateur utilisateur = new Utilisateur();
 		String nom = req.getParameter("Nom");
-		utilisateur.setNom(nom);
 		String prenom = req.getParameter("Prenom");
-		utilisateur.setPrenom(prenom);
 		String email = req.getParameter("email");
-		req.getSession().setAttribute("mail", email);
-
-		utilisateur.setMail(email);
+		
+		Date date_compte = null;
+		
 		String password = "";
 
-		Utilisateur user = new Utilisateur();
 		String etatCheckBox = req.getParameter("creationcompte");
 		if (etatCheckBox != null) {
 
-			String mail = req.getParameter("Email");
 			Boolean emailBoolean = false;
-			try {
-				emailBoolean = validationEmail(mail);
-			} catch (Exception e) {
-				setErreur("mail", e.getMessage());
-			}
-			if (emailBoolean) {
-				req.setAttribute("erreurs", erreurs);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(req, resp);
+			emailBoolean = validationEmail(email);
+
+			if (emailBoolean == true) {
+				req.setAttribute("erreurs", messageErreur);
+				List<Horaire> lstHoraire = HoraireManager.getInstance().listerHoraire();
+				req.setAttribute("listedHoraires", lstHoraire);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/reservation.jsp").forward(req, resp);
 			} else {
-				user.setMail(mail);
 
-				MdpGenerator mdp = new MdpGenerator();
-				password = mdp.generate();
-				/*
-				 * Random rand = new Random(); Integer nombre; for (int i = 0; i
-				 * < 8; i++) { nombre = rand.nextInt(10); nombre.toString();
-				 * password = password + nombre; }
-				 */
+				Random rand = new Random();
+				Integer nombre;
+				for (int i = 0; i < 8; i++) {
+					nombre = rand.nextInt(10);
+					nombre.toString();
+					password = password + nombre;
+				}
 
-				utilisateur.setPassword(password);
+				Utilisateur utilisateur = new Utilisateur(null, nom, prenom, email, password);
 
 				UtilisateurManager.getInstance().creatUtilisateur(utilisateur);
 
@@ -87,58 +84,103 @@ public class PageReservationServlet extends HttpServlet {
 						+ "Bonjour " + prenom + " " + nom
 						+ ",</p><p>Votre mot de passe de connexion est: <span style=\"background-color:yellow;\"><strong>"
 						+ password
-						+ "</strong></span>.</p><p>Vous pouvez le modifier une fois connect&eacute; dans l&#39;onglet &quot;<strong>Mon profil</strong></p><p>Voici l'adresse de la plateforme web:  .</p><p>Nous sommes &agrave; votre &eacute;coute pour toutes futures demandes.</p>";
+						+ "</strong></span>.</p><p>Vous pouvez le modifier une fois connect&eacute; dans l&#39;onglet &quot;<strong>Mon profil</strong></p><p>Voici l'adresse de la plateforme web: <a href="+"estaminet-howardries.eu"+">estaminet-howardries.eu</a></p><p>Nous sommes &agrave; votre &eacute;coute pour toutes futures demandes.</p>";
 
 				mailEnvoie.start(utilisateur.getMail(), "[Estaminet d'Howardries] - Création de votre compte", message);
 
 				System.out.println("Mail envoyé");
 
+				String bookdate= req.getParameter("bookDate");
+				if(bookdate.indexOf("/")!=-1){
+					String jour = bookdate.substring(3,5);
+					String mois = bookdate.substring(0,2);
+					String year = bookdate.substring(6,10);
+					bookdate = year+"-"+mois+"-"+jour;
+					
+					try {
+						date_compte = dateFormat.parse(bookdate);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					
+					int nbPersone = Integer.parseInt(req.getParameter("nb"));
+
+					Integer idhoraire = Integer.parseInt(req.getParameter("horaire"));
+					Horaire horaire = HoraireManager.getInstance().getUnHoraire(idhoraire);
+
+					Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyMail(email);
+					Reservation reservation = new Reservation(user, null, horaire, date_compte, utilisateur.getNom(), nbPersone);
+
+					req.getSession().setAttribute("reservation", reservation);
+					resp.sendRedirect("Reservation2");
+				}else{
+			
+			try {
+				date_compte = dateFormat.parse(req.getParameter("bookDate"));
+			} catch (ParseException e) {
+				e.printStackTrace();
 			}
-			String date = req.getParameter("bookDate");
-
+			
 			int nbPersone = Integer.parseInt(req.getParameter("nb"));
 
 			Integer idhoraire = Integer.parseInt(req.getParameter("horaire"));
 			Horaire horaire = HoraireManager.getInstance().getUnHoraire(idhoraire);
 
-			Reservation reservation = new Reservation(user, null, horaire, date, user.getNom(), nbPersone);
+			Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyMail(email);
+			Reservation reservation = new Reservation(user, null, horaire, date_compte, utilisateur.getNom(), nbPersone);
 
 			req.getSession().setAttribute("reservation", reservation);
-
+			resp.sendRedirect("Reservation2");
+			}
+			}
 		} else {
-
-			String date = req.getParameter("bookDate");
-
+			String bookdate= req.getParameter("bookDate");
+			if(bookdate.indexOf("/")!=-1){
+				String jour = bookdate.substring(3,5);
+				String mois = bookdate.substring(0,2);
+				String year = bookdate.substring(6,10);
+				bookdate = year+"-"+mois+"-"+jour;
+				
+				try {
+					date_compte = dateFormat.parse(bookdate);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}else{
+				
+			
+			try {
+				date_compte = dateFormat.parse(req.getParameter("bookDate"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			}
+			
 			int nbPersone = Integer.parseInt(req.getParameter("nb"));
 
 			Integer idhoraire = Integer.parseInt(req.getParameter("horaire"));
 			Horaire horaire = HoraireManager.getInstance().getUnHoraire(idhoraire);
 
-			Reservation reservation = new Reservation(null, null, horaire, date, nom, nbPersone);
+			Reservation reservation = new Reservation(null, null, horaire, date_compte, nom, nbPersone);
 
 			req.getSession().setAttribute("reservation", reservation);
+			resp.sendRedirect("Reservation2");
 
 		}
-		resp.sendRedirect("Reservation2");
 	}
+	
 
 	// validation de l'email
-	public boolean validationEmail(String email) throws Exception {
+	public boolean validationEmail(String email) {
 		Utilisateur user = UtilisateurManager.getInstance().getUnUtilisateurbyMail(email);
-
 		Boolean utilise = false;
-		if (user.getMail() == null) {
+		if (user == null) {
 			utilise = false;
 		} else {
 			utilise = true;
-			throw new Exception("L'e-mail saisie est déjà utilisé");
+			messageErreur = "Email déjà utilisé";
 		}
 		return utilise;
-	}
-
-	// set Erreur
-	private void setErreur(String champ, String message) {
-		erreurs.put(champ, message);
 	}
 
 }

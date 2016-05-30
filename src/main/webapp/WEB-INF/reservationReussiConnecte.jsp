@@ -68,7 +68,7 @@
                         <a href="Index">Le Menu</a>
                     </li>
                     <li>
-                        <a href="Reservation">Reservation</a>
+                        <a href="Reservation">Réservation</a>
                     </li>
                     <li>
                         <a href="Avis">Avis</a>
@@ -77,7 +77,7 @@
                         <a href="Contact">Contact</a>
                     </li>
                      <li>
-                        <a href="PagePerso">Contact</a>
+                        <a href="PagePerso">Mon Profil</a>
                     </li>
                 </ul>
             </div>

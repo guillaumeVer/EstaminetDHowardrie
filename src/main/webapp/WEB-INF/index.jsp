@@ -89,7 +89,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="Index">Le Menu</a></li>
-					<li><a href="Reservation">Reservation</a></li>
+					<li><a href="Reservation">Réservation</a></li>
 					<li><a href="Connexion">Avis</a></li>
 					<li><a href="Contact">Contact</a></li>
 				</ul>
@@ -139,7 +139,7 @@
 					<img class="img-responsive img-border img-left"
 						src="img/intro-pic.jpg" alt="">
 					<p>
-						<a href="img/bieres.jpg" style="margin-left: 185px;">
+						<a href="img/carte.jpg" style="margin-left: 185px;">
 							Découvrez nos bières <span class="glyphicon glyphicon-grain"
 							aria-hidden="true"></span>
 						</a>
